@@ -12,40 +12,61 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+import { Global, css } from "@emotion/core"
+import styled from "@emotion/styled"
+
+const Wrapper = styled("div")`
+  border: 2px solid green;
+  padding: 10px;
+`
+export default ({ children }) => (
+  <Wrapper>
+    <Global
+      styles={css`
+        div {
+          background: red;
+          color: white;
         }
-      }
-    }
-  `)
+      `}
+    />
+    {children}
+  </Wrapper>
+)
 
-  return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
-  )
-}
+// const Layout = ({ children }) => {
+//   const data = useStaticQuery(graphql`
+//     query SiteTitleQuery {
+//       site {
+//         siteMetadata {
+//           title
+//         }
+//       }
+//     }
+//   `)
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+//   return (
+//     <>
+//       <Header siteTitle={data.site.siteMetadata.title} />
+//       <div
+//         style={{
+//           margin: `0 auto`,
+//           maxWidth: 960,
+//           padding: `0 1.0875rem 1.45rem`,
+//         }}
+//       >
+//         <main>{children}</main>
+//         <footer>
+//           © {new Date().getFullYear()}, Built with
+//           {` `}
+//           <a href="https://www.gatsbyjs.org">Gatsby</a>
+//         </footer>
+//       </div>
+//     </>
+//   )
+// }
 
-export default Layout
+// Layout.propTypes = {
+//   children: PropTypes.node.isRequired,
+// }
+
+// export default Layout
