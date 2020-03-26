@@ -1,15 +1,14 @@
 import React from "react"
 import { Styled } from "theme-ui"
-
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import Avatar from "../components/avatar"
 
 function Home() {
   return (
     <Layout>
       <SEO title="Home" />
-      <Image />
+      <Avatar />
       <Styled.h1>
         Hey,{" "}
         <span role="img" aria-label="Waving Hand">

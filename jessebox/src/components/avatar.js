@@ -15,12 +15,12 @@ import { jsx } from "theme-ui"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Avatar = styled.div`
+const Container = styled.div`
   width: 80px;
   height: 80px;
 `
 
-function Image() {
+function Avatar() {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "avatar.jpg" }) {
@@ -34,7 +34,7 @@ function Image() {
   `)
 
   return (
-    <Avatar sx={{ p: 2 }}>
+    <Container sx={{ p: 2 }}>
       <Img
         sx={{
           borderRadius: 0,
@@ -44,8 +44,8 @@ function Image() {
         }}
         fluid={data.placeholderImage.childImageSharp.fluid}
       />
-    </Avatar>
+    </Container>
   )
 }
 
-export default Image
+export default Avatar
