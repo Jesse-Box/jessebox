@@ -1,7 +1,8 @@
-import React from "react"
+/** @jsx jsx */
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "@emotion/styled"
+import { jsx } from "theme-ui"
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -14,13 +15,9 @@ import styled from "@emotion/styled"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Container = styled.div`
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 96px;
-  width: 96px;
-  height: 96px;
-  margin: 0;
+const Avatar = styled.div`
+  width: 80px;
+  height: 80px;
 `
 
 function Image() {
@@ -37,9 +34,17 @@ function Image() {
   `)
 
   return (
-    <Container>
-      <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-    </Container>
+    <Avatar sx={{ p: 2 }}>
+      <Img
+        sx={{
+          borderRadius: 0,
+          borderStyle: "primary",
+          borderWidth: 0,
+          borderColor: "muted",
+        }}
+        fluid={data.placeholderImage.childImageSharp.fluid}
+      />
+    </Avatar>
   )
 }
 

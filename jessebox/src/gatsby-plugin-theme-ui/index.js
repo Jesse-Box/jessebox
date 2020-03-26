@@ -1,4 +1,41 @@
 export default {
+  breakpoints: ["40em", "56em", "64em"],
+
+  space: [0, 4, 8, 12, 16, 20, 24, 28, 32],
+
+  sizes: [656, 1260],
+
+  radii: [8],
+
+  fonts: {
+    body:
+      "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+    heading:
+      "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+    monospace: "Menlo, monospace",
+  },
+
+  fontSizes: [
+    "0.833em",
+    "1em",
+    "1.2em",
+    "1.44em",
+    "1.728em",
+    "2.074em",
+    "2.488em",
+  ],
+
+  fontWeights: {
+    body: 400,
+    heading: 900,
+    bold: 600,
+  },
+
+  lineHeights: {
+    body: 1.5,
+    heading: 1.125,
+  },
+
   colors: {
     text: "#F9FAFB",
     background: "#1A1F23",
@@ -14,62 +51,128 @@ export default {
     },
   },
 
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
-
-  fonts: {
-    body: "system-ui, sans-serif",
-    heading: "system-ui, sans-serif",
-    monospace: "Menlo, monospace",
-  },
-
-  fontWeights: {
-    body: 400,
-    heading: 800,
-    bold: 700,
-  },
-
-  lineHeights: {
-    body: 1.5,
-    heading: 1.125,
-  },
-
-  text: {
-    body: {
-      fontFamily: "body",
-      fontWeight: "body",
-      lineHeight: "body",
-    },
-    heading: {
-      fontFamily: "heading",
-      fontWeight: "heading",
-      lineHeight: "heading",
-    },
-  },
-
   styles: {
     root: {
       fontFamily: "body",
       fontWeight: "body",
       lineHeight: "body",
-    },
-    p: {
-      fontSize: [2, 3],
+      fontSize: ["16px", "18px", "20px"],
+      margin: 0,
+      textRendering: "optimizelegibility",
     },
     h1: {
-      variant: "text.heading",
-      fontSize: [5, 6, 7],
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 6,
+      margin: 0,
+      padding: 2,
     },
     h2: {
-      variant: "text.heading",
-      fontSize: [4, 5],
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 5,
+      margin: 0,
+      padding: 2,
     },
-    links: {
-      inline: {
-        fontWeight: "body",
-        color: "primary",
+    h3: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 4,
+      margin: 0,
+      padding: 2,
+    },
+    h4: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 3,
+      margin: 0,
+      padding: 2,
+    },
+    h5: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 2,
+      margin: 0,
+      padding: 2,
+    },
+    h6: {
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
+      fontSize: 0,
+      margin: 0,
+      padding: 2,
+    },
+    p: {
+      color: "text",
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "body",
+      fontSize: 1,
+      margin: 0,
+      padding: 2,
+    },
+    a: {
+      color: "primary",
+      textDecoration: "none",
+      margin: 0,
+    },
+    pre: {
+      fontFamily: "monospace",
+      overflowX: "auto",
+      code: {
+        color: "inherit",
       },
+      margin: 0,
+    },
+    code: {
+      fontFamily: "monospace",
+      fontSize: "inherit",
+      margin: 0,
+    },
+    table: {
+      width: "100%",
+      borderCollapse: "separate",
+      borderSpacing: 0,
+    },
+    th: {
+      textAlign: "left",
+      borderBottomStyle: "solid",
+    },
+    td: {
+      textAlign: "left",
+      borderBottomStyle: "solid",
+    },
+    img: {
+      maxWidth: "100%",
     },
   },
 
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  borderWidths: [2],
+
+  borderStyles: {
+    primary: "solid",
+  },
+
+  flexDirection: {
+    horizontal: "row",
+    vertical: "column",
+  },
+
+  justifyContent: {
+    start: "flex-start",
+    end: "flex-end",
+    center: "center",
+  },
 }
