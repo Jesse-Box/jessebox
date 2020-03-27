@@ -1,17 +1,9 @@
+/** @jsx jsx */
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
-import styled from "@emotion/styled"
-
-const Wrapper = styled.header`
-  background-color: blue;
-  border-bottom: 2px solid #343f46;
-`
-const Container = styled.div`
-  margin: 0 auto;
-  max-width: 960;
-  padding: 1.45rem 1.0875rem;
-`
+import { jsx, Flex, Container } from "theme-ui"
+import Icon from "../components/icon"
+import NavLink from "../components/navlink"
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
@@ -23,21 +15,44 @@ Header.defaultProps = {
 
 function Header({ siteTitle }) {
   return (
-    <Wrapper>
-      <Container>
-        <h1 style={{ margin: 0 }}>
+    <header
+      sx={{
+        borderBottomWidth: 0,
+        borderBottomStyle: "primary",
+        borderBottomColor: "muted",
+      }}
+    >
+      <Container sx={{ maxWidth: 1, padding: 3 }}>
+        <Flex
+          sx={{
+            justifyContent: "spaceBetween",
+            alignItems: "center",
+            paddingX: 1,
+          }}
+        >
           <Link
             to="/"
-            css={{
-              color: `white`,
-              textDecoration: `underline`,
+            activeClassName="active"
+            sx={{
+              variant: "navLink",
             }}
           >
             {siteTitle}
           </Link>
-        </h1>
+          <Flex sx={{ alignItems: "center" }}>
+            <NavLink href="https://twitter.com/JesseThomasBox">
+              <Icon name="twitter" />
+            </NavLink>
+            <NavLink href="https://www.linkedin.com/in/jesse-box-835346b7/">
+              <Icon name="linkedIn" />
+            </NavLink>
+            <NavLink href="mailto:me@jessebox.net">
+              <Icon name="mail" />
+            </NavLink>
+          </Flex>
+        </Flex>
       </Container>
-    </Wrapper>
+    </header>
   )
 }
 

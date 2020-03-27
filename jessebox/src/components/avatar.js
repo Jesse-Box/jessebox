@@ -1,7 +1,7 @@
-import React from "react"
+/** @jsx jsx */
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import styled from "@emotion/styled"
+import { jsx } from "theme-ui"
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -14,19 +14,10 @@ import styled from "@emotion/styled"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Container = styled.div`
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 96px;
-  width: 96px;
-  height: 96px;
-  margin: 0;
-`
-
-function Image() {
+function Avatar(Image) {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "avatar.jpg" }) {
+      placeholderImage: file(relativePath: { eq: "avatar-mii.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid
@@ -37,10 +28,19 @@ function Image() {
   `)
 
   return (
-    <Container>
-      <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-    </Container>
+    <div sx={{ p: 2 }}>
+      <Img
+        sx={{
+          width: [84, 100, 116],
+          borderRadius: 0,
+          borderStyle: "primary",
+          borderWidth: 0,
+          borderColor: "muted",
+        }}
+        fluid={data.placeholderImage.childImageSharp.fluid}
+      />
+    </div>
   )
 }
 
-export default Image
+export default Avatar
