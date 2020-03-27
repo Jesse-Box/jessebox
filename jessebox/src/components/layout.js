@@ -26,18 +26,12 @@ function Layout({ children }) {
     }
   `)
   return (
-    <section>
+    <main>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <Container
-        px={2}
-        py={6}
-        sx={{
-          maxWidth: 0,
-        }}
-      >
+      <Container px={2} py={6} sx={{ maxWidth: 0 }}>
         {children}
       </Container>
-    </section>
+    </main>
   )
 }
 

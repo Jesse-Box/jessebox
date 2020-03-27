@@ -174,5 +174,31 @@ export default {
     start: "flex-start",
     end: "flex-end",
     center: "center",
+    spaceBetween: "space-between",
+  },
+
+  alignItems: {
+    center: "center",
+  },
+
+  navLink: {
+    fontWeight: "bold",
+    padding: 2,
+    borderRadius: 0,
+    textDecoration: "none", //Scoped
+    lineHeight: "24px", //Scoped
+    display: "flex", //Scoped
+    alignItems: "center", //Scoped
+    bg: "none", //Scoped
+    transitionProperty: "background-color", //Scoped
+    transitionDuration: "0.2s", //Scoped
+
+    ":hover": {
+      bg: "muted",
+    },
+
+    "&.active": {
+      color: "primary",
+    },
   },
 }

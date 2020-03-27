@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import styled from "@emotion/styled"
 import { jsx } from "theme-ui"
 
 /*
@@ -15,15 +14,10 @@ import { jsx } from "theme-ui"
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Container = styled.div`
-  width: 80px;
-  height: 80px;
-`
-
-function Avatar() {
+function Avatar(Image) {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "avatar.jpg" }) {
+      placeholderImage: file(relativePath: { eq: "avatar-mii.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid
@@ -34,9 +28,10 @@ function Avatar() {
   `)
 
   return (
-    <Container sx={{ p: 2 }}>
+    <div sx={{ p: 2 }}>
       <Img
         sx={{
+          width: [84, 100, 116],
           borderRadius: 0,
           borderStyle: "primary",
           borderWidth: 0,
@@ -44,7 +39,7 @@ function Avatar() {
         }}
         fluid={data.placeholderImage.childImageSharp.fluid}
       />
-    </Container>
+    </div>
   )
 }
 
