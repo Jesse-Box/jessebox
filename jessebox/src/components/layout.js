@@ -8,7 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import Header from "./header"
+import Navigation from "./navigation"
 import { Container } from "theme-ui"
 
 Layout.propTypes = {
@@ -26,12 +26,14 @@ function Layout({ children }) {
     }
   `)
   return (
-    <main>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <Container px={2} py={6} sx={{ maxWidth: 0 }}>
-        {children}
-      </Container>
-    </main>
+    <>
+      <Navigation siteTitle={data.site.siteMetadata.title} />
+      <main>
+        <Container px={2} py={6} sx={{ maxWidth: 0 }}>
+          {children}
+        </Container>
+      </main>
+    </>
   )
 }
 

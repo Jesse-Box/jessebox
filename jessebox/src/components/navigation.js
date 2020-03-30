@@ -2,20 +2,20 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import { jsx, Flex, Container } from "theme-ui"
-import Icon from "../components/icon"
-import NavLink from "../components/navlink"
+import Icon from "./icon"
+import NavLink from "./navlink"
 
-Header.propTypes = {
+Navigation.propTypes = {
   siteTitle: PropTypes.string,
 }
 
-Header.defaultProps = {
+Navigation.defaultProps = {
   siteTitle: ``,
 }
 
-function Header({ siteTitle }) {
+function Navigation({ siteTitle }) {
   return (
-    <header
+    <nav
       sx={{
         borderBottomWidth: 0,
         borderBottomStyle: "primary",
@@ -52,8 +52,8 @@ function Header({ siteTitle }) {
           </Flex>
         </Flex>
       </Container>
-    </header>
+    </nav>
   )
 }
 
-export default Header
+export default Navigation

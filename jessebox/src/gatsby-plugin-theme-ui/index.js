@@ -127,6 +127,10 @@ export default {
       color: "primary",
       textDecoration: "none",
       margin: 0,
+      transition: "transition: all 0.3s ease;",
+      ":focus": {
+        boxShadow: "0 0 0 3px rgba(21, 156, 228, 0.4)",
+      },
     },
     pre: {
       fontFamily: "monospace",
