@@ -5,7 +5,7 @@ export default {
 
   sizes: [656, 1260],
 
-  radii: [8],
+  radii: [4, 8],
 
   fonts: {
     body:
@@ -127,6 +127,10 @@ export default {
       color: "primary",
       textDecoration: "none",
       margin: 0,
+      transition: "transition: all 0.3s ease;",
+      ":focus": {
+        boxShadow: "0 0 0 3px rgba(21, 156, 228, 0.4)",
+      },
     },
     pre: {
       fontFamily: "monospace",
@@ -159,7 +163,7 @@ export default {
     },
   },
 
-  borderWidths: [2],
+  borderWidths: [2, 4],
 
   borderStyles: {
     primary: "solid",
@@ -182,23 +186,30 @@ export default {
   },
 
   navLink: {
+    color: "primary",
     fontWeight: "bold",
-    padding: 2,
-    borderRadius: 0,
-    textDecoration: "none", //Scoped
-    lineHeight: "24px", //Scoped
-    display: "flex", //Scoped
-    alignItems: "center", //Scoped
-    bg: "none", //Scoped
-    transitionProperty: "background-color", //Scoped
-    transitionDuration: "0.2s", //Scoped
+    padding: [1, 2],
+    margin: [1, 2],
+    display: "flex",
+    outline: "none",
+    borderRadius: 1,
+    transitionProperty: "box-shadow",
+    transitionDuration: "0.2s",
+    textDecoration: "none",
+    borderWidth: 0,
+    borderColor: "background",
+    borderStyle: "primary",
 
     ":hover": {
       bg: "muted",
     },
 
-    "&.active": {
-      color: "primary",
+    "&:focus": {
+      borderRadius: 1,
+      borderWidth: 0,
+      borderColor: "primary",
+      borderStyle: "primary",
+      boxShadow: theme => `0 0 0 4px ${theme.colors.muted}`,
     },
   },
 }

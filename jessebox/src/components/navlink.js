@@ -1,15 +1,20 @@
 /** @jsx jsx */
-import { jsx, Box } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 
 function NavLink(props) {
-  const { href, children } = props
+  const { id, href, title, children } = props
 
   return (
-    <Box px={1}>
-      <a href={href} sx={{ variant: "navLink" }}>
-        {children}
-      </a>
-    </Box>
+    <Styled.a
+      id={id}
+      href={href}
+      title={title}
+      sx={{
+        variant: "navLink",
+      }}
+    >
+      {children}
+    </Styled.a>
   )
 }
 
