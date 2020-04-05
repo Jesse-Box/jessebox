@@ -5,7 +5,7 @@ export default {
 
   sizes: [656, 1260],
 
-  radii: [4, 8],
+  radii: [4, 8, 16],
 
   fonts: {
     body:
@@ -38,10 +38,10 @@ export default {
 
   colors: {
     text: "#F9FAFB",
-    background: "#1A1F23",
-    primary: "#FF6F47",
+    background: "#101010",
+    primary: "#FF5447",
     secondary: "#ADB942",
-    muted: "#343F46",
+    muted: "#292929",
     modes: {
       text: "#1A1F23",
       background: "#F9FAFB",
@@ -125,11 +125,15 @@ export default {
     },
     a: {
       color: "primary",
-      textDecoration: "none",
+      textDecoration: "underline",
       margin: 0,
       transition: "transition: all 0.3s ease;",
+      outline: "none",
       ":focus": {
-        boxShadow: "0 0 0 3px rgba(21, 156, 228, 0.4)",
+        borderRadius: 1,
+        borderWidth: 0,
+        borderColor: "primary",
+        borderStyle: "primary",
       },
     },
     pre: {
@@ -188,28 +192,25 @@ export default {
   navLink: {
     color: "primary",
     fontWeight: "bold",
-    padding: [1, 2],
-    margin: [1, 2],
+    padding: 2,
+    margin: 1,
     display: "flex",
-    outline: "none",
     borderRadius: 1,
-    transitionProperty: "box-shadow",
-    transitionDuration: "0.2s",
+    outline: "none",
     textDecoration: "none",
     borderWidth: 0,
-    borderColor: "background",
     borderStyle: "primary",
+    borderColor: "background",
 
     ":hover": {
       bg: "muted",
     },
 
-    "&:focus": {
+    ":focus": {
       borderRadius: 1,
       borderWidth: 0,
       borderColor: "primary",
       borderStyle: "primary",
-      boxShadow: theme => `0 0 0 4px ${theme.colors.muted}`,
     },
   },
 }
