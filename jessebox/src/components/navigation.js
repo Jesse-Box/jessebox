@@ -17,17 +17,19 @@ function Navigation({ siteTitle }) {
   return (
     <nav
       sx={{
-        borderBottomWidth: 0,
-        borderBottomStyle: "primary",
-        borderBottomColor: "muted",
+        borderWidth: 0,
+        borderStyle: "primary",
+        borderColor: "muted",
+        margin: [2, 4, 4],
+        borderRadius: 2,
       }}
     >
-      <Container sx={{ maxWidth: 1, padding: 3 }}>
+      <Container sx={{ maxWidth: 1 }}>
         <Flex
           sx={{
             justifyContent: "spaceBetween",
             alignItems: "center",
-            paddingX: 1,
+            padding: 1,
           }}
         >
           <Link
