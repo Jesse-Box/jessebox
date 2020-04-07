@@ -5,15 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import Navigation from "./navigation"
-import { Container } from "theme-ui"
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useStaticQuery, graphql } from 'gatsby';
+import Navigation from './navigation';
+import { Container } from 'theme-ui';
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
 function Layout({ children }) {
   const data = useStaticQuery(graphql`
@@ -24,17 +24,17 @@ function Layout({ children }) {
         }
       }
     }
-  `)
+  `);
   return (
     <>
       <Navigation siteTitle={data.site.siteMetadata.title} />
       <main>
-        <Container px={2} py={6} sx={{ maxWidth: 0 }}>
+        <Container px={4} py={6} sx={{ maxWidth: 0 }}>
           {children}
         </Container>
       </main>
     </>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

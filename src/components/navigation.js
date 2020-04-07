@@ -6,11 +6,11 @@ import Icon from './icon';
 import NavLink from './navlink';
 
 Navigation.propTypes = {
-  siteTitle: PropTypes.string
+  siteTitle: PropTypes.string,
 };
 
 Navigation.defaultProps = {
-  siteTitle: ``
+  siteTitle: ``,
 };
 
 function Navigation({ siteTitle }) {
@@ -21,7 +21,7 @@ function Navigation({ siteTitle }) {
         borderStyle: 'primary',
         borderColor: 'muted',
         margin: [2, 4, 4],
-        borderRadius: 2
+        borderRadius: 2,
       }}
     >
       <Container sx={{ maxWidth: 1 }}>
@@ -29,14 +29,14 @@ function Navigation({ siteTitle }) {
           sx={{
             justifyContent: 'spaceBetween',
             alignItems: 'center',
-            padding: 1
+            padding: 1,
           }}
         >
           <Link
             to='/'
             activeClassName='active'
             sx={{
-              variant: 'navLink'
+              variant: 'navLink',
             }}
           >
             {siteTitle}
