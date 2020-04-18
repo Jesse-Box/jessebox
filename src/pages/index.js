@@ -1,9 +1,10 @@
-import React from "react"
-import { Styled } from "theme-ui"
+import React from "react";
+import { Styled } from "theme-ui";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Avatar from "../components/avatar"
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import Avatar from "../components/avatar";
+import ButtonToggle from "../components/ButtonToggle";
 
 function Home() {
   return (
@@ -23,8 +24,9 @@ function Home() {
         and <Styled.a href="https://www.dailymotion.com/">Dailymotion</Styled.a>
         , currently living in Berlin, Germany.
       </Styled.p>
+      <ButtonToggle />
     </Layout>
-  )
+  );
 }
 
-export default Home
+export default Home;
