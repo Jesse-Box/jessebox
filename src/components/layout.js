@@ -8,8 +8,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import Navigation from "./Navigation";
-import Footer from "./Footer";
+import Navigation from "./navigation";
+import Footer from "./footer";
 import { Container } from "theme-ui";
 
 Layout.propTypes = {

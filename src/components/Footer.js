@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, Flex, Container } from "theme-ui";
-import NavLink from "./NavLink";
+import NavLink from "./navlink";
 
 function Footer() {
   return (
