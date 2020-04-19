@@ -1,7 +1,7 @@
 import React from "react";
 import { Styled } from "theme-ui";
-import Layout from "../components/Layout";
-import SEO from "../components/SEO";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 function Home() {
   return (
