@@ -8,7 +8,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import NavBar from "./NavBar";
+import Navigation from "./Navigation";
+import Footer from "./Footer";
 import { Container } from "theme-ui";
 
 Layout.propTypes = {
@@ -27,12 +28,13 @@ function Layout({ children }) {
   `);
   return (
     <>
-      <NavBar siteTitle={data.site.siteMetadata.title} />
+      <Navigation siteTitle={data.site.siteMetadata.title} />
       <main>
-        <Container px={4} py={6} sx={{ maxWidth: 0 }}>
+        <Container px={[3, 2, 2]} py={4} sx={{ maxWidth: 0 }}>
           {children}
         </Container>
       </main>
+      <Footer />
     </>
   );
 }

@@ -226,10 +226,10 @@ export default {
   navLink: {
     color: "primary.base",
     fontWeight: "body",
-    padding: 2,
-    margin: 1,
+    py: 1,
+    px: 2,
     display: "flex",
-    borderRadius: 1,
+    borderRadius: 3,
     outline: "none",
     textDecoration: "none",
     transition: "all 80ms ease-in",

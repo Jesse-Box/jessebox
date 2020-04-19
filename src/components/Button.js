@@ -38,17 +38,12 @@ function Button(props) {
         // pass variant prop to sx
         variant: `buttons.${variant}`,
 
-        ":hover": {
-          transform: "scale(1.08)",
-        },
-
         ":active": {
           transform: "scale(.92)",
           boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
         },
 
         ":focus": {
-          transform: "scale(1.08)",
           boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
         },
       }}

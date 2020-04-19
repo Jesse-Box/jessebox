@@ -6,13 +6,15 @@ function ButtonToggle(props) {
   const [mode, setMode] = useColorMode();
   return (
     <Button
+      title="Toggle Theme"
+      id="ToggleTheme"
       {...props}
       onClick={(e) => {
         const next = mode === "default" ? "light" : "default";
         setMode(next);
       }}
     >
-      Click me
+      Theme
     </Button>
   );
 }
