@@ -41,7 +41,7 @@ export default {
     primary: {
       light: "#FF7E70",
       base: "#FF5447",
-      dark: "#FF7E70",
+      dark: "#D93732",
     },
     accent: "#47A6FF",
     secondary: "#ADB9C2",
@@ -143,12 +143,12 @@ export default {
       borderRadius: 0,
 
       ":hover": {
-        color: "primary.light",
+        backgroundColor: "primary.light",
         textDecoration: "underline",
       },
 
       ":active": {
-        color: "primary.dark",
+        backgroundColor: "primary.dark",
         boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
 
