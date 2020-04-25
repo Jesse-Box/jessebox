@@ -1,7 +1,7 @@
 /** @jsx jsx */
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
-import { jsx } from "theme-ui"
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
+import { jsx } from "theme-ui";
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -25,7 +25,7 @@ function Avatar(Image) {
         }
       }
     }
-  `)
+  `);
 
   return (
     <div sx={{ p: 2 }}>
@@ -40,7 +40,7 @@ function Avatar(Image) {
         fluid={data.placeholderImage.childImageSharp.fluid}
       />
     </div>
-  )
+  );
 }
 
-export default Avatar
+export default Avatar;

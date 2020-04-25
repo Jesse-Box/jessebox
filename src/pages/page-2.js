@@ -1,16 +1,18 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link } from "gatsby";
+import { Styled } from "theme-ui";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+function SecondPage() {
+  return (
+    <Layout>
+      <SEO title="Page two" />
+      <Styled.h1>Hi from the second page</Styled.h1>
+      <Styled.p>Welcome to page 2</Styled.p>
+      <Link to="/">Go back to the homepage</Link>
+    </Layout>
+  );
+}
 
-const SecondPage = () => (
-  <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
-)
-
-export default SecondPage
+export default SecondPage;
