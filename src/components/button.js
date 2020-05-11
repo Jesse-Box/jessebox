@@ -20,6 +20,7 @@ function Button(props) {
       variant={variant}
       {...rest}
       sx={{
+        fontFamily: "body",
         borderRadius: 3,
         border: "none",
         outline: "none",
