@@ -8,7 +8,7 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Navigation from "./navigation";
-import Footer from "./footer";
+import Footer from "./Footer";
 import Horizon from "./horizon";
 import Main from "./main";
 
