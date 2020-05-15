@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import { jsx, Flex, Container } from "theme-ui";
+import { jsx, Flex } from "theme-ui";
 import ButtonToggle from "./buttontoggle";
 
 Navigation.propTypes = {
@@ -14,17 +14,22 @@ Navigation.defaultProps = {
 
 function Navigation({ siteTitle }) {
   return (
-    <nav
+    <div
       sx={{
-        backgroundColor: "background",
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.primary.base}`,
-        marginY: [2, 3, 4],
-        marginX: [2, "auto", "auto"],
-        borderRadius: 3,
-        maxWidth: "656px",
+        backgroundColor: "primary.base",
+        paddingY: [2, 3, 3],
+        paddingX: [2, 3, 3],
       }}
     >
-      <Container sx={{ maxWidth: 0 }}>
+      <nav
+        sx={{
+          backgroundColor: "background",
+          boxShadow: (theme) => `0 0 0 2px ${theme.colors.primary.base}`,
+          borderRadius: 3,
+          maxWidth: "656px",
+          marginX: [0, "auto", "auto"],
+        }}
+      >
         <Flex
           sx={{
             justifyContent: "spaceBetween",
@@ -37,15 +42,15 @@ function Navigation({ siteTitle }) {
             to="/"
             activeClassName="active"
             sx={{
-              variant: "navLink",
+              variant: "link.nav",
             }}
           >
             {siteTitle}
           </Link>
           <ButtonToggle />
         </Flex>
-      </Container>
-    </nav>
+      </nav>
+    </div>
   );
 }
 

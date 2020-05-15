@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled } from 'theme-ui';
-import PropTypes from 'prop-types';
+import { jsx, Styled } from "theme-ui";
+import PropTypes from "prop-types";
 
 NavLink.propTypes = {
   id: PropTypes.string,
@@ -10,8 +10,8 @@ NavLink.propTypes = {
 };
 
 NavLink.defaultProps = {
-  href: '#',
-  title: 'title',
+  href: "#",
+  title: "title",
 };
 
 function NavLink(props) {
@@ -23,7 +23,7 @@ function NavLink(props) {
       href={href}
       title={title}
       sx={{
-        variant: 'navLink',
+        variant: "link.nav",
       }}
     >
       {children}

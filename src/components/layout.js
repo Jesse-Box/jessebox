@@ -6,17 +6,15 @@
  */
 
 import React from "react";
-import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import Navigation from "./navigation";
 import Footer from "./footer";
-import { Container } from "theme-ui";
+import Horizon from "./horizon";
+import Main from "./main";
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+function Layout(props) {
+  const { horizonContent, pageTitle, mainContent } = props;
 
-function Layout({ children }) {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -26,14 +24,12 @@ function Layout({ children }) {
       }
     }
   `);
+
   return (
     <>
       <Navigation siteTitle={data.site.siteMetadata.title} />
-      <main>
-        <Container px={[3, 2, 2]} py={4} sx={{ maxWidth: 0 }}>
-          {children}
-        </Container>
-      </main>
+      <Horizon horizonContent={horizonContent} />
+      <Main pageTitle={pageTitle} mainContent={mainContent} />
       <Footer />
     </>
   );

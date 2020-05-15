@@ -72,7 +72,7 @@ export default {
       textRendering: "optimizelegibility",
     },
     h1: {
-      color: "text",
+      color: "background",
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
@@ -108,10 +108,10 @@ export default {
       padding: 2,
     },
     h5: {
-      color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      color: "background",
+      fontFamily: "body",
+      lineHeight: "body",
+      fontWeight: "body",
       fontSize: 2,
       margin: 0,
       padding: 2,
@@ -136,18 +136,13 @@ export default {
     },
     a: {
       color: "primary.base",
-      textDecoration: "none",
+      textDecoration: "underline",
       margin: 0,
       transition: "all 80ms ease-in",
       outline: "none",
       borderRadius: 0,
 
-      ":hover": {
-        textDecoration: "underline",
-      },
-
       ":active": {
-        backgroundColor: "primary.dark",
         boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
 
@@ -185,6 +180,7 @@ export default {
       maxWidth: "100%",
     },
   },
+
   buttons: {
     primary: {
       color: "background",
@@ -222,28 +218,46 @@ export default {
     center: "center",
   },
 
-  navLink: {
-    color: "primary.base",
-    fontWeight: "body",
-    py: 1,
-    px: 2,
-    display: "flex",
-    borderRadius: 3,
-    outline: "none",
-    textDecoration: "none",
-    transition: "all 80ms ease-in",
+  link: {
+    horizon: {
+      color: "background",
+      textDecoration: "underline",
+      margin: 0,
+      transition: "all 80ms ease-in",
+      outline: "none",
+      borderRadius: 0,
 
-    ":hover": {
-      bg: "muted",
+      ":active": {
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+      },
+
+      ":focus": {
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+      },
     },
+    nav: {
+      color: "primary.base",
+      fontWeight: "body",
+      py: 1,
+      px: 2,
+      display: "flex",
+      borderRadius: 3,
+      outline: "none",
+      textDecoration: "none",
+      transition: "all 80ms ease-in",
 
-    ":active": {
-      color: "primary.dark",
-      boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
-    },
+      ":hover": {
+        bg: "muted",
+      },
 
-    ":focus": {
-      boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+      ":active": {
+        color: "primary.dark",
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+      },
+
+      ":focus": {
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+      },
     },
   },
 };
