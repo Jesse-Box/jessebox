@@ -72,7 +72,7 @@ export default {
       textRendering: "optimizelegibility",
     },
     h1: {
-      color: "text",
+      color: "background",
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
@@ -108,10 +108,10 @@ export default {
       padding: 2,
     },
     h5: {
-      color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      color: "background",
+      fontFamily: "body",
+      lineHeight: "body",
+      fontWeight: "body",
       fontSize: 2,
       margin: 0,
       padding: 2,
