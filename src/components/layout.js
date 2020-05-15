@@ -6,19 +6,15 @@
  */
 
 import React from "react";
-import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 import Navigation from "./navigation";
 import Footer from "./footer";
-import { Container } from "theme-ui";
 import Horizon from "./horizon";
-import { Styled } from "theme-ui";
+import Main from "./main";
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+function Layout(props) {
+  const { horizonContent, pageTitle, mainContent } = props;
 
-function Layout({ children }) {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -28,22 +24,12 @@ function Layout({ children }) {
       }
     }
   `);
+
   return (
     <>
       <Navigation siteTitle={data.site.siteMetadata.title} />
-      <main>
-        <Horizon>
-          <Styled.h1>Hey.</Styled.h1>
-          <Styled.h5>
-            My name is Jesse and since August 2018 I've been working for EyeEm
-            product designer. This website is a work in progress so be sure to
-            come back soon.
-          </Styled.h5>
-        </Horizon>
-        <Container px={[3, 2, 2]} py={4} sx={{ maxWidth: 0 }}>
-          {children}
-        </Container>
-      </main>
+      <Horizon horizonContent={horizonContent} />
+      <Main pageTitle={pageTitle} mainContent={mainContent} />
       <Footer />
     </>
   );

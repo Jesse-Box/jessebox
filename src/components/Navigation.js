@@ -42,7 +42,7 @@ function Navigation({ siteTitle }) {
             to="/"
             activeClassName="active"
             sx={{
-              variant: "navLink",
+              variant: "link.nav",
             }}
           >
             {siteTitle}

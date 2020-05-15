@@ -1,17 +1,18 @@
 import React from "react";
-import { Link } from "gatsby";
 import { Styled } from "theme-ui";
 import Layout from "../components/layout";
-import SEO from "../components/seo";
 
 function SecondPage() {
   return (
-    <Layout>
-      <SEO title="Page two" />
-      <Styled.h1>Hi from the second page</Styled.h1>
-      <Styled.p>Welcome to page 2</Styled.p>
-      <Link to="/">Go back to the homepage</Link>
-    </Layout>
+    <Layout
+      horizonContent={
+        <>
+          <Styled.h1>Second Page</Styled.h1>
+          <Styled.h5>Welcome to page 2</Styled.h5>
+        </>
+      }
+      pageTitle="Page Two"
+    ></Layout>
   );
 }
 

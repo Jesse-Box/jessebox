@@ -4,14 +4,13 @@ import PropTypes from "prop-types";
 import { Container, Box } from "theme-ui";
 
 Horizon.propTypes = {
-  children: PropTypes.node.isRequired,
+  horizonContent: PropTypes.node.isRequired,
 };
 
 function Horizon(props) {
-  const { children, title } = props;
+  const { horizonContent } = props;
   return (
     <Container
-      title={title}
       sx={{
         backgroundColor: "primary.base",
         width: "100%",
@@ -23,7 +22,7 @@ function Horizon(props) {
       }}
     >
       <Box px={[3, 2, 2]} py={[3, 2, 2]} sx={{ maxWidth: 0, marginX: "auto" }}>
-        {children}
+        {horizonContent}
       </Box>
     </Container>
   );
