@@ -7,10 +7,10 @@
 
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Navigation from "./navigation";
+import Navigation from "./Navigation";
 import Footer from "./Footer";
-import Horizon from "./horizon";
-import Main from "./main";
+import Horizon from "./Horizon";
+import Main from "./Main";
 
 function Layout(props) {
   const { horizonContent, pageTitle, mainContent } = props;
