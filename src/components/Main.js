@@ -2,7 +2,7 @@
 import { jsx } from "theme-ui";
 import PropTypes from "prop-types";
 import { Container } from "theme-ui";
-import SEO from "./seo2";
+import SEO from "./SEO";
 
 Main.propTypes = {
   mainContent: PropTypes.node,
