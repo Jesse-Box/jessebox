@@ -9,7 +9,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
-import Horizon from "./horizon";
+import Horizon from "./horizon2";
 import Main from "./main";
 
 function Layout(props) {
