@@ -10,7 +10,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Navigation from "./Navigation";
 import Footer from "./Footer";
 import Horizon from "./Horizon";
-import Main from "./main";
+import Main from "./main2";
 
 function Layout(props) {
   const { horizonContent, pageTitle, mainContent } = props;
