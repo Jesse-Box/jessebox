@@ -2,7 +2,7 @@
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import { jsx, Flex } from "theme-ui";
-import ButtonToggle from "./buttontoggle";
+import ButtonToggle from "./ButtonToggle2";
 
 Navigation.propTypes = {
   siteTitle: PropTypes.string,
