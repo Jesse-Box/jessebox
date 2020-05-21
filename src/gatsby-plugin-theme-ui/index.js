@@ -79,6 +79,7 @@ export default {
       fontSize: 6,
       margin: 0,
       padding: 2,
+      letterSpacing: "-0.8px",
     },
     h2: {
       color: "text",
