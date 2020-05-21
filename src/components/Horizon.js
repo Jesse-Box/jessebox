@@ -21,7 +21,11 @@ function Horizon(props) {
         minHeight: "48vh",
       }}
     >
-      <Box px={[3, 2, 2]} py={[3, 2, 2]} sx={{ maxWidth: 0, marginX: "auto" }}>
+      <Box
+        px={[3, 2, 2]}
+        py={[3, 2, 2]}
+        sx={{ maxWidth: 0, marginX: "auto", width: "100%" }}
+      >
         {horizonContent}
       </Box>
     </Container>
