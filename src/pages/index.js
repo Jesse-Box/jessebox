@@ -4,8 +4,6 @@ import { Styled } from "theme-ui";
 import Layout from "../components/Layout";
 
 function Home({ data }) {
-  console.log(data);
-
   return (
     <Layout
       horizonContent={
@@ -25,7 +23,7 @@ export const query = graphql`
       frontmatter {
         title
       }
-      excerpt
+      excerpt(pruneLength: 500)
     }
   }
 `;
