@@ -1,19 +1,8 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
-import PropTypes from "prop-types";
+import { jsx } from "theme-ui"
 
-Button.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-};
-
-Button.defaultProps = {
-  title: "title",
-};
-
-function Button(props) {
-  const { variant = "primary", id, title, children, ...rest } = props;
+const Button = props => {
+  const { variant = "naked", id, title, children, ...rest } = props
 
   return (
     <button
@@ -21,7 +10,7 @@ function Button(props) {
       {...rest}
       sx={{
         fontFamily: "body",
-        borderRadius: 3,
+        borderRadius: 1,
         border: "none",
         outline: "none",
         appearance: "none",
@@ -41,16 +30,16 @@ function Button(props) {
 
         ":active": {
           transform: "scale(.92)",
-          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+          boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
         },
 
         ":focus": {
-          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+          boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
         },
       }}
     >
       {children}
     </button>
-  );
+  )
 }
-export default Button;
+export default Button

@@ -3,15 +3,15 @@ export default {
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
 
-  sizes: [656, 1260],
+  sizes: [540, 668, 680],
 
   radii: [2, 8, 16, 32],
 
   fonts: {
     body:
-      " Unica77LLWeb-Regular,-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+      "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
     heading:
-      " Unica77LLWeb-Bold,-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol",
+      "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
     monospace: "Menlo, monospace",
   },
 
@@ -27,7 +27,7 @@ export default {
 
   fontWeights: {
     body: 400,
-    heading: 800,
+    heading: 600,
   },
 
   lineHeights: {
@@ -68,18 +68,18 @@ export default {
       fontWeight: "body",
       lineHeight: "body",
       fontSize: ["16px", "18px", "20px"],
-      margin: 0,
+      m: 0,
       textRendering: "optimizelegibility",
     },
     h1: {
-      color: "background",
+      color: "text",
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
       fontSize: 6,
-      margin: 0,
-      padding: 2,
-      letterSpacing: "-0.8px",
+      m: 0,
+      py: 2,
+      letterSpacing: "-0.64px",
     },
     h2: {
       color: "text",
@@ -87,8 +87,9 @@ export default {
       lineHeight: "heading",
       fontWeight: "heading",
       fontSize: 5,
-      margin: 0,
-      padding: 2,
+      m: 0,
+      pt: 3,
+      pb: 2,
     },
     h3: {
       color: "text",
@@ -97,7 +98,8 @@ export default {
       fontWeight: "heading",
       fontSize: 4,
       margin: 0,
-      padding: 2,
+      pt: 3,
+      pb: 0,
     },
     h4: {
       color: "text",
@@ -106,25 +108,27 @@ export default {
       fontWeight: "heading",
       fontSize: 3,
       margin: 0,
-      padding: 2,
+      pt: 2,
+      pb: 0,
     },
     h5: {
-      color: "background",
-      fontFamily: "body",
-      lineHeight: "body",
-      fontWeight: "body",
-      fontSize: 2,
-      margin: 0,
-      padding: 2,
-    },
-    h6: {
       color: "text",
       fontFamily: "heading",
       lineHeight: "heading",
       fontWeight: "heading",
+      fontSize: 2,
+      margin: 0,
+      pt: 2,
+      pb: 0,
+    },
+
+    h6: {
+      color: "secondary",
+      fontFamily: "body",
+      lineHeight: "body",
+      fontWeight: "body",
       fontSize: 0,
       margin: 0,
-      padding: 2,
     },
     p: {
       color: "text",
@@ -133,52 +137,90 @@ export default {
       lineHeight: "body",
       fontSize: 1,
       margin: 0,
-      padding: 2,
+      pt: 2,
+      pb: 2,
     },
     a: {
       color: "primary.base",
-      textDecoration: "underline",
+      textDecoration: "none",
       margin: 0,
       transition: "all 80ms ease-in",
       outline: "none",
-      borderRadius: 0,
+      borderRadius: 1,
+
+      ":hover": {
+        textDecoration: "underline",
+      },
 
       ":active": {
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
       },
 
       ":focus": {
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
       },
     },
     pre: {
       fontFamily: "monospace",
-      overflowX: "auto",
+      borderRadius: 2,
+      fontSize: 1,
+      my: 2,
+      p: 3,
+      bg: "muted",
+      overflow: "auto",
       code: {
         color: "inherit",
       },
-      margin: 0,
     },
     code: {
       fontFamily: "monospace",
-      fontSize: "inherit",
-      margin: 0,
+      fontSize: 1,
     },
     table: {
       width: "100%",
       borderCollapse: "separate",
       borderSpacing: 0,
+      fontSize: 1,
+      lineHeight: "body",
+      fontFamily: "body",
+      fontWeight: "body",
+      pt: 2,
+      pb: 2,
     },
     th: {
+      px: 3,
       textAlign: "left",
+      fontSize: "inherit",
+      fontWeight: "inherit",
+      borderTopStyle: "solid",
       borderBottomStyle: "solid",
+      borderBottomWidth: 0,
+      borderTopWidth: 0,
+      borderTopColor: "muted",
+      borderBottomColor: "muted",
+      borderColor: "muted",
     },
     td: {
+      px: 3,
       textAlign: "left",
       borderBottomStyle: "solid",
+      borderBottomWidth: 0,
+      borderBottomColor: "muted",
+      color: "secondary",
     },
     img: {
       maxWidth: "100%",
+    },
+    blockquote: {
+      my: 2,
+      mx: 0,
+      px: 3,
+      borderLeftStyle: "solid",
+      borderLeftColor: "primary.base",
+      borderLeftWidth: 0,
+      p: {
+        color: "secondary",
+      },
     },
   },
 
@@ -193,6 +235,24 @@ export default {
 
       ":active": {
         bg: "primary.dark",
+      },
+    },
+    naked: {
+      bg: "background",
+      outline: "none",
+      color: "primary.base",
+
+      ":hover": {
+        bg: "muted",
+      },
+
+      ":active": {
+        color: "primary.dark",
+        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+      },
+
+      ":focus": {
+        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
       },
     },
   },
@@ -220,45 +280,11 @@ export default {
   },
 
   link: {
-    horizon: {
-      color: "background",
-      textDecoration: "underline",
-      margin: 0,
-      transition: "all 80ms ease-in",
-      outline: "none",
-      borderRadius: 0,
-
-      ":active": {
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
-      },
-
-      ":focus": {
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
-      },
-    },
     nav: {
-      color: "primary.base",
-      fontWeight: "body",
-      py: 1,
-      px: 2,
-      display: "flex",
-      borderRadius: 3,
-      outline: "none",
-      textDecoration: "none",
-      transition: "all 80ms ease-in",
-
       ":hover": {
         bg: "muted",
-      },
-
-      ":active": {
-        color: "primary.dark",
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
-      },
-
-      ":focus": {
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+        textDecoration: "none",
       },
     },
   },
-};
+}

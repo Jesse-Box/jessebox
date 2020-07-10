@@ -1,34 +1,32 @@
 /** @jsx jsx */
-import { jsx, Flex, Container } from "theme-ui";
-import NavLink from "./NavLink";
+import { jsx, Container } from "theme-ui"
+import LinkNav from "./link-nav"
 
-function Footer() {
+const Footer = () => {
   return (
     <footer
       sx={{
         backgroundColor: "background",
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.primary.base}`,
-        marginY: [2, 3, 4],
-        marginX: [2, "auto", "auto"],
-        borderRadius: 3,
-        maxWidth: "656px",
+        borderTopColor: "muted",
+        borderTopStyle: "solid",
+        borderTopWidth: 0,
       }}
     >
-      <Container sx={{ maxWidth: 1 }}>
-        <Flex sx={{ alignItems: "center", padding: 2 }}>
-          <NavLink title="Twitter" href="https://twitter.com/JesseThomasBox">
+      <Container px={[2]} py={2} sx={{ maxWidth: [0, 1, 2] }}>
+        <Container px={[0, 3]} sx={{ display: "flex", alignItems: "center" }}>
+          <LinkNav title="Twitter" href="https://twitter.com/JesseThomasBox">
             Twitter
-          </NavLink>
-          <NavLink
+          </LinkNav>
+          <LinkNav
             title="LinkedIn"
             href="https://www.linkedin.com/in/jesse-box-835346b7/"
           >
             LinkedIn
-          </NavLink>
-        </Flex>
+          </LinkNav>
+        </Container>
       </Container>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer
