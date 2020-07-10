@@ -2,7 +2,7 @@
 import { jsx, Styled, Container } from "theme-ui"
 
 import Navigation from "./Navigation"
-import Bio from "./bio2"
+import Bio from "./Bio"
 
 const Layout = ({ location, title, children }) => {
   return (
