@@ -3,7 +3,7 @@ import { jsx, Styled, Box, Container } from "theme-ui"
 import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
 
-import Layout from "../components/layout"
+import Layout from "../components/layout2"
 import SEO from "../components/seo"
 import { MdxEmbedProvider } from "@pauliescanlon/gatsby-mdx-embed"
 import { MDXRenderer } from "gatsby-plugin-mdx"
