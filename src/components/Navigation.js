@@ -1,57 +1,53 @@
 /** @jsx jsx */
-import { Link } from "gatsby";
-import PropTypes from "prop-types";
-import { jsx, Flex } from "theme-ui";
-import ButtonToggle from "./ButtonToggle";
+import { jsx, Container } from "theme-ui"
+import ThemeToggle from "./ThemeToggle"
+import { useStaticQuery, graphql } from "gatsby"
+import LinkNav from "./LinkNav"
 
-Navigation.propTypes = {
-  siteTitle: PropTypes.string,
-};
+const Navigation = props => {
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
 
-Navigation.defaultProps = {
-  siteTitle: ``,
-};
-
-function Navigation({ siteTitle }) {
   return (
-    <div
+    <nav
+      aria-label="Navigation Bar"
       sx={{
-        backgroundColor: "primary.base",
-        paddingY: [2, 3, 3],
-        paddingX: [2, 3, 3],
+        backgroundColor: "background",
+        borderBottomColor: "muted",
+        borderBottomStyle: "solid",
+        borderBottomWidth: 0,
       }}
     >
-      <nav
-        sx={{
-          backgroundColor: "background",
-          boxShadow: (theme) => `0 0 0 2px ${theme.colors.primary.base}`,
-          borderRadius: 3,
-          maxWidth: "656px",
-          marginX: [0, "auto", "auto"],
-        }}
-      >
-        <Flex
+      <Container px={[2]} py={2} sx={{ maxWidth: [0, 1, 2] }}>
+        <Container
+          px={[0, 3]}
           sx={{
+            display: "flex",
             justifyContent: "spaceBetween",
             alignItems: "center",
-            padding: 2,
           }}
         >
-          <Link
+          <LinkNav
+            sx={{ variant: "link.nav" }}
+            aria-label="Home"
             title="Home"
             to="/"
             activeClassName="active"
-            sx={{
-              variant: "link.nav",
-            }}
           >
-            {siteTitle}
-          </Link>
-          <ButtonToggle />
-        </Flex>
-      </nav>
-    </div>
-  );
+            {data.site.siteMetadata.title}
+          </LinkNav>
+          <ThemeToggle />
+        </Container>
+      </Container>
+    </nav>
+  )
 }
 
-export default Navigation;
+export default Navigation

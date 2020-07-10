@@ -1,45 +1,81 @@
 module.exports = {
   siteMetadata: {
     title: `Jesse Box`,
-    title: `Jesse Box `,
-    description: `Senior product designer currently at EyeEm, formally at Hubrick & Dailymotion.`,
-    author: `@JesseThomasBox`,
+    author: {
+      name: `Jesse Box`,
+      summary: `Senior product designer at EyeEm, formally at Hubrick & Dailymotion.`,
+    },
+    description: `Senior product designer at EyeEm, formally at Hubrick & Dailymotion.`,
+    siteUrl: `https://www.jessebox.net`,
+    social: {
+      twitter: `JesseThomasBox`,
+      linkedin: `jesse-box-835346b7`,
+    },
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      },
+    },
+    `@pauliescanlon/gatsby-mdx-embed`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 640,
+              wrapperStyle: `border-radius: 16px`,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        //trackingId: `ADD YOUR TRACKING ID HERE`,
+      },
+    },
+    `gatsby-plugin-feed-mdx`,
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Jesse Box`,
+        short_name: `Jesse Box`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#101010`,
+        theme_color: `#F9FAFB`,
         display: `minimal-ui`,
-        icon: `src/images/jessebox-logomark.png`, // This path is relative to the root of the site.
+        icon: `content/assets/jessebox-logomark.png`,
       },
     },
-    `gatsby-transformer-remark`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`,
-      },
-    },
-    `gatsby-plugin-emotion`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-theme-ui`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-};
+}
