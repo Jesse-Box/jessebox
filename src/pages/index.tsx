@@ -3,8 +3,8 @@ import { jsx, Styled, Container } from "theme-ui"
 import { PageProps, Link, graphql } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 
-import Layout from "../components/layout2"
-import SEO from "../components/seo"
+import Layout from "../components/Layout"
+import SEO from "../components/seo2"
 
 type Data = {
   site: {
