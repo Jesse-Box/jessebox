@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Styled, Container } from "theme-ui"
 
-import Navigation from "./navigation2"
-import Bio from "./bio"
+import Navigation from "./Navigation"
+import Bio from "./bio2"
 
 const Layout = ({ location, title, children }) => {
   return (

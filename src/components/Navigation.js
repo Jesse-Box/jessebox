@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, Container } from "theme-ui"
-import ThemeToggle from "./theme-toggle"
+import ThemeToggle from "./theme-toggle2"
 import { useStaticQuery, graphql } from "gatsby"
-import LinkNav from "./link-nav"
+import LinkNav from "./link-nav2"
 
 const Navigation = props => {
   const data = useStaticQuery(graphql`

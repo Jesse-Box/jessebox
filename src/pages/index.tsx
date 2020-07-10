@@ -4,7 +4,7 @@ import { PageProps, Link, graphql } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 
 import Layout from "../components/Layout"
-import SEO from "../components/seo2"
+import SEO from "../components/SEO"
 
 type Data = {
   site: {

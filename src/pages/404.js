@@ -3,7 +3,7 @@ import { jsx, Styled, Container } from "theme-ui"
 import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
-import SEO from "../components/seo2"
+import SEO from "../components/SEO"
 
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title

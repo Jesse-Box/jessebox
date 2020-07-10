@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
 
 import Layout from "../components/Layout"
-import SEO from "../components/seo2"
+import SEO from "../components/SEO"
 import { MdxEmbedProvider } from "@pauliescanlon/gatsby-mdx-embed"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
