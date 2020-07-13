@@ -11,15 +11,16 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
-  const featuredImageFluid =
-    post.frontmatter.featuredImage.childImageSharp.fluid
+  const thumbFluid = post.frontmatter.thumb.childImageSharp.fluid
   const { previous, next } = pageContext
+  const thumb = post.frontmatter.thumb
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        thumb={thumb}
       />
       <article>
         <Container
@@ -45,8 +46,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                   }}
                 >
                   <Image
-                    alt={post.frontmatter.featuredImageAltText}
-                    fluid={featuredImageFluid}
+                    alt={post.frontmatter.thumbAlt}
+                    fluid={thumbFluid}
                   ></Image>
                 </Box>
               </Box>
@@ -137,14 +138,17 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
-        featuredImage {
+        thumb {
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid
             }
+            sizes(maxWidth: 600) {
+              ...GatsbyImageSharpSizes
+            }
           }
         }
-        featuredImageAltText
+        thumbAlt
       }
     }
   }
