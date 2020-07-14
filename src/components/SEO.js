@@ -78,12 +78,11 @@ const SEO = ({ description, lang, meta, title, thumb }) => {
           name: `twitter:title`,
           content: title,
         },
+        { name: `twitter:image`, content: image },
         {
           name: `twitter:description`,
           content: metaDescription,
         },
-
-        { name: `twitter:image`, content: image },
       ].concat(meta)}
     />
   )
