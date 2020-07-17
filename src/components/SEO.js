@@ -27,7 +27,7 @@ const SEO = ({ description, lang, meta, title, thumb }) => {
     `
   )
 
-  const imageSrc = thumb && thumb.childImageSharp.sizes.src
+  const imageSrc = thumb && thumb.childImageSharp.fixed.src
 
   let origin = ""
   if (typeof window !== "undefined") {
