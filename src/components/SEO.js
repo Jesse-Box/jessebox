@@ -8,82 +8,85 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title, image }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            social {
-              twitter
-            }
-          }
-        }
-      }
-    `
-  )
+import defaultOpenGraphImage from "../../content/assets/opengraph-default.png"
 
-  const imageSrc = image && image.childImageSharp.fixed.src
-
-  let origin = ""
-  if (typeof window !== "undefined") {
-    origin = window.location.origin
-  }
-
-  const metaImage = origin + imageSrc
-
-  const metaDescription = description || site.siteMetadata.description
-
+function SEO({ description, lang, meta, keywords, title, type, image }) {
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
+    <StaticQuery
+      query={detailsQuery}
+      render={data => {
+        const metaDescription =
+          description || data.site.siteMetadata.description
+        const ogImageUrl =
+          data.site.siteMetadata.siteUrl + (image || defaultOpenGraphImage)
+        const ogType = type
+        return (
+          <Helmet
+            htmlAttributes={{
+              lang,
+            }}
+            title={title}
+            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+            meta={[
+              {
+                name: `description`,
+                content: metaDescription,
+              },
+              {
+                name: `image`,
+                content: ogImageUrl,
+              },
+              {
+                property: `og:title`,
+                content: title,
+              },
+              {
+                property: `og:description`,
+                content: metaDescription,
+              },
+              {
+                property: `og:type`,
+                content: ogType,
+              },
+              {
+                property: `og:image`,
+                content: ogImageUrl,
+              },
+              {
+                name: `twitter:card`,
+                content: `summary`,
+              },
+              {
+                name: `twitter:creator`,
+                content: data.site.siteMetadata.author,
+              },
+              {
+                name: `twitter:title`,
+                content: title,
+              },
+              {
+                name: `twitter:description`,
+                content: metaDescription,
+              },
+              {
+                name: `twitter:image`,
+                content: ogImageUrl,
+              },
+            ]
+              .concat(
+                keywords.length > 0
+                  ? {
+                      name: `keywords`,
+                      content: keywords.join(`, `),
+                    }
+                  : []
+              )
+              .concat(meta)}
+          />
+        )
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:image`,
-          content: metaImage,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary_large_image`,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-        { name: `twitter:image`, content: metaImage },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.social.twitter,
-        },
-      ].concat(meta)}
     />
   )
 }
@@ -91,16 +94,29 @@ const SEO = ({ description, lang, meta, title, image }) => {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``,
-  image: ``,
+  keywords: [],
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
+  meta: PropTypes.array,
+  keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
-  image: PropTypes.string,
 }
 
 export default SEO
+
+const detailsQuery = graphql`
+  query DefaultSEOQuery {
+    site {
+      siteMetadata {
+        title
+        author {
+          name
+        }
+        siteUrl
+      }
+    }
+  }
+`
