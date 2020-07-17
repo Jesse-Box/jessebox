@@ -12,14 +12,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
-  const thumbFluid = post.frontmatter.thumb.childImageSharp.fluid
-  const thumbFixed = post.frontmatter.thumb
+  const imageFluid = post.frontmatter.image.childImageSharp.fluid
+  const imageFixed = post.frontmatter.image
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
-        thumb={thumbFixed}
+        image={imageFixed}
       />
       <article>
         <Container
@@ -44,10 +44,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                     borderColor: "muted",
                   }}
                 >
-                  <Image
-                    alt={post.frontmatter.thumbAlt}
-                    fluid={thumbFluid}
-                  ></Image>
+                  <Image alt={post.frontmatter.alt} fluid={imageFluid}></Image>
                 </Box>
               </Box>
             </Box>
@@ -137,9 +134,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
-        thumb {
+        image {
           childImageSharp {
-            fluid(maxWidth: 800) {
+            fluid(maxWidth: 1200) {
               ...GatsbyImageSharpFluid
             }
             fixed(width: 800) {
@@ -147,7 +144,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        thumbAlt
+        alt
       }
     }
   }
