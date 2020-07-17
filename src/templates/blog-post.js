@@ -16,8 +16,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { image } = post.frontmatter
   const imagePath = image && image.childImageSharp.fixed.src
 
-  console.log(imagePath)
-
   const imageFluid = post.frontmatter.image.childImageSharp.fluid
   return (
     <Layout location={location} title={siteTitle}>
@@ -48,6 +46,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                     borderStyle: "solid",
                     borderWidth: 0,
                     borderColor: "muted",
+                    overflow: "hidden",
                   }}
                 >
                   <Image alt={post.frontmatter.alt} fluid={imageFluid}></Image>
