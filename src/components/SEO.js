@@ -71,17 +71,17 @@ const SEO = ({ description, lang, meta, title, thumb }) => {
           content: `summary_large_image`,
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata.social.twitter,
-        },
-        {
           name: `twitter:title`,
           content: title,
         },
-        { name: `twitter:image`, content: image },
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        { name: `twitter:image`, content: image },
+        {
+          name: `twitter:creator`,
+          content: site.siteMetadata.social.twitter,
         },
       ].concat(meta)}
     />
