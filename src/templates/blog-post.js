@@ -14,7 +14,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const { previous, next } = pageContext
   const thumbFluid = post.frontmatter.thumb.childImageSharp.fluid
   const thumbFixed = post.frontmatter.thumb
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO

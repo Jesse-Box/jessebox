@@ -5,10 +5,11 @@ module.exports = {
       name: `Jesse Box`,
       summary: `Senior product designer at EyeEm, formally at Hubrick & Dailymotion.`,
     },
-    description: `Senior product designer at EyeEm, formally at Hubrick & Dailymotion.`,
+    description: `My personal space for expressing thoughts on design related topics`,
+    defaultThumb: ``,
     siteUrl: `https://www.jessebox.net`,
     social: {
-      twitter: `JesseThomasBox`,
+      twitter: `@JesseThomasBox`,
       linkedin: `jesse-box-835346b7`,
     },
   },
@@ -37,7 +38,6 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 640,
-              wrapperStyle: `border-radius: 16px`,
             },
           },
           {
