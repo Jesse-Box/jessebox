@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-const SEO = ({ description, lang, meta, title, thumb }) => {
+const SEO = ({ description, lang, meta, title, image }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -27,14 +27,14 @@ const SEO = ({ description, lang, meta, title, thumb }) => {
     `
   )
 
-  const imageSrc = thumb && thumb.childImageSharp.fixed.src
+  const imageSrc = image && image.childImageSharp.fixed.src
 
   let origin = ""
   if (typeof window !== "undefined") {
     origin = window.location.origin
   }
 
-  const image = origin + imageSrc
+  const metaImage = origin + imageSrc
 
   const metaDescription = description || site.siteMetadata.description
 
@@ -60,7 +60,7 @@ const SEO = ({ description, lang, meta, title, thumb }) => {
         },
         {
           property: `og:image`,
-          content: image,
+          content: metaImage,
         },
         {
           property: `og:type`,
@@ -78,7 +78,7 @@ const SEO = ({ description, lang, meta, title, thumb }) => {
           name: `twitter:description`,
           content: metaDescription,
         },
-        { name: `twitter:image`, content: image },
+        { name: `twitter:image`, content: metaImage },
         {
           name: `twitter:creator`,
           content: site.siteMetadata.social.twitter,
@@ -92,7 +92,7 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-  thumb: ``,
+  image: ``,
 }
 
 SEO.propTypes = {
@@ -100,7 +100,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-  thumb: PropTypes.string,
+  image: PropTypes.string,
 }
 
 export default SEO
