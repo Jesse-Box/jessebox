@@ -7,10 +7,15 @@ import SEO from "../components/SEO"
 
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
+  const siteDescription = data.site.siteMetadata.description
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="404: Not Found" />
+      <SEO
+        title="404: Not Found"
+        description={siteDescription}
+        type="website"
+      />
       <header>
         <Container
           sx={{
@@ -38,6 +43,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        description
       }
     }
   }
