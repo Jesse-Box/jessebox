@@ -20,12 +20,12 @@ type Data = {
           title: string
           date: string
           description: string
-          image: {
+          thumb: {
             childImageSharp: {
               fluid: FluidObject
             }
           }
-          alt: string
+          thumbAlt: string
           tags: []
         }
         fields: {
@@ -104,8 +104,8 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
                   }}
                 >
                   <Image
-                    alt={node.frontmatter.alt}
-                    fluid={node.frontmatter.image.childImageSharp.fluid}
+                    alt={node.frontmatter.thumbAlt}
+                    fluid={node.frontmatter.thumb.childImageSharp.fluid}
                   />
                 </Container>
               </Container>
@@ -137,14 +137,14 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
-            image {
+            thumb {
               childImageSharp {
                 fluid(maxWidth: 800) {
                   ...GatsbyImageSharpFluid
                 }
               }
             }
-            alt
+            thumbAlt
           }
         }
       }
