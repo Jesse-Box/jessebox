@@ -7,7 +7,7 @@ module.exports = {
     },
     description: `My personal space for expressing thoughts on design related topics`,
     defaultThumb: ``,
-    siteUrl: `https://www.jessebox.net/`,
+    siteUrl: `https://www.jessebox.net`,
     social: {
       twitter: `@JesseThomasBox`,
       linkedin: `jesse-box-835346b7`,
