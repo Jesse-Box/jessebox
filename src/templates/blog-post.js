@@ -13,10 +13,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
 
-  const { image } = post.frontmatter
-  const imagePath = image && image.childImageSharp.fixed.src
+  const { imageOG } = post.frontmatter
+  const imageOGPath = imageOG && imageOG.childImageSharp.fixed.src
 
-  console.log(imagePath)
+  console.log(imageOGPath)
 
   const imageFluid = post.frontmatter.image.childImageSharp.fluid
   return (
@@ -24,7 +24,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
-        image={imagePath}
+        image={imageOGPath}
       />
       <article>
         <Container
@@ -144,7 +144,11 @@ export const pageQuery = graphql`
             fluid(maxWidth: 1200) {
               ...GatsbyImageSharpFluid
             }
-            fixed {
+          }
+        }
+        imageOG {
+          childImageSharp {
+            fixed(width: 1200) {
               src
             }
           }
