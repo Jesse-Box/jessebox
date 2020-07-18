@@ -70,6 +70,33 @@ module.exports = {
         theme_color: `#F9FAFB`,
         display: `minimal-ui`,
         icon: `content/assets/jessebox-logomark.png`,
+        icons: [
+          {
+            src: `/favicons/android-chrome-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/android-chrome-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/apple-touch-icon.png`,
+            sizes: `180x180`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/apple-touch-icon-precomposed.png`,
+            sizes: `180x180`,
+            type: `image/png`,
+          },
+          {
+            src: `/favicons/mstile-150x150.png`,
+            sizes: `150x150`,
+            type: `image/png`,
+          },
+        ],
       },
     },
     `gatsby-plugin-react-helmet`,
