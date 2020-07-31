@@ -9,17 +9,12 @@ const Layout = ({ location, title, children }) => {
     <Styled.root>
       <Navigation>{title}</Navigation>
       <main aria-label="Page Content">
-        <Container
-          aria-label="Page Header"
-          px={2}
-          py={3}
-          sx={{ maxWidth: [0, 1, 2] }}
-        >
+        <Container aria-label="Page Header" px={2} py={3}>
           {children}
         </Container>
       </main>
       <footer aria-label="Footer">
-        <Container px={2} pb={4} sx={{ maxWidth: [0, 1, 2] }}>
+        <Container px={2} pb={4}>
           <Bio />
         </Container>
       </footer>

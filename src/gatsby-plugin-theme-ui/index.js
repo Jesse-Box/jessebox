@@ -3,7 +3,7 @@ export default {
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
 
-  sizes: [540, 668, 680],
+  sizes: [540, 680, 720, 1200],
 
   radii: [2, 8, 16, 32],
 
@@ -67,7 +67,7 @@ export default {
       fontFamily: "body",
       fontWeight: "body",
       lineHeight: "body",
-      fontSize: ["16px", "18px", "20px"],
+      fontSize: ["16px", "20px", "24px"],
       m: 0,
       textRendering: "optimizelegibility",
     },

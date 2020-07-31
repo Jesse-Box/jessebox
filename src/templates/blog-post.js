@@ -1,12 +1,12 @@
 /** @jsx jsx */
+
 import { jsx, Styled, Box, Container } from "theme-ui"
 import { Link, graphql } from "gatsby"
 import Image from "gatsby-image"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
-import { MdxEmbedProvider } from "@pauliescanlon/gatsby-mdx-embed"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -37,9 +37,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <header>
             <Box pt={2}>
-              <Styled.h6 sx={{ py: 1 }}>{post.frontmatter.date}</Styled.h6>
-              <Styled.h1>{post.frontmatter.title}</Styled.h1>
-              <Box py={3}>
+              <Container sx={{ maxWidth: [0, 1, 2] }}>
+                <Styled.h6 sx={{ py: 1 }}>{post.frontmatter.date}</Styled.h6>
+                <Styled.h1>{post.frontmatter.title}</Styled.h1>
+              </Container>
+
+              <Container py={3} sx={{ maxWidth: 3 }}>
                 <Box
                   sx={{
                     borderRadius: 2,
@@ -51,12 +54,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 >
                   <Image alt={post.frontmatter.alt} fluid={imageFluid}></Image>
                 </Box>
-              </Box>
+              </Container>
             </Box>
           </header>
-          <MdxEmbedProvider>
-            <MDXRenderer>{post.body}</MDXRenderer>
-          </MdxEmbedProvider>
+          <MDXRenderer>{post.body}</MDXRenderer>
         </Container>
       </article>
 
