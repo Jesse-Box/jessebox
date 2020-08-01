@@ -2,11 +2,14 @@
 
 import { jsx, Styled, Box, Container } from "theme-ui"
 import { Link, graphql } from "gatsby"
-import Image from "gatsby-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
+import Image from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+
+const shortcodes = { Container }
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -57,7 +60,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               </Container>
             </Box>
           </header>
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXProvider components={shortcodes}>
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </MDXProvider>
         </Container>
       </article>
 
