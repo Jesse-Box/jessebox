@@ -1,17 +1,21 @@
 /** @jsx jsx */
 
 import { jsx, Styled, Box, Container } from "theme-ui"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 import Image from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import PaginationPost from "../components/PaginationPost"
+import ListPost from "../components/ListPost"
+import ContainerText from "../components/ContainerText"
+import FrameImage from "../components/FrameImage"
 
-const shortcodes = { Container }
+const BlogPostTemplate = props => {
+  const { data, pageContext, location } = props
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
@@ -40,90 +44,36 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         >
           <header>
             <Box pt={2}>
-              <Container sx={{ maxWidth: [0, 1, 2] }}>
+              <ContainerText>
                 <Styled.h6 sx={{ py: 1 }}>{post.frontmatter.date}</Styled.h6>
                 <Styled.h1>{post.frontmatter.title}</Styled.h1>
-              </Container>
-
-              <Container py={3} sx={{ maxWidth: 3 }}>
-                <Box
-                  sx={{
-                    borderRadius: 2,
-                    borderStyle: "solid",
-                    borderWidth: 0,
-                    borderColor: "muted",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Image alt={post.frontmatter.alt} fluid={imageFluid}></Image>
-                </Box>
-              </Container>
+              </ContainerText>
+              <FrameImage>
+                <Image alt={post.frontmatter.alt} fluid={imageFluid}></Image>
+              </FrameImage>
             </Box>
           </header>
-          <MDXProvider components={shortcodes}>
+          <MDXProvider
+            components={{
+              wrapper: props => (
+                <main {...props} sx={{ maxWidth: 3, mx: "auto" }} />
+              ),
+              p: props => <p {...props} sx={{ maxWidth: 2, mx: "auto" }} />,
+              Image,
+            }}
+          >
             <MDXRenderer>{post.body}</MDXRenderer>
           </MDXProvider>
         </Container>
       </article>
-
-      <nav>
-        <Box py={2}>
-          <Styled.ul
-            style={{
-              display: `flex`,
-              flexWrap: `wrap`,
-              justifyContent: `space-between`,
-              listStyle: `none`,
-              padding: 0,
-              margin: 0,
-            }}
-          >
-            <Styled.li sx={{ width: "50%" }}>
-              {previous && (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexWrap: "nowrap",
-                    flexFlow: "column",
-                  }}
-                >
-                  <Styled.h6>Previous</Styled.h6>
-                  <Styled.a as={Link} to={previous.fields.slug} rel="prev">
-                    ← {previous.frontmatter.title}
-                  </Styled.a>
-                </Box>
-              )}
-            </Styled.li>
-            <Styled.li
-              sx={{
-                width: "50%",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {next && (
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexWrap: "nowrap",
-                    flexFlow: "column",
-                  }}
-                >
-                  <Styled.h6 sx={{ textAlign: "right" }}>Next</Styled.h6>
-                  <Styled.a
-                    sx={{ textAlign: "right" }}
-                    as={Link}
-                    to={next.fields.slug}
-                    rel="next"
-                  >
-                    {next.frontmatter.title} →
-                  </Styled.a>
-                </Box>
-              )}
-            </Styled.li>
-          </Styled.ul>
-        </Box>
-      </nav>
+      <PaginationPost>
+        <Styled.li sx={{ flex: "1 1 50%" }}>
+          {previous && <ListPost rel="prev" to={previous.fields.slug} />}
+        </Styled.li>
+        <Styled.li sx={{ flex: "1 1 50%" }}>
+          {next && <ListPost rel="next" to={next.fields.slug} />}
+        </Styled.li>
+      </PaginationPost>
     </Layout>
   )
 }
