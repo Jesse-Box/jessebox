@@ -1,6 +1,4 @@
-import { Theme } from "theme-ui"
-
-export const theme: Theme = {
+export default {
   breakpoints: ["40em", "56em", "64em"],
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
