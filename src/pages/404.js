@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import PageHeader from "../components/HeaderPage"
 
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -16,22 +17,12 @@ const NotFoundPage = ({ data, location }) => {
         description={siteDescription}
         type="website"
       />
-      <header>
-        <Container
-          sx={{
-            p: [3, 4, 4],
-            borderStyle: "solid",
-            borderWidth: 0,
-            borderColor: "background",
-            borderRadius: 2,
-          }}
-        >
-          <Styled.h1>Not Found</Styled.h1>
-          <Styled.p>
-            You just hit a route that doesn&#39;t exist... the sadness.
-          </Styled.p>
-        </Container>
-      </header>
+      <PageHeader>
+        <Styled.h1>Not Found</Styled.h1>
+        <Styled.p>
+          You just hit a route that doesn&#39;t exist... the sadness.
+        </Styled.p>
+      </PageHeader>
     </Layout>
   )
 }
