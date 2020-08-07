@@ -1,11 +1,26 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
-const LinkNav = props => {
-  const { id, href, title, ariaLabel, children, to, activeClassName } = props
+interface Props {
+  id?: string
+  href?: string
+  title: string
+  ariaLabel: string
+  children: Element
+  to: string
+  activeClassName: string
+}
 
+const LinkNav: React.SFC<Props> = ({
+  id,
+  href,
+  title,
+  ariaLabel,
+  children,
+  to,
+  activeClassName,
+}) => {
   return (
     <Styled.a
       as={Link}
@@ -24,15 +39,6 @@ const LinkNav = props => {
       {children}
     </Styled.a>
   )
-}
-
-LinkNav.propTypes = {
-  id: PropTypes.string,
-  href: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  ariaLabel: PropTypes.string.isRequired,
-  to: PropTypes.string,
-  activeClassName: PropTypes.string,
 }
 
 export default LinkNav

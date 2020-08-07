@@ -1,12 +1,26 @@
 /** @jsx jsx */
-import { jsx, Styled, Container } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import PageHeader from "../components/HeaderPage"
 
-const NotFoundPage = ({ data, location }) => {
+type Data = {
+  site: {
+    siteMetadata: {
+      title: string
+      description: string
+    }
+  }
+}
+
+interface Props {
+  data: any
+  location: string
+}
+
+const NotFoundPage: React.SFC<Props> = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const siteDescription = data.site.siteMetadata.description
 

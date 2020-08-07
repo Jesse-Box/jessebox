@@ -6,18 +6,46 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 
 import defaultOpenGraphImage from "../../content/assets/opengraph-default.png"
 
-const SEO = props => {
-  const { description, lang, meta, keywords, title, type, image } = props
+type Data = {
+  site: {
+    siteMetadata: {
+      title: string
+      author: {
+        name: string
+      }
+      siteUrl: string
+    }
+  }
+}
+
+interface Props {
+  description: string
+  lang: string
+  meta: []
+  keywords: []
+  title: string
+  type: string
+  image: string
+}
+
+const SEO: React.FC<Props> = ({
+  description,
+  lang,
+  meta,
+  keywords,
+  title,
+  type,
+  image,
+}) => {
   return (
     <StaticQuery
       query={detailsQuery}
-      render={data => {
+      render={(data) => {
         const metaDescription =
           description || data.site.siteMetadata.description
         const ogImageUrl =
@@ -96,15 +124,6 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-  type: PropTypes.string,
 }
 
 export default SEO

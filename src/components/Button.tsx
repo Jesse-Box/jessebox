@@ -1,14 +1,19 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import PropTypes from "prop-types"
 
-const Button = props => {
-  const { variant = "naked", id, title, children, ...rest } = props
+interface Props {
+  variant: string
+  id?: string
+  title?: string
+  children: Element
+}
 
+const Button: React.SFC<Props> = ({ variant, id, title, children }) => {
   return (
     <button
       variant={variant}
-      {...rest}
+      id={id}
+      title={title}
       sx={{
         fontFamily: "body",
         borderRadius: 1,
@@ -31,11 +36,11 @@ const Button = props => {
 
         ":active": {
           transform: "scale(.92)",
-          boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
         },
 
         ":focus": {
-          boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
         },
       }}
     >
@@ -44,11 +49,8 @@ const Button = props => {
   )
 }
 
-Button.propTypes = {
-  variant: PropTypes.string.isRequired,
-  id: PropTypes.string,
-  title: PropTypes.string,
-  children: PropTypes.element.isRequired,
+Button.defaultProps = {
+  variant: "naked",
 }
 
 export default Button

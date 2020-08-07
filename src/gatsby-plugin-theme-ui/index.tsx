@@ -153,11 +153,11 @@ export default {
       },
 
       ":active": {
-        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
 
       ":focus": {
-        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
     },
     pre: {
@@ -248,11 +248,11 @@ export default {
 
       ":active": {
         color: "primary.dark",
-        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
 
       ":focus": {
-        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
     },
   },

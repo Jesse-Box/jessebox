@@ -4,7 +4,15 @@ import ThemeToggle from "./ThemeToggle"
 import { useStaticQuery, graphql } from "gatsby"
 import LinkNav from "./LinkNav"
 
-const Navigation = props => {
+type Data = {
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
+}
+
+const Navigation: React.SFC = () => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

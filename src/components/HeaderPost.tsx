@@ -1,11 +1,15 @@
 /** @jsx jsx */
 import { jsx, Styled, Box, Container } from "theme-ui"
-import PropTypes from "prop-types"
-import Image from "gatsby-image"
+import Image, { FluidObject } from "gatsby-image"
 
-const HeaderPost = props => {
-  const { date, title, alt, fluid } = props
+interface Props {
+  date: string
+  title: string
+  alt: string
+  fluid: FluidObject
+}
 
+const HeaderPost: React.SFC<Props> = ({ date, title, alt, fluid }) => {
   return (
     <header aria-label="Post Header">
       <Box pt={2}>
@@ -27,13 +31,6 @@ const HeaderPost = props => {
       </Box>
     </header>
   )
-}
-
-HeaderPost.propTypes = {
-  date: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  fluid: PropTypes.string.isRequired,
 }
 
 export default HeaderPost

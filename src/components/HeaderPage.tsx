@@ -1,9 +1,11 @@
 /** @jsx jsx */
 import { jsx, Container } from "theme-ui"
-import PropTypes from "prop-types"
 
-const HeaderPage = props => {
-  const { children } = props
+interface Props {
+  children: Element
+}
+
+const HeaderPage: React.SFC<Props> = ({ children }) => {
   return (
     <header aria-label="Post Header">
       <Container
@@ -20,9 +22,4 @@ const HeaderPage = props => {
     </header>
   )
 }
-
-HeaderPage.propTypes = {
-  children: PropTypes.element.isRequired,
-}
-
 export default HeaderPage
