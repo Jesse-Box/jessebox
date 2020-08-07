@@ -67,7 +67,7 @@ export default {
       fontFamily: "body",
       fontWeight: "body",
       lineHeight: "body",
-      fontSize: ["16px", "20px", "24px"],
+      fontSize: ["16px", "18px", "20px"],
       m: 0,
       textRendering: "optimizelegibility",
     },

@@ -1,17 +1,15 @@
 /** @jsx jsx */
 
-import { jsx, Styled, Box, Container } from "theme-ui"
+import { jsx, Styled, Container } from "theme-ui"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
-import Image from "gatsby-image"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
+import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
-import ContainerText from "../components/ContainerText"
-import FrameImage from "../components/FrameImage"
 
 const BlogPostTemplate = props => {
   const { data, pageContext, location } = props
@@ -24,6 +22,7 @@ const BlogPostTemplate = props => {
   const imagePath = image && image.childImageSharp.fixed.src
 
   const imageFluid = post.frontmatter.image.childImageSharp.fluid
+
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -42,36 +41,35 @@ const BlogPostTemplate = props => {
             borderRadius: 2,
           }}
         >
-          <header>
-            <Box pt={2}>
-              <ContainerText>
-                <Styled.h6 sx={{ py: 1 }}>{post.frontmatter.date}</Styled.h6>
-                <Styled.h1>{post.frontmatter.title}</Styled.h1>
-              </ContainerText>
-              <FrameImage>
-                <Image alt={post.frontmatter.alt} fluid={imageFluid}></Image>
-              </FrameImage>
-            </Box>
-          </header>
-          <MDXProvider
-            components={{
-              wrapper: props => (
-                <main {...props} sx={{ maxWidth: 3, mx: "auto" }} />
-              ),
-              p: props => <p {...props} sx={{ maxWidth: 2, mx: "auto" }} />,
-              Image,
-            }}
-          >
+          <HeaderPost
+            date={post.frontmatter.date}
+            title={post.frontmatter.title}
+            alt={post.frontmatter.alt}
+            fluid={imageFluid}
+          />
+          <MDXProvider>
             <MDXRenderer>{post.body}</MDXRenderer>
           </MDXProvider>
         </Container>
       </article>
       <PaginationPost>
         <Styled.li sx={{ flex: "1 1 50%" }}>
-          {previous && <ListPost rel="prev" to={previous.fields.slug} />}
+          {previous && (
+            <ListPost
+              rel="prev"
+              to={previous.fields.slug}
+              title={previous.frontmatter.title}
+            />
+          )}
         </Styled.li>
         <Styled.li sx={{ flex: "1 1 50%" }}>
-          {next && <ListPost rel="next" to={next.fields.slug} />}
+          {next && (
+            <ListPost
+              rel="next"
+              to={next.fields.slug}
+              title={next.frontmatter.title}
+            />
+          )}
         </Styled.li>
       </PaginationPost>
     </Layout>

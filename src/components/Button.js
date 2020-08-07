@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import PropTypes from "prop-types"
 
 const Button = props => {
   const { variant = "naked", id, title, children, ...rest } = props
@@ -42,4 +43,12 @@ const Button = props => {
     </button>
   )
 }
+
+Button.propTypes = {
+  variant: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  title: PropTypes.string,
+  children: PropTypes.element.isRequired,
+}
+
 export default Button
