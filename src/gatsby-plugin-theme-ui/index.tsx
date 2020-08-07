@@ -1,4 +1,6 @@
-export default {
+import { Theme } from "theme-ui"
+
+export const theme: Theme = {
   breakpoints: ["40em", "56em", "64em"],
 
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
@@ -153,11 +155,11 @@ export default {
       },
 
       ":active": {
-        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
 
       ":focus": {
-        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
     },
     pre: {
@@ -248,11 +250,11 @@ export default {
 
       ":active": {
         color: "primary.dark",
-        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
 
       ":focus": {
-        boxShadow: theme => `0 0 0 2px ${theme.colors.accent}`,
+        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
     },
   },

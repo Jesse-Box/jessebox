@@ -4,7 +4,13 @@ import { jsx, Styled, Container } from "theme-ui"
 import Navigation from "./Navigation"
 import Bio from "./Bio"
 
-const Layout = ({ location, title, children }) => {
+interface Props {
+  location: Object
+  title: string
+  children: Element
+}
+
+const Layout: React.SFC<Props> = ({ location, title, children }) => {
   return (
     <Styled.root>
       <Navigation>{title}</Navigation>

@@ -1,16 +1,29 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 /** @jsx jsx */
 import { jsx, Styled, Container, Box } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import Image, { FixedObject } from "gatsby-image"
 
-const Bio = () => {
+type Data = {
+  avatar: {
+    childImageSharp: {
+      fixed: FixedObject
+    }
+    site: {
+      siteMetadata: {
+        author: {
+          name: string
+          summary: string
+        }
+        social: {
+          twitter: string
+          linkedin: string
+        }
+      }
+    }
+  }
+}
+
+const Bio: React.FC = () => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {

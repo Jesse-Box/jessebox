@@ -1,11 +1,29 @@
 /** @jsx jsx */
 import { jsx, Styled, Container } from "theme-ui"
 import { Link } from "gatsby"
-import Image from "gatsby-image"
-import PropTypes from "prop-types"
+import Image, { FluidObject } from "gatsby-image"
 
-const CardPost = props => {
-  const { key, date, title, to, description, excerpt, alt, fluid } = props
+interface Props {
+  key: string
+  date: string
+  title: string
+  to: string
+  description: string
+  excerpt: string
+  alt: string
+  fluid: FluidObject
+}
+
+const CardPost: React.SFC<Props> = ({
+  key,
+  date,
+  title,
+  to,
+  description,
+  excerpt,
+  alt,
+  fluid,
+}) => {
   return (
     <article
       key={key}
@@ -50,17 +68,6 @@ const CardPost = props => {
       </section>
     </article>
   )
-}
-
-CardPost.propTypes = {
-  key: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  excerpt: PropTypes.string,
-  alt: PropTypes.string.isRequired,
-  fluid: PropTypes.object,
 }
 
 export default CardPost

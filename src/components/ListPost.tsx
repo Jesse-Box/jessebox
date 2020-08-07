@@ -1,12 +1,15 @@
 /** @jsx jsx */
 
 import { jsx, Styled, Flex } from "theme-ui"
-import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
-const ListPost = props => {
-  const { to, rel, title } = props
+interface Props {
+  to: string
+  rel: string
+  title: string
+}
 
+const ListPost: React.SFC<Props> = ({ to, rel, title }) => {
   return (
     <Flex
       sx={{
@@ -34,12 +37,6 @@ const ListPost = props => {
       </Styled.a>
     </Flex>
   )
-}
-
-ListPost.propTypes = {
-  rel: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
 }
 
 ListPost.defaultProps = {

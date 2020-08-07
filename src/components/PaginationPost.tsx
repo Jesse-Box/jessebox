@@ -1,9 +1,11 @@
 /** @jsx jsx */
 import { jsx, Styled, Box } from "theme-ui"
-import PropTypes from "prop-types"
 
-const PaginationPost = props => {
-  const { children } = props
+interface Props {
+  children: Element
+}
+
+const PaginationPost: React.SFC = ({ children }) => {
   return (
     <nav>
       <Box p={[3, 4, 4]}>
@@ -23,10 +25,6 @@ const PaginationPost = props => {
       </Box>
     </nav>
   )
-}
-
-PaginationPost.propTypes = {
-  children: PropTypes.element.isRequired,
 }
 
 export default PaginationPost
