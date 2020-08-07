@@ -15,6 +15,8 @@ const Navigation = props => {
     }
   `)
 
+  const site = data.site.siteMetadata
+
   return (
     <nav
       aria-label="Navigation Bar"
@@ -41,7 +43,7 @@ const Navigation = props => {
             to="/"
             activeClassName="active"
           >
-            {data.site.siteMetadata.title}
+            {site.title}
           </LinkNav>
           <ThemeToggle />
         </Container>

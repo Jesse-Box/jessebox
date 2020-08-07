@@ -12,7 +12,8 @@ import { StaticQuery, graphql } from "gatsby"
 
 import defaultOpenGraphImage from "../../content/assets/opengraph-default.png"
 
-function SEO({ description, lang, meta, keywords, title, type, image }) {
+const SEO = props => {
+  const { description, lang, meta, keywords, title, type, image } = props
   return (
     <StaticQuery
       query={detailsQuery}
