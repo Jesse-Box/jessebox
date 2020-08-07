@@ -6,7 +6,6 @@ interface Props {
   id?: string
   title?: string
   children: Element
-  onClick: ()
 }
 
 const Button: React.SFC<Props> = ({ variant, id, title, children }) => {
