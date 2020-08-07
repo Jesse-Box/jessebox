@@ -52,26 +52,28 @@ const BlogPostTemplate = props => {
           </MDXProvider>
         </Container>
       </article>
-      <PaginationPost>
-        <Styled.li sx={{ flex: "1 1 50%" }}>
-          {previous && (
-            <ListPost
-              rel="prev"
-              to={previous.fields.slug}
-              title={previous.frontmatter.title}
-            />
-          )}
-        </Styled.li>
-        <Styled.li sx={{ flex: "1 1 50%" }}>
-          {next && (
-            <ListPost
-              rel="next"
-              to={next.fields.slug}
-              title={next.frontmatter.title}
-            />
-          )}
-        </Styled.li>
-      </PaginationPost>
+      {previous || next ? (
+        <PaginationPost>
+          <Styled.li sx={{ flex: "1 1 50%" }}>
+            {previous && (
+              <ListPost
+                rel="prev"
+                to={previous.fields.slug}
+                title={previous.frontmatter.title}
+              />
+            )}
+          </Styled.li>
+          <Styled.li sx={{ flex: "1 1 50%" }}>
+            {next && (
+              <ListPost
+                rel="next"
+                to={next.fields.slug}
+                title={next.frontmatter.title}
+              />
+            )}
+          </Styled.li>
+        </PaginationPost>
+      ) : null}
     </Layout>
   )
 }
