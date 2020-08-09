@@ -5,7 +5,6 @@ import Navigation from "./Navigation"
 import Bio from "./Bio"
 
 interface Props {
-  location: string
   title: string
   children: React.ReactNode
 }
