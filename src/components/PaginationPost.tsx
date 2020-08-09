@@ -2,10 +2,11 @@
 import { jsx, Styled, Box } from "theme-ui"
 
 interface Props {
-  children: Element
+  children: React.ReactNode
 }
 
-const PaginationPost: React.SFC = ({ children }) => {
+function PaginationPost(props: Props) {
+  const { children } = props
   return (
     <nav>
       <Box p={[3, 4, 4]}>

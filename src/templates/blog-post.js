@@ -11,7 +11,7 @@ import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
 
-const BlogPostTemplate = props => {
+function BlogPostTemplate(props) {
   const { data, pageContext, location } = props
 
   const post = data.mdx

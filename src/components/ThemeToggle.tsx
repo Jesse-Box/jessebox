@@ -3,11 +3,11 @@ import { jsx, useColorMode } from "theme-ui"
 
 import Button from "./Button"
 
-const ThemeToggle: React.FC = () => {
+function ThemeToggle() {
   const [mode, setMode] = useColorMode()
   const next = mode === "default" ? "light" : "default"
 
-  const getModeName = (mode) => {
+  const getModeName = (mode: string) => {
     switch (mode) {
       case "light":
         return "Light"
@@ -22,9 +22,8 @@ const ThemeToggle: React.FC = () => {
     <Button
       aria-label="Toggle Theme"
       title="Toggle Theme"
-      id="ToggleTheme"
-      onClick={(e) => {
-        setMode(next)
+      onClick={() => {
+        return setMode(next)
       }}
     >
       {getModeName(mode)}

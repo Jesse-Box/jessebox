@@ -6,21 +6,14 @@ interface Props {
   id?: string
   href?: string
   title: string
-  ariaLabel: string
-  children: Element
+  ariaLabel?: string
+  children: React.ReactNode
   to: string
   activeClassName: string
 }
 
-const LinkNav: React.SFC<Props> = ({
-  id,
-  href,
-  title,
-  ariaLabel,
-  children,
-  to,
-  activeClassName,
-}) => {
+function LinkNav(props: Props) {
+  const { id, href, title, ariaLabel, children, to, activeClassName } = props
   return (
     <Styled.a
       as={Link}
@@ -39,6 +32,10 @@ const LinkNav: React.SFC<Props> = ({
       {children}
     </Styled.a>
   )
+}
+
+LinkNav.defaultProps = {
+  ariaLabel: "Need Label",
 }
 
 export default LinkNav

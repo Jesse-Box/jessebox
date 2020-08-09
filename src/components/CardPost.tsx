@@ -14,16 +14,8 @@ interface Props {
   fluid: FluidObject
 }
 
-const CardPost: React.SFC<Props> = ({
-  key,
-  date,
-  title,
-  to,
-  description,
-  excerpt,
-  alt,
-  fluid,
-}) => {
+function CardPost(props: Props) {
+  const { key, date, title, to, description, excerpt, alt, fluid } = props
   return (
     <article
       key={key}

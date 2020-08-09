@@ -12,7 +12,7 @@ type Data = {
   }
 }
 
-const Navigation: React.SFC = () => {
+function Navigation() {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -45,9 +45,8 @@ const Navigation: React.SFC = () => {
           }}
         >
           <LinkNav
-            sx={{ variant: "link.nav" }}
-            aria-label="Home"
             title="Home"
+            aria-label="Home"
             to="/"
             activeClassName="active"
           >
