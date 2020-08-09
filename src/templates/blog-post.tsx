@@ -10,9 +10,47 @@ import SEO from "../components/SEO"
 import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
+import { FluidObject, FixedObject } from "gatsby-image"
 
-const BlogPostTemplate = props => {
-  const { data, pageContext, location } = props
+type Data = {
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
+  mdx: {
+    id: string
+    excerpt: string
+    body: string
+    frontmatter: {
+      title: string
+      date: string
+      description: string
+      image: {
+        childImageSharp: {
+          fluid: FluidObject
+          fixed: FixedObject
+        }
+      }
+      alt: string
+    }
+  }
+}
+
+interface Props {
+  data: {
+    mdx: any
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+  }
+  pageContext: any
+}
+
+function BlogPostTemplate(props: Props) {
+  const { data, pageContext } = props
 
   const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
@@ -24,7 +62,7 @@ const BlogPostTemplate = props => {
   const imageFluid = post.frontmatter.image.childImageSharp.fluid
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteTitle}>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}

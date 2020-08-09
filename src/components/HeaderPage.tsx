@@ -2,10 +2,11 @@
 import { jsx, Container } from "theme-ui"
 
 interface Props {
-  children: Element
+  children: React.ReactNode
 }
 
-const HeaderPage: React.SFC<Props> = ({ children }) => {
+function HeaderPage(props: Props) {
+  const { children } = props
   return (
     <header aria-label="Post Header">
       <Container

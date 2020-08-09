@@ -23,7 +23,7 @@ type Data = {
   }
 }
 
-const Bio: React.FC = () => {
+function Bio() {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {

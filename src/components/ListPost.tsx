@@ -9,7 +9,8 @@ interface Props {
   title: string
 }
 
-const ListPost: React.SFC<Props> = ({ to, rel, title }) => {
+function ListPost(props: Props) {
+  const { to, rel, title } = props
   return (
     <Flex
       sx={{

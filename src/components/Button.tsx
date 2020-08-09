@@ -2,19 +2,25 @@
 import { jsx } from "theme-ui"
 
 interface Props {
-  variant: string
+  variant?: string
+  ariaLabel: string
   id?: string
   title?: string
-  children: Element
+  children: React.ReactNode
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const Button: React.SFC<Props> = ({ variant, id, title, children }) => {
+export const Button = (props: Props) => {
+  const { variant, ariaLabel, id, title, children, onClick } = props
   return (
     <button
       variant={variant}
       id={id}
       title={title}
+      aria-label={ariaLabel}
+      onClick={onClick}
       sx={{
+        variant: `buttons.${variant}`,
         fontFamily: "body",
         borderRadius: 1,
         border: "none",
@@ -30,9 +36,6 @@ const Button: React.SFC<Props> = ({ variant, id, title, children }) => {
         px: 3,
         py: 1,
         transition: "all 80ms ease-in",
-
-        // pass variant prop to sx
-        variant: `buttons.${variant}`,
 
         ":active": {
           transform: "scale(.92)",
@@ -51,6 +54,7 @@ const Button: React.SFC<Props> = ({ variant, id, title, children }) => {
 
 Button.defaultProps = {
   variant: "naked",
+  ariaLabel: "Need Label",
 }
 
 export default Button

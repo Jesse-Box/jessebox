@@ -5,15 +5,15 @@ import Navigation from "./Navigation"
 import Bio from "./Bio"
 
 interface Props {
-  location: Object
   title: string
-  children: Element
+  children: React.ReactNode
 }
 
-const Layout: React.SFC<Props> = ({ location, title, children }) => {
+function Layout(props: Props) {
+  const { children } = props
   return (
     <Styled.root>
-      <Navigation>{title}</Navigation>
+      <Navigation />
       <main aria-label="Page Content">
         <Container
           aria-label="Page Header"

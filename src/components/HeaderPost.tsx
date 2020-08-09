@@ -9,7 +9,8 @@ interface Props {
   fluid: FluidObject
 }
 
-const HeaderPost: React.SFC<Props> = ({ date, title, alt, fluid }) => {
+function HeaderPost(props: Props) {
+  const { date, title, alt, fluid } = props
   return (
     <header aria-label="Post Header">
       <Box pt={2}>

@@ -33,15 +33,8 @@ interface Props {
   image: string
 }
 
-const SEO: React.FC<Props> = ({
-  description,
-  lang,
-  meta,
-  keywords,
-  title,
-  type,
-  image,
-}) => {
+function SEO(props: Props) {
+  const { description, lang, meta, keywords, title, type, image } = props
   return (
     <StaticQuery
       query={detailsQuery}
