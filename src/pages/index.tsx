@@ -64,12 +64,13 @@ const BlogIndex = ({ data }: PageProps<Data>) => {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query($slug: String!) {
+  query {
     datoCmsSite {
-    globalSeo {
-      siteName
-      fallbackSeo {
-        description
+      globalSeo {
+        siteName
+        fallbackSeo {
+          description
+        }
       }
     }
     allDatoCmsPost(sort: { fields: date, order: DESC }) {

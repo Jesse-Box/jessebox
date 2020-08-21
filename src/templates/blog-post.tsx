@@ -1,7 +1,7 @@
 /** @jsx jsx */
 
 import { jsx, Styled, Container } from "theme-ui"
-import { graphql } from "gatsby"
+import { graphql, PageProps } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
 
@@ -13,59 +13,46 @@ import ListPost from "../components/ListPost"
 import { FluidObject, FixedObject } from "gatsby-image"
 
 type Data = {
-  site: {
-    siteMetadata: {
-      title: string
+  datoCmsSite: {
+    globalSeo: {
+      siteName: string
     }
   }
-  mdx: {
-    id: string
-    excerpt: string
-    body: string
-    frontmatter: {
-      title: string
-      date: string
-      description: string
+  datoCmsPost: {
+    seo: {
       image: {
-        childImageSharp: {
-          fluid: FluidObject
-          fixed: FixedObject
-        }
+        fixed: FixedObject
       }
+      title: string
+      description: string
+    }
+    title: string
+    date: string
+    hero: {
       alt: string
+      fluid: FluidObject
     }
+    body: any
+    pageContext: any
   }
 }
 
-interface Props {
-  data: {
-    mdx: any
-    site: {
-      siteMetadata: {
-        title: string
-      }
-    }
-  }
-  pageContext: any
-}
+function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
+  const post = data.datoCmsPost
 
-function BlogPostTemplate(props: Props) {
-  const { data, pageContext } = props
-
-  const post = data.mdx
-  const siteTitle = data.site.siteMetadata.title
+  const siteName = data.datoCmsSite.globalSeo.siteName
   const { previous, next } = pageContext
 
-  const { image } = post.frontmatter
-  const imagePath = image && image.childImageSharp.fixed.src
+  const { image } = post.seo.image
+  const imagePath = image && image.fixed.src
 
-  const imageFluid = post.frontmatter.image.childImageSharp.fluid
+  const imageFluid = post.hero.fluid
 
   return (
-    <Layout title={siteTitle}>
+    <Layout title={siteName}>
       <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        title={post.title}
+        description={post.seo.description}
         image={imagePath}
         type="article"
       />
@@ -80,9 +67,9 @@ function BlogPostTemplate(props: Props) {
           }}
         >
           <HeaderPost
-            date={post.frontmatter.date}
-            title={post.frontmatter.title}
-            alt={post.frontmatter.alt}
+            date={post.date}
+            title={post.title}
+            alt={post.hero.alt}
             fluid={imageFluid}
           />
           <MDXProvider>
@@ -94,21 +81,11 @@ function BlogPostTemplate(props: Props) {
         <PaginationPost>
           <Styled.li sx={{ flex: "1 1 50%" }}>
             {previous && (
-              <ListPost
-                rel="prev"
-                to={previous.fields.slug}
-                title={previous.frontmatter.title}
-              />
+              <ListPost rel="prev" to={previous.slug} title={previous.title} />
             )}
           </Styled.li>
           <Styled.li sx={{ flex: "1 1 50%" }}>
-            {next && (
-              <ListPost
-                rel="next"
-                to={next.fields.slug}
-                title={next.frontmatter.title}
-              />
-            )}
+            {next && <ListPost rel="next" to={next.slug} title={next.title} />}
           </Styled.li>
         </PaginationPost>
       ) : null}
@@ -128,20 +105,49 @@ export const pageQuery = graphql`
         }
       }
     }
-    allDatoCmsPost(sort: { fields: date, order: DESC }) {
-      edges {
-        node {
-          slug
-          title
-          date
-          hero {
+    datoCmsPost(slug: { eq: $slug }) {
+      seo {
+        image {
+          fixed {
+            src
+          }
+        }
+        title
+        description
+      }
+      slug
+      title
+      date(formatString: "MMMM DD, YYYY")
+      hero {
+        alt
+        fluid(maxWidth: 1200) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+      body {
+        ... on DatoCmsText {
+          text
+          model {
+            apiKey
+          }
+          id
+        }
+        ... on DatoCmsVisual {
+          model {
+            apiKey
+          }
+          media {
             alt
-            fluid(maxWidth: 800) {
-              base64
-              tracedSVG
-              width
-              height
+            fluid(maxWidth: 1200) {
+              ...GatsbyDatoCmsFluid
             }
+          }
+        }
+        ... on DatoCmsYoutube {
+          id
+          youtube {
+            title
+            url
           }
         }
       }
