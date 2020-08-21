@@ -7,7 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
   return graphql(
     `
       {
-        allDatoCmsPost(sort: { order: DESC }) {
+        allDatoCmsPost {
           edges {
             node {
               slug
