@@ -120,30 +120,30 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
+    datoCmsSite {
+      globalSeo {
+        siteName
+        fallbackSeo {
+          description
+        }
       }
     }
-    mdx(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      body
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-        image {
-          childImageSharp {
-            fluid(maxWidth: 1200) {
-              ...GatsbyImageSharpFluid
-            }
-            fixed {
-              src
+    allDatoCmsPost(sort: { fields: date, order: DESC }) {
+      edges {
+        node {
+          slug
+          title
+          date
+          hero {
+            alt
+            fluid(maxWidth: 800) {
+              base64
+              tracedSVG
+              width
+              height
             }
           }
         }
-        alt
       }
     }
   }
