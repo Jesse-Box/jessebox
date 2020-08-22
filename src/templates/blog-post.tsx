@@ -79,13 +79,13 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
                 {block.model.apiKey === "paragraph" && (
                   <Styled.p>{block.paragraph}</Styled.p>
                 )}
-                {block.model.apiKey === "listdot" && (
-                  <Styled.ul>{block.listdot}</Styled.ul>
-                )}
                 {block.model.apiKey === "visual" && (
                   <>
-                    <Img alt={block.media.alt} fluid={block.media.fluid} />
-                    <Styled.div>{block.media.title}</Styled.div>
+                    <Img
+                      alt={block.visual.media.alt}
+                      fluid={block.visual.media.fluid}
+                    />
+                    <Styled.div>{block.visual.media.title}</Styled.div>
                   </>
                 )}
                 {block.model.apiKey === "youtube" && (
