@@ -2,15 +2,13 @@
 
 import { jsx, Styled, Container } from "theme-ui"
 import { graphql, PageProps } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import { MDXProvider } from "@mdx-js/react"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
-import { FluidObject, FixedObject } from "gatsby-image"
+import { Img, FluidObject, FixedObject } from "gatsby-image"
 
 type Data = {
   datoCmsSite: {
@@ -72,9 +70,16 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
             alt={post.hero.alt}
             fluid={imageFluid}
           />
-          <MDXProvider>
-            <MDXRenderer>{post.body}</MDXRenderer>
-          </MDXProvider>
+          <main>
+            {data.datoCmsPost.body.map((block) => (
+              <div key={block.id}>
+                {block.model.apiKey === "text" && <div>{block.text}</div>}
+                {block.model.apiKey === "image" && (
+                  <Img fluid={block.visual.fluid} />
+                )}
+              </div>
+            ))}
+          </main>
         </Container>
       </article>
       {previous || next ? (
@@ -126,28 +131,31 @@ export const pageQuery = graphql`
       }
       body {
         ... on DatoCmsText {
-          text
           model {
             apiKey
           }
-          id
+          text
         }
         ... on DatoCmsVisual {
           model {
             apiKey
           }
           media {
-            alt
-            fluid(maxWidth: 1200) {
+            fluid {
               ...GatsbyDatoCmsFluid
             }
+            title
+            alt
           }
         }
         ... on DatoCmsYoutube {
-          id
+          model {
+            apiKey
+          }
           youtube {
             title
             url
+            thumbnailUrl
           }
         }
       }
