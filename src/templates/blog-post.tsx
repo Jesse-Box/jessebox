@@ -73,9 +73,23 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
           <main>
             {data.datoCmsPost.body.map((block) => (
               <div key={block.id}>
-                {block.model.apiKey === "text" && <div>{block.text}</div>}
-                {block.model.apiKey === "image" && (
-                  <Img fluid={block.visual.fluid} />
+                {block.model.apiKey === "header2" && (
+                  <Styled.h2>{block.header2}</Styled.h2>
+                )}
+                {block.model.apiKey === "paragraph" && (
+                  <Styled.p>{block.paragraph}</Styled.p>
+                )}
+                {block.model.apiKey === "listdot" && (
+                  <Styled.ul>{block.listdot}</Styled.ul>
+                )}
+                {block.model.apiKey === "visual" && (
+                  <>
+                    <Img alt={block.media.alt} fluid={block.media.fluid} />
+                    <Styled.div>{block.media.title}</Styled.div>
+                  </>
+                )}
+                {block.model.apiKey === "youtube" && (
+                  <Styled.div>{block.youtube}</Styled.div>
                 )}
               </div>
             ))}
@@ -130,11 +144,23 @@ export const pageQuery = graphql`
         }
       }
       body {
-        ... on DatoCmsText {
+        ... on DatoCmsHeader2 {
           model {
             apiKey
           }
-          text
+          header2
+        }
+        ... on DatoCmsParagraph {
+          model {
+            apiKey
+          }
+          paragraph
+        }
+        ... on DatoCmsListdot {
+          model {
+            apiKey
+          }
+          listdot
         }
         ... on DatoCmsVisual {
           model {
