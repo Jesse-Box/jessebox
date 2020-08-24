@@ -8,7 +8,7 @@ import SEO from "../components/SEO"
 import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
-import { Img, FluidObject, FixedObject } from "gatsby-image"
+import Img, { FluidObject, FixedObject } from "gatsby-image"
 
 type Data = {
   datoCmsSite: {
@@ -80,16 +80,7 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
                   <Styled.p>{block.paragraph}</Styled.p>
                 )}
                 {block.model.apiKey === "visual" && (
-                  <>
-                    <Img
-                      alt={block.visual.media.alt}
-                      fluid={block.visual.media.fluid}
-                    />
-                    <Styled.div>{block.visual.media.title}</Styled.div>
-                  </>
-                )}
-                {block.model.apiKey === "youtube" && (
-                  <Styled.div>{block.youtube}</Styled.div>
+                  <Img fluid={block.media.fluid} alt={block.media.alt} />
                 )}
               </div>
             ))}
@@ -167,7 +158,7 @@ export const pageQuery = graphql`
             apiKey
           }
           media {
-            fluid {
+            fluid(maxWidth: 1200) {
               ...GatsbyDatoCmsFluid
             }
             title
