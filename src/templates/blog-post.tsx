@@ -73,13 +73,10 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
           <main>
             {data.datoCmsPost.body.map((block) => (
               <div key={block.id}>
-                {block.model.apiKey === "header2" && (
-                  <Styled.h2>{block.header2}</Styled.h2>
-                )}
-                {block.model.apiKey === "paragraph" && (
+                {block.model.apiKey === "text" && (
                   <Styled.div
                     dangerouslySetInnerHTML={{
-                      __html: block.paragraphNode.childMarkdownRemark.html,
+                      __html: block.textNode.childMarkdownRemark.html,
                     }}
                   />
                 )}
@@ -139,27 +136,15 @@ export const pageQuery = graphql`
         }
       }
       body {
-        ... on DatoCmsHeader2 {
+        ... on DatoCmsText {
           model {
             apiKey
           }
-          header2
-        }
-        ... on DatoCmsParagraph {
-          model {
-            apiKey
-          }
-          paragraphNode {
+          textNode {
             childMarkdownRemark {
               html
             }
           }
-        }
-        ... on DatoCmsListdot {
-          model {
-            apiKey
-          }
-          listdot
         }
         ... on DatoCmsVisual {
           model {
