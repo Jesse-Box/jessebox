@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx, Styled, Container } from "theme-ui"
+import { jsx, Styled, Container, BaseStyles } from "theme-ui"
 import { graphql, PageProps } from "gatsby"
 
 import Layout from "../components/Layout"
@@ -74,11 +74,13 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
             {data.datoCmsPost.body.map((block) => (
               <div key={block.id}>
                 {block.model.apiKey === "text" && (
-                  <Styled.div
-                    dangerouslySetInnerHTML={{
-                      __html: block.textNode.childMarkdownRemark.html,
-                    }}
-                  />
+                  <BaseStyles>
+                    <Styled.div
+                      dangerouslySetInnerHTML={{
+                        __html: block.textNode.childMarkdownRemark.html,
+                      }}
+                    />
+                  </BaseStyles>
                 )}
                 {block.model.apiKey === "visual" && (
                   <Img fluid={block.media.fluid} alt={block.media.alt} />
@@ -158,7 +160,7 @@ export const pageQuery = graphql`
             alt
           }
         }
-        ... on DatoCmsYoutube {
+        ... on DatoCmsEmbed {
           model {
             apiKey
           }
