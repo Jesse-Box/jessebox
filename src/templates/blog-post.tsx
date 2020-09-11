@@ -160,16 +160,6 @@ export const pageQuery = graphql`
             alt
           }
         }
-        ... on DatoCmsEmbed {
-          model {
-            apiKey
-          }
-          youtube {
-            title
-            url
-            thumbnailUrl
-          }
-        }
       }
     }
   }
