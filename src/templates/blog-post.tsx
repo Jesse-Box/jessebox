@@ -77,7 +77,11 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
                   <Styled.h2>{block.header2}</Styled.h2>
                 )}
                 {block.model.apiKey === "paragraph" && (
-                  <Styled.p>{block.paragraph}</Styled.p>
+                  <Styled.div
+                    dangerouslySetInnerHTML={{
+                      __html: block.paragraphNode.childMarkdownRemark.html,
+                    }}
+                  />
                 )}
                 {block.model.apiKey === "visual" && (
                   <Img fluid={block.media.fluid} alt={block.media.alt} />
@@ -145,7 +149,11 @@ export const pageQuery = graphql`
           model {
             apiKey
           }
-          paragraph
+          paragraphNode {
+            childMarkdownRemark {
+              html
+            }
+          }
         }
         ... on DatoCmsListdot {
           model {
