@@ -51,7 +51,7 @@ const BlogIndex = ({ data }: PageProps<Data>) => {
             date={node.date}
             title={title}
             to={node.slug}
-            description={node.description}
+            description={node.seo.description}
             alt={node.alt}
             fluid={node.hero.fluid}
           />
@@ -78,7 +78,10 @@ export const pageQuery = graphql`
         node {
           slug
           title
-          date
+          date(formatString: "MMMM DD, YYYY")
+          seo {
+            description
+          }
           hero {
             alt
             fluid(maxWidth: 800) {
