@@ -1,71 +1,56 @@
 /** @jsx jsx */
 
-import { jsx, Styled, Container } from "theme-ui"
-import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
-import { MDXProvider } from "@mdx-js/react"
+import { jsx, Styled, Container, BaseStyles } from "theme-ui"
+import { graphql, PageProps } from "gatsby"
 
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
-import { FluidObject, FixedObject } from "gatsby-image"
+import Img, { FluidObject, FixedObject } from "gatsby-image"
 
 type Data = {
-  site: {
-    siteMetadata: {
-      title: string
+  datoCmsSite: {
+    globalSeo: {
+      siteName: string
     }
   }
-  mdx: {
-    id: string
-    excerpt: string
-    body: string
-    frontmatter: {
-      title: string
-      date: string
-      description: string
+  datoCmsPost: {
+    seo: {
       image: {
-        childImageSharp: {
-          fluid: FluidObject
-          fixed: FixedObject
-        }
+        fixed: FixedObject
       }
+      title: string
+      description: string
+    }
+    title: string
+    date: string
+    hero: {
       alt: string
+      fluid: FluidObject
     }
+    body: any
+    pageContext: any
   }
 }
 
-interface Props {
-  data: {
-    mdx: any
-    site: {
-      siteMetadata: {
-        title: string
-      }
-    }
-  }
-  pageContext: any
-}
+function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
+  const post = data.datoCmsPost
 
-function BlogPostTemplate(props: Props) {
-  const { data, pageContext } = props
-
-  const post = data.mdx
-  const siteTitle = data.site.siteMetadata.title
+  const siteName = data.datoCmsSite.globalSeo.siteName
   const { previous, next } = pageContext
 
-  const { image } = post.frontmatter
-  const imagePath = image && image.childImageSharp.fixed.src
+  const { image } = post.seo.image
+  const imagePath = image && image.fixed.src
 
-  const imageFluid = post.frontmatter.image.childImageSharp.fluid
+  const imageFluid = post.hero.fluid
 
   return (
-    <Layout title={siteTitle}>
+    <Layout title={siteName}>
       <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        title={post.title}
+        description={post.seo.description}
         image={imagePath}
         type="article"
       />
@@ -80,35 +65,40 @@ function BlogPostTemplate(props: Props) {
           }}
         >
           <HeaderPost
-            date={post.frontmatter.date}
-            title={post.frontmatter.title}
-            alt={post.frontmatter.alt}
+            date={post.date}
+            title={post.title}
+            alt={post.hero.alt}
             fluid={imageFluid}
           />
-          <MDXProvider>
-            <MDXRenderer>{post.body}</MDXRenderer>
-          </MDXProvider>
+          <main>
+            {data.datoCmsPost.body.map((block) => (
+              <div key={block.id}>
+                {block.model.apiKey === "text" && (
+                  <BaseStyles>
+                    <Styled.div
+                      dangerouslySetInnerHTML={{
+                        __html: block.textNode.childMarkdownRemark.html,
+                      }}
+                    />
+                  </BaseStyles>
+                )}
+                {block.model.apiKey === "visual" && (
+                  <Img fluid={block.media.fluid} alt={block.media.alt} />
+                )}
+              </div>
+            ))}
+          </main>
         </Container>
       </article>
       {previous || next ? (
         <PaginationPost>
           <Styled.li sx={{ flex: "1 1 50%" }}>
             {previous && (
-              <ListPost
-                rel="prev"
-                to={previous.fields.slug}
-                title={previous.frontmatter.title}
-              />
+              <ListPost rel="prev" to={previous.slug} title={previous.title} />
             )}
           </Styled.li>
           <Styled.li sx={{ flex: "1 1 50%" }}>
-            {next && (
-              <ListPost
-                rel="next"
-                to={next.fields.slug}
-                title={next.frontmatter.title}
-              />
-            )}
+            {next && <ListPost rel="next" to={next.slug} title={next.title} />}
           </Styled.li>
         </PaginationPost>
       ) : null}
@@ -120,30 +110,56 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
+    datoCmsSite {
+      globalSeo {
+        siteName
+        fallbackSeo {
+          description
+        }
       }
     }
-    mdx(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      body
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
+    datoCmsPost(slug: { eq: $slug }) {
+      seo {
         image {
-          childImageSharp {
-            fluid(maxWidth: 1200) {
-              ...GatsbyImageSharpFluid
-            }
-            fixed {
-              src
+          fixed {
+            src
+          }
+        }
+        title
+        description
+      }
+      slug
+      title
+      date(formatString: "MMMM DD, YYYY")
+      hero {
+        alt
+        fluid(maxWidth: 1200) {
+          ...GatsbyDatoCmsFluid
+        }
+      }
+      body {
+        ... on DatoCmsText {
+          model {
+            apiKey
+          }
+          textNode {
+            childMarkdownRemark {
+              html
             }
           }
         }
-        alt
+        ... on DatoCmsVisual {
+          model {
+            apiKey
+          }
+          media {
+            fluid(maxWidth: 1200) {
+              ...GatsbyDatoCmsFluid
+            }
+            title
+            alt
+          }
+        }
       }
     }
   }

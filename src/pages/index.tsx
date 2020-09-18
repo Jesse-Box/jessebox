@@ -9,59 +9,51 @@ import PageHeader from "../components/HeaderPage"
 import CardPost from "../components/CardPost"
 
 type Data = {
-  site: {
-    siteMetadata: {
-      title: string
-      description: string
+  datoCmsSite: {
+    globalSeo: {
+      siteName: string
+      fallbackSeo: {
+        description: string
+      }
     }
   }
-  allMdx: {
+  allDatoCmsPost: {
     edges: {
       node: {
-        excerpt: string
-        frontmatter: {
-          title: string
-          date: string
-          description: string
-          image: {
-            childImageSharp: {
-              fluid: FluidObject
-            }
-          }
+        slug: string
+        title: string
+        date: string
+        hero: {
           alt: string
-          tags: []
-        }
-        fields: {
-          slug: string
+          fluid: FluidObject
         }
       }
-    }[]
+    }
   }
 }
 
-const BlogIndex = ({ data, location }: PageProps<Data>) => {
-  const siteTitle = data.site.siteMetadata.title
-  const siteDescription = data.site.siteMetadata.description
-  const posts = data.allMdx.edges
+const BlogIndex = ({ data }: PageProps<Data>) => {
+  const siteName = data.datoCmsSite.globalSeo.siteName
+  const siteDescription = data.datoCmsSite.globalSeo.fallbackSeo.description
+  const posts = data.allDatoCmsPost.edges
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout title={siteName}>
       <SEO title="Home" description={siteDescription} type="website" />
       <PageHeader>
         <Styled.h1>All Posts</Styled.h1>
       </PageHeader>
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
+        const title = node.title || node.fields.slug
         return (
           <CardPost
-            key={node.fields.slug}
-            date={node.frontmatter.date}
+            key={node.slug}
+            date={node.date}
             title={title}
-            to={node.fields.slug}
-            description={node.frontmatter.description}
-            excerpt={node.excerpt}
-            alt={node.frontmatter.alt}
-            fluid={node.frontmatter.image.childImageSharp.fluid}
+            to={node.slug}
+            description={node.seo.description}
+            alt={node.alt}
+            fluid={node.hero.fluid}
           />
         )
       })}
@@ -73,31 +65,28 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-        description
+    datoCmsSite {
+      globalSeo {
+        siteName
+        fallbackSeo {
+          description
+        }
       }
     }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allDatoCmsPost(sort: { fields: date, order: DESC }) {
       edges {
         node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
+          slug
+          title
+          date(formatString: "MMMM DD, YYYY")
+          seo {
             description
-            image {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
+          }
+          hero {
             alt
+            fluid(maxWidth: 800) {
+              ...GatsbyDatoCmsFluid
+            }
           }
         }
       }
