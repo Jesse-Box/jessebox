@@ -1,36 +1,12 @@
 /** @jsx jsx */
 import { jsx, Styled } from "theme-ui"
-import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
-import SEO from "../components/SEO"
 import PageHeader from "../components/HeaderPage"
 
-type Data = {
-  site: {
-    siteMetadata: {
-      title: string
-      description: string
-    }
-  }
-}
-
-interface Props {
-  data: any
-  location: string
-}
-
-const NotFoundPage: React.SFC<Props> = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
-  const siteDescription = data.site.siteMetadata.description
-
+function NotFoundPage() {
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO
-        title="404: Not Found"
-        description={siteDescription}
-        type="website"
-      />
+    <Layout>
       <PageHeader>
         <Styled.h1>Not Found</Styled.h1>
         <Styled.p>
@@ -42,14 +18,3 @@ const NotFoundPage: React.SFC<Props> = ({ data, location }) => {
 }
 
 export default NotFoundPage
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-        description
-      }
-    }
-  }
-`

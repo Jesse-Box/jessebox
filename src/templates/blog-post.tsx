@@ -4,11 +4,11 @@ import { jsx, Styled, Container, BaseStyles } from "theme-ui"
 import { graphql, PageProps } from "gatsby"
 
 import Layout from "../components/Layout"
-import SEO from "../components/SEO"
 import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
 import Img, { FluidObject, FixedObject } from "gatsby-image"
+import { HelmetDatoCms } from "gatsby-source-datocms"
 
 type Data = {
   datoCmsSite: {
@@ -38,22 +38,13 @@ type Data = {
 function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
   const post = data.datoCmsPost
 
-  const siteName = data.datoCmsSite.globalSeo.siteName
   const { previous, next } = pageContext
-
-  const { image } = post.seo.image
-  const imagePath = image && image.fixed.src
 
   const imageFluid = post.hero.fluid
 
   return (
-    <Layout title={siteName}>
-      <SEO
-        title={post.title}
-        description={post.seo.description}
-        image={imagePath}
-        type="article"
-      />
+    <Layout>
+      <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
       <article>
         <Container
           sx={{
@@ -110,23 +101,9 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    datoCmsSite {
-      globalSeo {
-        siteName
-        fallbackSeo {
-          description
-        }
-      }
-    }
     datoCmsPost(slug: { eq: $slug }) {
-      seo {
-        image {
-          fixed {
-            src
-          }
-        }
-        title
-        description
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
       }
       slug
       title
