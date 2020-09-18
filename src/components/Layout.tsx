@@ -1,18 +1,45 @@
 /** @jsx jsx */
 import { jsx, Styled, Container } from "theme-ui"
+import { useStaticQuery, graphql } from "gatsby"
+import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Navigation from "./Navigation"
 import Bio from "./Bio"
 
+interface Data {
+  datoCmsSite: {
+    faviconMetaTags: any
+    datoCmsSeoMetaTags: any
+  }
+}
+
 interface Props {
-  title: string
   children: React.ReactNode
 }
 
-function Layout(props: Props) {
-  const { children } = props
+function Layout({ children }: Props) {
+  const data: Data = useStaticQuery(graphql`
+    query seoQuery {
+      datoCmsSite {
+        globalSeo {
+          siteName
+        }
+        faviconMetaTags {
+          ...GatsbyDatoCmsFaviconMetaTags
+        }
+      }
+      datoCmsSeoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+    }
+  `)
+
   return (
     <Styled.root>
+      <HelmetDatoCms
+        favicon={data.datoCmsSite.faviconMetaTags}
+        seo={data.datoCmsSeoMetaTags}
+      />
       <Navigation />
       <main aria-label="Page Content">
         <Container

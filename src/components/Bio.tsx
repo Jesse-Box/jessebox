@@ -3,7 +3,7 @@ import { jsx, Styled, Container, Box } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 import Image, { FixedObject } from "gatsby-image"
 
-type Data = {
+interface Data {
   avatar: {
     childImageSharp: {
       fixed: FixedObject
@@ -24,7 +24,7 @@ type Data = {
 }
 
 function Bio() {
-  const data = useStaticQuery(graphql`
+  const data: Data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {

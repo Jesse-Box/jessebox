@@ -4,19 +4,10 @@ import { PageProps, graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
 
 import Layout from "../components/Layout"
-import SEO from "../components/SEO"
 import PageHeader from "../components/HeaderPage"
 import CardPost from "../components/CardPost"
 
-type Data = {
-  datoCmsSite: {
-    globalSeo: {
-      siteName: string
-      fallbackSeo: {
-        description: string
-      }
-    }
-  }
+interface Data {
   allDatoCmsPost: {
     edges: {
       node: {
@@ -32,14 +23,11 @@ type Data = {
   }
 }
 
-const BlogIndex = ({ data }: PageProps<Data>) => {
-  const siteName = data.datoCmsSite.globalSeo.siteName
-  const siteDescription = data.datoCmsSite.globalSeo.fallbackSeo.description
+function BlogIndex({ data }: PageProps<Data>) {
   const posts = data.allDatoCmsPost.edges
 
   return (
-    <Layout title={siteName}>
-      <SEO title="Home" description={siteDescription} type="website" />
+    <Layout>
       <PageHeader>
         <Styled.h1>All Posts</Styled.h1>
       </PageHeader>
@@ -65,14 +53,6 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    datoCmsSite {
-      globalSeo {
-        siteName
-        fallbackSeo {
-          description
-        }
-      }
-    }
     allDatoCmsPost(sort: { fields: date, order: DESC }) {
       edges {
         node {
