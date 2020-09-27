@@ -2,13 +2,13 @@
 
 import { jsx, Styled, Container, BaseStyles } from "theme-ui"
 import { graphql, PageProps } from "gatsby"
+import Img, { FluidObject, FixedObject } from "gatsby-image"
+import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/Layout"
 import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
-import Img, { FluidObject, FixedObject } from "gatsby-image"
-import { HelmetDatoCms } from "gatsby-source-datocms"
 
 type Data = {
   datoCmsSite: {
