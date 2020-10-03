@@ -1,23 +1,17 @@
 /** @jsx jsx */
-import { jsx, Styled, Container, Box } from "theme-ui"
+import { jsx, Styled, Container, Box, BaseStyles } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 import Image, { FixedObject } from "gatsby-image"
 
 interface Data {
-  avatar: {
-    childImageSharp: {
+  datoCmsBio: {
+    avatar: {
+      alt: string
       fixed: FixedObject
     }
-    site: {
-      siteMetadata: {
-        author: {
-          name: string
-          summary: string
-        }
-        social: {
-          twitter: string
-          linkedin: string
-        }
+    introNode: {
+      childMarkdownRemark: {
+        html: React.ReactNode
       }
     }
   }
@@ -26,29 +20,22 @@ interface Data {
 function Bio() {
   const data: Data = useStaticQuery(graphql`
     query BioQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-        childImageSharp {
+      datoCmsBio {
+        avatar {
           fixed(width: 60, height: 60) {
-            ...GatsbyImageSharpFixed
+            ...GatsbyDatoCmsFixed
           }
+          alt
         }
-      }
-      site {
-        siteMetadata {
-          author {
-            name
-            summary
-          }
-          social {
-            twitter
-            linkedin
+        introNode {
+          childMarkdownRemark {
+            html
           }
         }
       }
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
   return (
     <Container
       p={[2, 3, 3]}
@@ -65,34 +52,21 @@ function Bio() {
       >
         <Box p={2} sx={{ display: "flex", flex: "0 0 76px", minWidth: 76 }}>
           <Image
-            fixed={data.avatar.childImageSharp.fixed}
-            alt={author.name}
+            fixed={data.datoCmsBio.avatar.fixed}
+            alt={data.datoCmsBio.avatar.alt}
             sx={{ minWidth: 60, borderRadius: 1 }}
           />
         </Box>
         <Container p={2} sx={{ flex: "1 1 300px" }}>
-          <Styled.p aria-label="About me" sx={{ p: 0 }}>
-            {author.summary}
-            {` `} Find me on {` `}
-            <Styled.a
-              title="Twitter Profile"
-              aria-label="Twitter Profile"
-              href={`https://twitter.com/${social.twitter}`}
-            >
-              Twitter
-            </Styled.a>
-            {` `}
-            or
-            {` `}
-            <Styled.a
-              title="LinkedIn Profile"
-              aria-label="LinkedIn Profile"
-              href={`https://linkedin.com/in/${social.linkedin}`}
-            >
-              LinkedIn
-            </Styled.a>
-            .
-          </Styled.p>
+          <BaseStyles>
+            <Styled.div
+              dangerouslySetInnerHTML={{
+                __html: data.datoCmsBio.introNode.childMarkdownRemark.html,
+              }}
+              aria-label="About me"
+              sx={{ p: 0 }}
+            />
+          </BaseStyles>
         </Container>
       </Box>
     </Container>
