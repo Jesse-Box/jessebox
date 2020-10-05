@@ -5,25 +5,23 @@ import { useStaticQuery, graphql } from "gatsby"
 import LinkNav from "./LinkNav"
 
 type Data = {
-  site: {
-    siteMetadata: {
-      title: string
+  datoCmsSite: {
+    globalSeo: {
+      siteName: string
     }
   }
 }
 
 function Navigation() {
-  const data = useStaticQuery(graphql`
+  const data: Data = useStaticQuery(graphql`
     query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
+      datoCmsSite {
+        globalSeo {
+          siteName
         }
       }
     }
   `)
-
-  const site = data.site.siteMetadata
 
   return (
     <nav
@@ -50,7 +48,7 @@ function Navigation() {
             to="/"
             activeClassName="active"
           >
-            {site.title}
+            {data.datoCmsSite.globalSeo.siteName}
           </LinkNav>
           <ThemeToggle />
         </Container>
