@@ -1,4 +1,7 @@
 module.exports = {
+  siteMetadata: {
+    siteUrl: `https://www.jessebox.net/`,
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-typescript`,
