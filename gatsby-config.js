@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://www.jessebox.net/`,
@@ -71,7 +75,7 @@ module.exports = {
     {
       resolve: `gatsby-source-datocms`,
       options: {
-        apiToken: `d24dc2205437d05dfdd57e31ffbca8`,
+        apiToken: process.env.DATO_CMS_TOKEN,
         preview: false,
         disableLiveReload: false,
       },
