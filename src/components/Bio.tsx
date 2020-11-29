@@ -20,7 +20,7 @@ interface Data {
 function Bio() {
   const data: Data = useStaticQuery(graphql`
     query BioQuery {
-      datoCmsBio {
+      datoCmsAbout {
         avatar {
           fixed(width: 60, height: 60) {
             ...GatsbyDatoCmsFixed
@@ -52,8 +52,8 @@ function Bio() {
       >
         <Box p={2} sx={{ display: "flex", flex: "0 0 76px", minWidth: 76 }}>
           <Image
-            fixed={data.datoCmsBio.avatar.fixed}
-            alt={data.datoCmsBio.avatar.alt}
+            fixed={data.datoCmsAbout.avatar.fixed}
+            alt={data.datoCmsAbout.avatar.alt}
             sx={{ minWidth: 60, borderRadius: 1 }}
           />
         </Box>
@@ -61,7 +61,7 @@ function Bio() {
           <BaseStyles>
             <Styled.div
               dangerouslySetInnerHTML={{
-                __html: data.datoCmsBio.introNode.childMarkdownRemark.html,
+                __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
               }}
               aria-label="About me"
               sx={{ p: 0 }}
