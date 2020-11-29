@@ -25,8 +25,29 @@ function LinkNav(props: Props) {
       activeClassName={activeClassName}
       sx={{
         variant: "link.nav",
-        py: 1,
+        fontFamily: "body",
+        borderRadius: 4,
+        border: "none",
+        outline: "none",
+        appearance: "none",
+        display: "inline-block",
+        textAlign: "center",
+        lineHeight: "inherit",
+        fontSize: "inherit",
+        fontWeight: "inherit",
+        m: 0,
         px: 3,
+        py: 1,
+        transition: "all 80ms ease-in",
+
+        ":active": {
+          transform: "scale(.92)",
+          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+        },
+
+        ":focus": {
+          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+        },
       }}
     >
       {children}

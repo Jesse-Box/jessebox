@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container } from "theme-ui"
+import { jsx, Container, Box } from "theme-ui"
 import ThemeToggle from "./ThemeToggle"
 import { useStaticQuery, graphql } from "gatsby"
 import LinkNav from "./LinkNav"
@@ -50,7 +50,23 @@ function Navigation() {
           >
             {data.datoCmsSite.globalSeo.siteName}
           </LinkNav>
-          <ThemeToggle />
+          <Box
+            sx={{
+              display: "inline-grid",
+              gridAutoFlow: "column",
+              gridGap: [2, 3, 3],
+            }}
+          >
+            <LinkNav
+              title="About"
+              aria-label="About me"
+              to="/about"
+              activeClassName="active"
+            >
+              About
+            </LinkNav>
+            <ThemeToggle />
+          </Box>
         </Container>
       </Container>
     </nav>

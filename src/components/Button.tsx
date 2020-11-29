@@ -22,14 +22,13 @@ export const Button = (props: Props) => {
       sx={{
         variant: `buttons.${variant}`,
         fontFamily: "body",
-        borderRadius: 1,
+        borderRadius: 4,
         border: "none",
         outline: "none",
         appearance: "none",
         display: "inline-block",
         textAlign: "center",
         lineHeight: "inherit",
-        textDecoration: "none",
         fontSize: "inherit",
         fontWeight: "inherit",
         m: 0,
@@ -53,7 +52,7 @@ export const Button = (props: Props) => {
 }
 
 Button.defaultProps = {
-  variant: "naked",
+  variant: "primary",
   ariaLabel: "Need Label",
 }
 

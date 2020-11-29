@@ -5,7 +5,7 @@ export default {
 
   sizes: [540, 680, 720, 1200],
 
-  radii: [2, 8, 16, 32],
+  radii: [2, 8, 16, 32, 99],
 
   fonts: {
     body:
@@ -283,7 +283,6 @@ export default {
     nav: {
       ":hover": {
         bg: "muted",
-        textDecoration: "none",
       },
     },
   },
