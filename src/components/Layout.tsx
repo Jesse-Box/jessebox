@@ -4,10 +4,12 @@ import { useStaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Navigation from "./Navigation"
-import Bio from "./Bio"
 
 interface Data {
   datoCmsSite: {
+    globalSeo: {
+      siteName: string
+    }
     faviconMetaTags: any
     datoCmsSeoMetaTags: any
   }
@@ -51,11 +53,6 @@ function Layout({ children }: Props) {
           {children}
         </Container>
       </main>
-      <footer aria-label="Footer">
-        <Container px={2} pb={4} sx={{ maxWidth: [0, 1, 2] }}>
-          <Bio />
-        </Container>
-      </footer>
     </Styled.root>
   )
 }

@@ -1,11 +1,12 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Container } from "theme-ui"
 import { PageProps, graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
 
 import Layout from "../components/Layout"
 import PageHeader from "../components/HeaderPage"
 import CardPost from "../components/CardPost"
+import Bio from "../components/Bio"
 
 interface Data {
   allDatoCmsPost: {
@@ -45,6 +46,11 @@ function BlogIndex({ data }: PageProps<Data>) {
           />
         )
       })}
+      <footer aria-label="Footer">
+        <Container px={2} pb={4} sx={{ maxWidth: [0, 1, 2] }}>
+          <Bio />
+        </Container>
+      </footer>
     </Layout>
   )
 }

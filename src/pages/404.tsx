@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Container } from "theme-ui"
 
 import Layout from "../components/Layout"
 import PageHeader from "../components/HeaderPage"
+import Bio from "../components/Bio"
 
 function NotFoundPage() {
   return (
@@ -13,6 +14,9 @@ function NotFoundPage() {
           You just hit a route that doesn&#39;t exist... the sadness.
         </Styled.p>
       </PageHeader>
+      <Container px={2} pb={4} sx={{ maxWidth: [0, 1, 2] }}>
+        <Bio />
+      </Container>
     </Layout>
   )
 }

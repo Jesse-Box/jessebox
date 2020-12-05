@@ -9,6 +9,7 @@ import Layout from "../components/Layout"
 import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
+import Bio from "../components/Bio"
 
 type Data = {
   datoCmsSite: {
@@ -93,6 +94,11 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
           </Styled.li>
         </PaginationPost>
       ) : null}
+      <footer aria-label="Footer">
+        <Container px={2} pb={4} sx={{ maxWidth: [0, 1, 2] }}>
+          <Bio />
+        </Container>
+      </footer>
     </Layout>
   )
 }
