@@ -50,23 +50,28 @@ function Navigation() {
           >
             {data.datoCmsSite.globalSeo.siteName}
           </LinkNav>
-          <Box
+          <ul
             sx={{
               display: "inline-grid",
               gridAutoFlow: "column",
               gridGap: [2, 3, 3],
+              listStyle: "none",
             }}
           >
-            <LinkNav
-              title="About"
-              aria-label="About me"
-              to="/about"
-              activeClassName="active"
-            >
-              About
-            </LinkNav>
-            <ThemeToggle />
-          </Box>
+            <li>
+              <LinkNav
+                title="About"
+                aria-label="About me"
+                to="/about"
+                activeClassName="active"
+              >
+                About
+              </LinkNav>
+            </li>
+            <li>
+              <ThemeToggle />
+            </li>
+          </ul>
         </Container>
       </Container>
     </nav>
