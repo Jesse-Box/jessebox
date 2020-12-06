@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Box, Styled } from "theme-ui"
+import { jsx, Container, Styled } from "theme-ui"
 import LinkNav from "./LinkNav"
 
 type Data = {
@@ -12,15 +12,7 @@ type Data = {
 
 function Footer() {
   return (
-    <footer
-      aria-label="Footer"
-      sx={{
-        backgroundColor: "background",
-        borderBottomColor: "muted",
-        borderBottomStyle: "solid",
-        borderBottomWidth: 0,
-      }}
-    >
+    <footer aria-label="Footer">
       <Container px={[2]} py={2} sx={{ maxWidth: [0, 1, 2] }}>
         <Container
           px={[0, 3]}

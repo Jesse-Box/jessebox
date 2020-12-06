@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Box } from "theme-ui"
+import { jsx, Container } from "theme-ui"
 import ThemeToggle from "./ThemeToggle"
 import { useStaticQuery, graphql } from "gatsby"
 import LinkNav from "./LinkNav"
