@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Navigation from "./Navigation"
+import Footer from "./Footer"
 
 interface Data {
   datoCmsSite: {
@@ -53,6 +54,7 @@ function Layout({ children }: Props) {
           {children}
         </Container>
       </main>
+      <Footer />
     </Styled.root>
   )
 }
