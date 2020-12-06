@@ -63,8 +63,8 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
             fluid={imageFluid}
           />
           <main>
-            {data.datoCmsPost.body.map((block) => (
-              <div key={block.id}>
+            {data.datoCmsPost.body.map((block, index) => (
+              <div key={`${block.model.id}-${index}`}>
                 {block.model.apiKey === "text" && (
                   <BaseStyles>
                     <Styled.div
@@ -86,11 +86,17 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
         <PaginationPost>
           <Styled.li sx={{ flex: "1 1 50%" }}>
             {previous && (
-              <ListPost rel="prev" to={previous.slug} title={previous.title} />
+              <ListPost
+                rel="prev"
+                to={`/${previous.slug}`}
+                title={previous.title}
+              />
             )}
           </Styled.li>
           <Styled.li sx={{ flex: "1 1 50%" }}>
-            {next && <ListPost rel="next" to={next.slug} title={next.title} />}
+            {next && (
+              <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
+            )}
           </Styled.li>
         </PaginationPost>
       ) : null}
