@@ -113,9 +113,9 @@ export default {
     },
     h5: {
       color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      fontFamily: "body",
+      lineHeight: "body",
+      fontWeight: "body",
       fontSize: 2,
       margin: 0,
       pt: 2,
@@ -142,7 +142,6 @@ export default {
     },
     a: {
       color: "primary.base",
-      textDecoration: "none",
       margin: 0,
       transition: "all 80ms ease-in",
       outline: "none",
@@ -159,6 +158,10 @@ export default {
       ":focus": {
         boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
+    },
+    ul: {
+      px: 0,
+      m: 0,
     },
     pre: {
       fontFamily: "monospace",

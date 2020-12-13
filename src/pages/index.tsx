@@ -29,9 +29,11 @@ function BlogIndex({ data }: PageProps<Data>) {
 
   return (
     <Layout>
-      <PageHeader>
-        <Styled.h1>All Posts</Styled.h1>
-      </PageHeader>
+      <footer aria-label="Footer">
+        <Container px={2} pb={4} sx={{ maxWidth: [0, 1, 2] }}>
+          <Bio />
+        </Container>
+      </footer>
       {posts.map(({ node }) => {
         const title = node.title || node.fields.slug
         return (
@@ -46,11 +48,6 @@ function BlogIndex({ data }: PageProps<Data>) {
           />
         )
       })}
-      <footer aria-label="Footer">
-        <Container px={2} pb={4} sx={{ maxWidth: [0, 1, 2] }}>
-          <Bio />
-        </Container>
-      </footer>
     </Layout>
   )
 }

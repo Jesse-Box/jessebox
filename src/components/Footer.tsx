@@ -18,19 +18,29 @@ function Footer() {
           px={[0, 3]}
           sx={{
             display: "flex",
+            flexFlow: ["column wrap", "row wrap"],
             justifyContent: "spaceBetween",
             alignItems: "center",
           }}
         >
-          <Styled.p>Find me on:</Styled.p>
-          <ul
+          <Styled.p>Reach me on</Styled.p>
+          <Styled.ul
             sx={{
-              display: "inline-grid",
-              gridAutoFlow: "column",
-              gridGap: [2, 3, 3],
+              display: "flex",
+              flexFlow: "row wrap",
               listStyle: "none",
             }}
           >
+            <li>
+              <LinkNav
+                title="me@jessebox.net"
+                aria-label="Email Address"
+                href="mailto: me@jessebox.net"
+                activeClassName="active"
+              >
+                Email
+              </LinkNav>
+            </li>
             <li>
               <LinkNav
                 title="Twitter"
@@ -55,13 +65,13 @@ function Footer() {
               <LinkNav
                 title="LinkedIn"
                 aria-label="LinkedIn Profile"
-                to="https://www.linkedin.com/in/jesse-box-835346b7/"
+                href="https://www.linkedin.com/in/jesse-box-835346b7/"
                 activeClassName="active"
               >
                 LinkedIn
               </LinkNav>
             </li>
-          </ul>
+          </Styled.ul>
         </Container>
       </Container>
     </footer>

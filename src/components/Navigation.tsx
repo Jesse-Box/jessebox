@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container } from "theme-ui"
+import { Styled, jsx, Container } from "theme-ui"
 import ThemeToggle from "./ThemeToggle"
 import { useStaticQuery, graphql } from "gatsby"
 import LinkNav from "./LinkNav"
@@ -33,7 +33,7 @@ function Navigation() {
         borderBottomWidth: 0,
       }}
     >
-      <Container px={[2]} py={2} sx={{ maxWidth: [0, 1, 2] }}>
+      <Container pl={2} pr={3} py={3} sx={{ maxWidth: [0, 1, 2] }}>
         <Container
           px={[0, 3]}
           sx={{
@@ -50,11 +50,10 @@ function Navigation() {
           >
             {data.datoCmsSite.globalSeo.siteName}
           </LinkNav>
-          <ul
+          <Styled.ul
             sx={{
-              display: "inline-grid",
-              gridAutoFlow: "column",
-              gridGap: [2, 3, 3],
+              display: "flex",
+              flexFlow: "row wrap",
               listStyle: "none",
             }}
           >
@@ -71,7 +70,7 @@ function Navigation() {
             <li>
               <ThemeToggle />
             </li>
-          </ul>
+          </Styled.ul>
         </Container>
       </Container>
     </nav>

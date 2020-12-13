@@ -35,8 +35,8 @@ function About({ data }: PageProps<Data>) {
             borderRadius: 2,
           }}
         >
-          <Styled.h1>{about.title}</Styled.h1>
           <Image alt={about.avatar.alt} fluid={about.avatar.fluid} />
+          <Styled.h1>{about.title}</Styled.h1>
           <BaseStyles>
             <Styled.div
               dangerouslySetInnerHTML={{
