@@ -1,8 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled, Container } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 
 import Layout from "../components/Layout"
-import PageHeader from "../components/HeaderPage"
 import Bio from "../components/Bio"
 
 function NotFoundPage() {
