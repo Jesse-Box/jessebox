@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx, Styled, Container, BaseStyles } from "theme-ui"
+import { jsx, Styled, BaseStyles } from "theme-ui"
 import { graphql, PageProps } from "gatsby"
 import Img, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
@@ -47,40 +47,30 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
       <article>
-        <Container
-          sx={{
-            p: [3, 4, 4],
-            borderStyle: "solid",
-            borderWidth: 0,
-            borderColor: "background",
-            borderRadius: 2,
-          }}
-        >
-          <HeaderPost
-            date={post.date}
-            title={post.title}
-            alt={post.hero.alt}
-            fluid={imageFluid}
-          />
-          <main>
-            {data.datoCmsPost.body.map((block, index) => (
-              <div key={`${block.model.id}-${index}`}>
-                {block.model.apiKey === "text" && (
-                  <BaseStyles>
-                    <Styled.div
-                      dangerouslySetInnerHTML={{
-                        __html: block.textNode.childMarkdownRemark.html,
-                      }}
-                    />
-                  </BaseStyles>
-                )}
-                {block.model.apiKey === "visual" && (
-                  <Img fluid={block.media.fluid} alt={block.media.alt} />
-                )}
-              </div>
-            ))}
-          </main>
-        </Container>
+        <HeaderPost
+          date={post.date}
+          title={post.title}
+          alt={post.hero.alt}
+          fluid={imageFluid}
+        />
+        <section>
+          {data.datoCmsPost.body.map((block, index) => (
+            <div key={`${block.model.id}-${index}`}>
+              {block.model.apiKey === "text" && (
+                <BaseStyles>
+                  <Styled.div
+                    dangerouslySetInnerHTML={{
+                      __html: block.textNode.childMarkdownRemark.html,
+                    }}
+                  />
+                </BaseStyles>
+              )}
+              {block.model.apiKey === "visual" && (
+                <Img fluid={block.media.fluid} alt={block.media.alt} />
+              )}
+            </div>
+          ))}
+        </section>
       </article>
       {previous || next ? (
         <PaginationPost>
@@ -100,11 +90,7 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
           </Styled.li>
         </PaginationPost>
       ) : null}
-      <footer aria-label="Footer">
-        <Container px={2} pb={4} sx={{ maxWidth: [0, 1, 2] }}>
-          <Bio />
-        </Container>
-      </footer>
+      <Bio />
     </Layout>
   )
 }

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx, Styled, Flex } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 
 interface Props {
@@ -12,16 +12,15 @@ interface Props {
 function ListPost(props: Props) {
   const { to, rel, title } = props
   return (
-    <Flex
+    <div
       sx={{
-        flexWrap: "nowrap",
-        flexFlow: "column",
+        display: "flex",
+        flexFlow: "column nowrap",
       }}
     >
       <Styled.h6
         sx={{
           textAlign: rel === "next" ? "right" : "left",
-          textTransform: "capitalize",
         }}
       >
         {rel}
@@ -36,7 +35,7 @@ function ListPost(props: Props) {
       >
         {rel === "next" ? `${title} →` : `←${title}`}
       </Styled.a>
-    </Flex>
+    </div>
   )
 }
 

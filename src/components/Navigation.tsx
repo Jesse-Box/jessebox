@@ -1,8 +1,9 @@
 /** @jsx jsx */
-import { Styled, jsx, Container } from "theme-ui"
-import ThemeToggle from "./ThemeToggle"
+import { Styled, jsx } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
+
 import LinkNav from "./LinkNav"
+import ThemeToggle from "./ThemeToggle"
 
 type Data = {
   datoCmsSite: {
@@ -24,57 +25,41 @@ function Navigation() {
   `)
 
   return (
-    <nav
-      aria-label="Navigation Bar"
-      sx={{
-        backgroundColor: "background",
-        borderBottomColor: "muted",
-        borderBottomStyle: "solid",
-        borderBottomWidth: 0,
-      }}
-    >
-      <Container pl={2} pr={3} py={3} sx={{ maxWidth: [0, 1, 2] }}>
-        <Container
-          px={[0, 3]}
+    <header>
+      <nav
+        sx={{
+          mx: "auto",
+          maxWidth: [0, 1, 2],
+          display: "flex",
+          justifyContent: "spaceBetween",
+          alignItems: "center",
+        }}
+      >
+        <LinkNav title="Home" aria-label="Home" to="/">
+          {data.datoCmsSite.globalSeo.siteName}
+        </LinkNav>
+        <Styled.ul
           sx={{
             display: "flex",
-            justifyContent: "spaceBetween",
-            alignItems: "center",
+            listStyle: "none",
           }}
         >
-          <LinkNav
-            title="Home"
-            aria-label="Home"
-            to="/"
-            activeClassName="active"
-          >
-            {data.datoCmsSite.globalSeo.siteName}
-          </LinkNav>
-          <Styled.ul
-            sx={{
-              display: "inline-grid",
-              gridAutoFlow: "column",
-              gridGap: 2,
-              listStyle: "none",
-            }}
-          >
-            <li>
-              <LinkNav
-                title="About"
-                aria-label="About me"
-                to="/about"
-                activeClassName="active"
-              >
-                About
-              </LinkNav>
-            </li>
-            <li>
-              <ThemeToggle />
-            </li>
-          </Styled.ul>
-        </Container>
-      </Container>
-    </nav>
+          <li>
+            <LinkNav
+              title="About"
+              aria-label="About me"
+              to="/about"
+              activeClassName="active"
+            >
+              About
+            </LinkNav>
+          </li>
+          <li>
+            <ThemeToggle />
+          </li>
+        </Styled.ul>
+      </nav>
+    </header>
   )
 }
 

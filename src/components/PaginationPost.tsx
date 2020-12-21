@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, Box } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 
 interface Props {
   children: React.ReactNode
@@ -8,23 +8,20 @@ interface Props {
 function PaginationPost(props: Props) {
   const { children } = props
   return (
-    <nav>
-      <Box p={[3, 4, 4]}>
+    <section>
+      <nav>
         <Styled.ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-            margin: 0,
-            maxWidth: [0, 1, 2],
+          sx={{
+            display: "flex",
+            flexFlow: "row wrap",
+            justifyContent: "space-between",
+            listStyle: "none",
           }}
         >
           {children}
         </Styled.ul>
-      </Box>
-    </nav>
+      </nav>
+    </section>
   )
 }
 

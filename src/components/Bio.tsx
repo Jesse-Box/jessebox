@@ -1,12 +1,12 @@
 /** @jsx jsx */
-import { jsx, Styled, Container, BaseStyles } from "theme-ui"
+import { jsx, Styled, BaseStyles } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 
 interface Data {
   datoCmsAbout: {
     introNode: {
       childMarkdownRemark: {
-        html: React.ReactNode
+        html: "string"
       }
     }
   }
@@ -26,7 +26,7 @@ function Bio() {
   `)
 
   return (
-    <Container p={[2, 3, 3]}>
+    <section>
       <BaseStyles>
         <Styled.div
           dangerouslySetInnerHTML={{
@@ -35,7 +35,7 @@ function Bio() {
           aria-label="About me"
         />
       </BaseStyles>
-    </Container>
+    </section>
   )
 }
 

@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, Container } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
@@ -44,16 +44,7 @@ function Layout({ children }: Props) {
         seo={data.datoCmsSeoMetaTags}
       />
       <Navigation />
-      <main aria-label="Page Content">
-        <Container
-          aria-label="Page Header"
-          px={2}
-          py={3}
-          sx={{ maxWidth: [0, 1, 2] }}
-        >
-          {children}
-        </Container>
-      </main>
+      <main sx={{ maxWidth: [0, 1, 2], mx: "auto" }}>{children}</main>
       <Footer />
     </Styled.root>
   )

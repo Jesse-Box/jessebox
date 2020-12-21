@@ -9,7 +9,7 @@ interface Props {
   ariaLabel?: string
   children: React.ReactNode
   to: string
-  activeClassName: string
+  activeClassName?: string
 }
 
 function LinkNav(props: Props) {
