@@ -146,13 +146,18 @@ export default {
       transition: "all 80ms ease-in",
       outline: "none",
       borderRadius: 1,
+      textDecoration: "none",
 
       ":hover": {
+        color: "primary.light",
         textDecoration: "underline",
+        textUnderlinePosition: "under",
       },
 
       ":active": {
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+        textDecoration: "underline",
+        textUnderlinePosition: "under",
+        color: "primary.darker",
       },
 
       ":focus": {
@@ -161,6 +166,7 @@ export default {
     },
     ul: {
       px: 0,
+      py: 2,
       m: 0,
     },
     pre: {

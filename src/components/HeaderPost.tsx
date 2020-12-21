@@ -14,8 +14,6 @@ function HeaderPost(props: Props) {
   return (
     <header aria-label="Post Header">
       <Box pt={2}>
-        <Styled.h6 sx={{ py: 1 }}>{date}</Styled.h6>
-        <Styled.h1>{title}</Styled.h1>
         <Container py={3} sx={{ maxWidth: 3 }}>
           <Box
             sx={{
@@ -29,6 +27,8 @@ function HeaderPost(props: Props) {
             <Image alt={alt} fluid={fluid}></Image>
           </Box>
         </Container>
+        <Styled.h1>{title}</Styled.h1>
+        <Styled.h6 sx={{ py: 1 }}>{date}</Styled.h6>
       </Box>
     </header>
   )

@@ -4,6 +4,7 @@ import { PageProps, graphql } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 
 import Layout from "../components/Layout"
+import HeaderPost from "../components/HeaderPost"
 
 interface Data {
   datoCmsAbout: {
@@ -35,8 +36,11 @@ function About({ data }: PageProps<Data>) {
             borderRadius: 2,
           }}
         >
-          <Image alt={about.avatar.alt} fluid={about.avatar.fluid} />
-          <Styled.h1>{about.title}</Styled.h1>
+          <HeaderPost
+            title={about.title}
+            alt={about.avatar.alt}
+            fluid={about.avatar.fluid}
+          />
           <BaseStyles>
             <Styled.div
               dangerouslySetInnerHTML={{

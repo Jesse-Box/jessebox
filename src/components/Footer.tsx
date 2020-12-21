@@ -2,18 +2,10 @@
 import { jsx, Container, Styled } from "theme-ui"
 import LinkNav from "./LinkNav"
 
-type Data = {
-  datoCmsSite: {
-    globalSeo: {
-      siteName: string
-    }
-  }
-}
-
 function Footer() {
   return (
     <footer aria-label="Footer">
-      <Container px={[2]} py={2} sx={{ maxWidth: [0, 1, 2] }}>
+      <Container px={2} py={3} mb={[3, 4, 4]} sx={{ maxWidth: [0, 1, 2] }}>
         <Container
           px={[0, 3]}
           sx={{
@@ -23,7 +15,9 @@ function Footer() {
             alignItems: "center",
           }}
         >
-          <Styled.p>Reach me on</Styled.p>
+          <LinkNav title="Home" to="/" ariaLabel="Home" activeClassName="true">
+            Jesse Box
+          </LinkNav>
           <Styled.ul
             sx={{
               display: "flex",

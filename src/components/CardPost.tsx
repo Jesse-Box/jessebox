@@ -22,6 +22,7 @@ function CardPost(props: Props) {
       aria-label="Post Preview"
       sx={{
         p: [3, 4, 4],
+        mb: [3, 4, 4],
         borderStyle: "solid",
         borderWidth: 0,
         borderColor: "muted",

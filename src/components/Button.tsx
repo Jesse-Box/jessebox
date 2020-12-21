@@ -34,7 +34,7 @@ export const Button = (props: Props) => {
         m: 0,
         px: 3,
         py: 1,
-        transition: "all 80ms ease-in",
+        transition: "all 160ms ease-in",
 
         ":active": {
           transform: "scale(.92)",

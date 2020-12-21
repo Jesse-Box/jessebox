@@ -52,8 +52,9 @@ function Navigation() {
           </LinkNav>
           <Styled.ul
             sx={{
-              display: "flex",
-              flexFlow: "row wrap",
+              display: "inline-grid",
+              gridAutoFlow: "column",
+              gridGap: 2,
               listStyle: "none",
             }}
           >
