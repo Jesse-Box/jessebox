@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled, Container, BaseStyles } from "theme-ui"
 import { PageProps, graphql } from "gatsby"
+import Image, { FluidObject } from "gatsby-image"
 
 import Layout from "../components/Layout"
 import HeaderPost from "../components/HeaderPost"
