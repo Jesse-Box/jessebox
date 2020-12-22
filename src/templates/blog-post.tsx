@@ -54,9 +54,18 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
           alt={post.hero.alt}
           fluid={imageFluid}
         />
-        <section>
+        <section
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "1fr min(720px, 100%) 1fr",
+            px: [3, 4, 5],
+          }}
+        >
           {data.datoCmsPost.body.map((block, index) => (
-            <div key={`${block.model.id}-${index}`}>
+            <div
+              sx={{ gridColumn: block.model.apiKey === "visual" ? "1/4" : "2" }}
+              key={`${block.model.id}-${index}`}
+            >
               {block.model.apiKey === "text" && (
                 <BaseStyles>
                   <Styled.div

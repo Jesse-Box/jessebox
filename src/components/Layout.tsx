@@ -44,7 +44,7 @@ function Layout({ children }: Props) {
         seo={data.datoCmsSeoMetaTags}
       />
       <Navigation />
-      <main sx={{ maxWidth: [0, 1, 2], mx: "auto" }}>{children}</main>
+      <main sx={{ mx: "auto", px: [2, 3, 4] }}>{children}</main>
       <Footer />
     </Styled.root>
   )
