@@ -68,7 +68,12 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
               )}
               {block.model.apiKey === "visual" && (
                 <Box my={[3, 4, 5]}>
-                  <Img fluid={block.media.fluid} alt={block.media.alt} />
+                  <Img
+                    sx={{ mb: [2, 3, 4] }}
+                    fluid={block.media.fluid}
+                    alt={block.media.alt}
+                  />
+                  <Styled.h6>{block.media.title}</Styled.h6>
                 </Box>
               )}
             </div>
