@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, Container } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 

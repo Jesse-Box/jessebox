@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container, Styled } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
 import LinkNav from "./LinkNav"
 
 function Footer() {
