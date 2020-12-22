@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx, Styled, BaseStyles } from "theme-ui"
+import { jsx, Styled, BaseStyles, Box } from "theme-ui"
 import { graphql, PageProps } from "gatsby"
 import Img, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
@@ -50,6 +50,7 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
         <HeaderPost
           date={post.date}
           title={post.title}
+          description={post.seo.description}
           alt={post.hero.alt}
           fluid={imageFluid}
         />
@@ -66,7 +67,9 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
                 </BaseStyles>
               )}
               {block.model.apiKey === "visual" && (
-                <Img fluid={block.media.fluid} alt={block.media.alt} />
+                <Box my={[3, 4, 5]}>
+                  <Img fluid={block.media.fluid} alt={block.media.alt} />
+                </Box>
               )}
             </div>
           ))}
@@ -100,6 +103,9 @@ export default BlogPostTemplate
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     datoCmsPost(slug: { eq: $slug }) {
+      seo {
+        description
+      }
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }

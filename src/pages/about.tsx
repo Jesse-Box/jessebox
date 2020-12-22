@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Styled, Container, BaseStyles } from "theme-ui"
+import { jsx, Styled, BaseStyles } from "theme-ui"
 import { PageProps, graphql } from "gatsby"
 
 import Layout from "../components/Layout"
@@ -25,30 +25,20 @@ function About({ data }: PageProps<Data>) {
   return (
     <Layout>
       <article>
-        <Container
-          sx={{
-            p: [3, 4, 4],
-            borderStyle: "solid",
-            borderWidth: 0,
-            borderColor: "background",
-            borderRadius: 2,
-          }}
-        >
-          <HeaderPost
-            title={about.title}
-            alt={about.avatar.alt}
-            fluid={about.avatar.fluid}
+        <HeaderPost
+          title={about.title}
+          alt={about.avatar.alt}
+          fluid={about.avatar.fluid}
+        />
+        <BaseStyles>
+          <Styled.div
+            dangerouslySetInnerHTML={{
+              __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
+            }}
+            aria-label="About me"
+            sx={{ p: 0 }}
           />
-          <BaseStyles>
-            <Styled.div
-              dangerouslySetInnerHTML={{
-                __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
-              }}
-              aria-label="About me"
-              sx={{ p: 0 }}
-            />
-          </BaseStyles>
-        </Container>
+        </BaseStyles>
       </article>
     </Layout>
   )
