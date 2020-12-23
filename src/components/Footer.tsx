@@ -1,66 +1,62 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx } from "theme-ui"
+
+import Grid from "./Grid"
 import LinkNav from "./LinkNav"
 
 function Footer() {
   return (
-    <footer sx={{ maxWidth: [0, 1, 2], mx: "auto" }}>
-      <nav
-        sx={{
-          display: "flex",
-          flexFlow: ["column wrap", "row wrap"],
-          justifyContent: "spaceBetween",
-          alignItems: "center",
-        }}
-      >
-        <LinkNav title="Home" to="/" ariaLabel="Home">
-          Jesse Box
-        </LinkNav>
-        <ul
+    <footer sx={{ py: [2, 3, 4] }}>
+      <Grid>
+        <nav
           sx={{
+            gridColumn: "1/4",
+            py: [3, 4, 5],
             display: "flex",
-            flexFlow: "row wrap",
-            listStyle: "none",
+            flexFlow: ["column wrap", "row wrap"],
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
         >
-          <li>
-            <LinkNav
-              title="me@jessebox.net"
-              aria-label="Email Address"
-              href="mailto: me@jessebox.net"
-            >
-              Email
-            </LinkNav>
-          </li>
-          <li>
-            <LinkNav
-              title="Twitter Profile"
-              aria-label="Twitter Profile"
-              href="https://twitter.com/JesseThomasBox"
-            >
-              Twitter
-            </LinkNav>
-          </li>
-          <li>
-            <LinkNav
-              title="Github Profile"
-              aria-label="Github Profile"
-              href="https://github.com/Jesse-Box"
-            >
-              Github
-            </LinkNav>
-          </li>
-          <li>
-            <LinkNav
-              title="LinkedIn Profile"
-              aria-label="LinkedIn Profile"
-              href="https://www.linkedin.com/in/jesse-box-835346b7/"
-            >
-              LinkedIn
-            </LinkNav>
-          </li>
-        </ul>
-      </nav>
+          <span sx={{ color: "secondary" }}>me(at)jessebox.net</span>
+          <ul
+            sx={{
+              display: "flex",
+              flexFlow: "row wrap",
+              listStyle: "none",
+              p: 0,
+            }}
+          >
+            <li>
+              <LinkNav
+                title="Twitter Profile"
+                aria-label="Twitter Profile"
+                href="https://twitter.com/JesseThomasBox"
+              >
+                Twitter
+              </LinkNav>
+            </li>
+            <li>
+              <LinkNav
+                title="Github Profile"
+                aria-label="Github Profile"
+                href="https://github.com/Jesse-Box"
+              >
+                Github
+              </LinkNav>
+            </li>
+            <li>
+              <LinkNav
+                title="LinkedIn Profile"
+                aria-label="LinkedIn Profile"
+                href="https://www.linkedin.com/in/jesse-box-835346b7/"
+              >
+                LinkedIn
+              </LinkNav>
+            </li>
+          </ul>
+        </nav>
+      </Grid>
     </footer>
   )
 }
