@@ -2,6 +2,8 @@
 import { jsx, Styled, BaseStyles } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 
+import Grid from "./Grid"
+
 interface Data {
   datoCmsAbout: {
     introNode: {
@@ -28,13 +30,15 @@ function Bio() {
   return (
     <section>
       <BaseStyles>
-        <Styled.div
-          dangerouslySetInnerHTML={{
-            __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
-          }}
-          aria-label="About me"
-          sx={{ mx: "auto", maxWidth: [0, 1, 2] }}
-        />
+        <Grid>
+          <Styled.div
+            dangerouslySetInnerHTML={{
+              __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
+            }}
+            aria-label="About me"
+            sx={{ gridColumn: "2" }}
+          />
+        </Grid>
       </BaseStyles>
     </section>
   )

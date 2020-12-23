@@ -35,7 +35,7 @@ function Navigation() {
           alignItems: "center",
         }}
       >
-        <LinkNav title="Home" aria-label="Home" to="/">
+        <LinkNav title="Home" aria-label="Home" to="/" sx={{ mb: [3, 3, 4] }}>
           {data.datoCmsSite.globalSeo.siteName}
         </LinkNav>
         <Styled.ul
