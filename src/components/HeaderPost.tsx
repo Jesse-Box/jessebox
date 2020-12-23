@@ -5,25 +5,31 @@ import Image, { FluidObject } from "gatsby-image"
 import Grid from "./Grid"
 
 interface Props {
-  date: string
+  date?: string
   title: string
-  description: string
+  description?: string
   alt: string
+  caption?: string
   fluid: FluidObject
 }
 
 function HeaderPost(props: Props) {
-  const { date, title, description, alt, fluid } = props
+  const { date, title, description, alt, caption, fluid } = props
   return (
     <Grid>
-      <Image
-        alt={alt}
-        fluid={fluid}
-        sx={{ gridColumn: " 1/4", my: [2, 3, 4] }}
-      />
+      <Box my={[2, 3, 4]} sx={{ gridColumn: "1/4" }}>
+        <Image
+          sx={{ mb: caption ? [2, 3, 4] : null }}
+          alt={alt}
+          fluid={fluid}
+        />
+        {caption ? <Styled.h6>{caption}</Styled.h6> : null}
+      </Box>
       <Styled.h1 sx={{ gridColumn: "2" }}>{title}</Styled.h1>
-      <Styled.h5 sx={{ gridColumn: "2" }}>{description}</Styled.h5>
-      <Styled.h6 sx={{ gridColumn: "2" }}>{date}</Styled.h6>
+      {description ? (
+        <Styled.h5 sx={{ gridColumn: "2" }}>{description}</Styled.h5>
+      ) : null}
+      {date ? <Styled.h6 sx={{ gridColumn: "2" }}>{date}</Styled.h6> : null}
     </Grid>
   )
 }

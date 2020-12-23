@@ -2,14 +2,18 @@
 import { jsx, Styled, BaseStyles } from "theme-ui"
 import { PageProps, graphql } from "gatsby"
 
+import Grid from "../components/Grid"
 import Layout from "../components/Layout"
 import HeaderPost from "../components/HeaderPost"
+import { FluidObject } from "gatsby-image"
 
 interface Data {
   datoCmsAbout: {
     title: string
     avatar: {
       alt: string
+      title: string
+      fluid: FluidObject
     }
     bodyNode: {
       childMarkdownRemark: {
@@ -28,17 +32,22 @@ function About({ data }: PageProps<Data>) {
         <HeaderPost
           title={about.title}
           alt={about.avatar.alt}
+          caption={about.avatar.title}
           fluid={about.avatar.fluid}
         />
-        <BaseStyles>
-          <Styled.div
-            dangerouslySetInnerHTML={{
-              __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
-            }}
-            aria-label="About me"
-            sx={{ p: 0 }}
-          />
-        </BaseStyles>
+        <Grid>
+          <div sx={{ gridColumn: "2" }}>
+            <BaseStyles>
+              <Styled.div
+                dangerouslySetInnerHTML={{
+                  __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
+                }}
+                aria-label="About me"
+                sx={{ p: 0 }}
+              />
+            </BaseStyles>
+          </div>
+        </Grid>
       </article>
     </Layout>
   )
@@ -55,6 +64,7 @@ export const pageQuery = graphql`
         fluid(maxWidth: 1200) {
           ...GatsbyDatoCmsFluid
         }
+        title
       }
       bodyNode {
         childMarkdownRemark {
