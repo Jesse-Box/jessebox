@@ -36,7 +36,7 @@ function Bio() {
               __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
             }}
             aria-label="About me"
-            sx={{ gridColumn: "2" }}
+            sx={{ gridColumn: "2", mb: [3, 4, 5] }}
           />
         </Grid>
       </BaseStyles>

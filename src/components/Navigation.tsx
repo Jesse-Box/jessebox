@@ -18,12 +18,7 @@ function Navigation() {
             alignItems: "center",
           }}
         >
-          <LinkNav
-            title="Return Home"
-            aria-label="Return Home"
-            to="/"
-            sx={{ mb: [3, 3, 4] }}
-          >
+          <LinkNav title="Return Home" aria-label="Return Home" to="/">
             Home
           </LinkNav>
           <ul

@@ -17,12 +17,8 @@ function HeaderPost(props: Props) {
   const { date, title, description, alt, caption, fluid } = props
   return (
     <Grid>
-      <Box my={[2, 3, 4]} sx={{ gridColumn: "1/4" }}>
-        <Image
-          sx={{ mb: caption ? [2, 3, 4] : null }}
-          alt={alt}
-          fluid={fluid}
-        />
+      <Box mb={[2, 3, 4]} sx={{ gridColumn: "1/4" }}>
+        <Image sx={{ mb: [2, 3, 4] }} alt={alt} fluid={fluid} />
         {caption ? <Styled.h6>{caption}</Styled.h6> : null}
       </Box>
       <Styled.h1 sx={{ gridColumn: "2" }}>{title}</Styled.h1>
