@@ -2,9 +2,10 @@
 
 import { jsx, Styled, BaseStyles, Box } from "theme-ui"
 import { graphql, PageProps } from "gatsby"
-import Img, { FluidObject, FixedObject } from "gatsby-image"
+import Image, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
+import Grid from "../components/Grid"
 import Layout from "../components/Layout"
 import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
@@ -54,13 +55,7 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
           alt={post.hero.alt}
           fluid={imageFluid}
         />
-        <section
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "1fr min(720px, 100%) 1fr",
-            px: [3, 4, 5],
-          }}
-        >
+        <Grid>
           {data.datoCmsPost.body.map((block, index) => (
             <div
               sx={{ gridColumn: block.model.apiKey === "visual" ? "1/4" : "2" }}
@@ -77,7 +72,7 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
               )}
               {block.model.apiKey === "visual" && (
                 <Box my={[3, 4, 5]}>
-                  <Img
+                  <Image
                     sx={{ mb: [2, 3, 4] }}
                     fluid={block.media.fluid}
                     alt={block.media.alt}
@@ -87,7 +82,7 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
               )}
             </div>
           ))}
-        </section>
+        </Grid>
       </article>
       {previous || next ? (
         <PaginationPost>
