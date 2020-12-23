@@ -12,6 +12,8 @@ function PaginationPost(props: Props) {
       <nav>
         <Styled.ul
           sx={{
+            mx: "auto",
+            maxWidth: [0, 1, 2],
             display: "flex",
             flexFlow: "row wrap",
             justifyContent: "space-between",

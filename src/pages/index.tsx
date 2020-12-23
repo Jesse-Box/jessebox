@@ -29,7 +29,7 @@ function BlogIndex({ data }: PageProps<Data>) {
   return (
     <Layout>
       <Bio />
-      <Styled.ul sx={{ listStyle: "none" }}>
+      <Styled.ul sx={{ listStyle: "none", mx: "auto", maxWidth: [0, 1, 2] }}>
         {posts.map(({ node }) => {
           const title = node.title || node.fields.slug
           return (

@@ -33,6 +33,7 @@ function Bio() {
             __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
           }}
           aria-label="About me"
+          sx={{ mx: "auto", maxWidth: [0, 1, 2] }}
         />
       </BaseStyles>
     </section>
