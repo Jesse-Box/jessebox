@@ -16,7 +16,7 @@ function Footer() {
         <LinkNav title="Home" to="/" ariaLabel="Home">
           Jesse Box
         </LinkNav>
-        <Styled.ul
+        <ul
           sx={{
             display: "flex",
             flexFlow: "row wrap",
@@ -59,7 +59,7 @@ function Footer() {
               LinkedIn
             </LinkNav>
           </li>
-        </Styled.ul>
+        </ul>
       </nav>
     </footer>
   )

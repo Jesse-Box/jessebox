@@ -24,7 +24,6 @@ function LinkNav(props: Props) {
       to={to}
       activeClassName={activeClassName}
       sx={{
-        variant: "link.nav",
         fontFamily: "body",
         borderRadius: 4,
         border: "none",
@@ -36,17 +35,16 @@ function LinkNav(props: Props) {
         fontSize: "inherit",
         fontWeight: "inherit",
         m: 0,
-        px: 3,
-        py: 1,
+        px: [3, 4, 4],
+        py: 2,
         transition: "all 80ms ease-in",
 
         ":active": {
           transform: "scale(.92)",
-          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
         },
 
         ":focus": {
-          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+          boxShadow: (theme) => `0 0 0 3px ${theme.colors.accent}`,
         },
       }}
     >
@@ -56,7 +54,7 @@ function LinkNav(props: Props) {
 }
 
 LinkNav.defaultProps = {
-  ariaLabel: "Need Label",
+  activeClassName: "active",
 }
 
 export default LinkNav

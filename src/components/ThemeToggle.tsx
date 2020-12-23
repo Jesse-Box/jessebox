@@ -20,8 +20,8 @@ function ThemeToggle() {
 
   return (
     <Button
-      aria-label="Toggle Theme"
-      title="Toggle Theme"
+      aria-label="Toggle Color Theme"
+      title="Toggle Color Theme"
       onClick={() => {
         return setMode(next)
       }}

@@ -146,7 +146,6 @@ export default {
       textDecoration: "none",
 
       ":hover": {
-        color: "primary.light",
         textDecoration: "underline",
         textUnderlinePosition: "under",
       },
@@ -154,7 +153,6 @@ export default {
       ":active": {
         textDecoration: "underline",
         textUnderlinePosition: "under",
-        color: "primary.darker",
       },
 
       ":focus": {
@@ -242,53 +240,9 @@ export default {
       ":active": {
         bg: "primary.dark",
       },
-    },
-    naked: {
-      bg: "background",
-      outline: "none",
-      color: "primary.base",
-
-      ":hover": {
-        bg: "muted",
-      },
-
-      ":active": {
-        color: "primary.dark",
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
-      },
 
       ":focus": {
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
-      },
-    },
-  },
-
-  borderWidths: [2, 4],
-
-  borderStyles: {
-    primary: "solid",
-  },
-
-  flexDirection: {
-    horizontal: "row",
-    vertical: "column",
-  },
-
-  justifyContent: {
-    start: "flex-start",
-    end: "flex-end",
-    center: "center",
-    spaceBetween: "space-between",
-  },
-
-  alignItems: {
-    center: "center",
-  },
-
-  link: {
-    nav: {
-      ":hover": {
-        bg: "muted",
+        boxShadow: (theme) => `0 0 0 3px ${theme.colors.accent}`,
       },
     },
   },
