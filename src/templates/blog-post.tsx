@@ -1,6 +1,6 @@
 /** @jsx jsx */
 
-import { jsx, Styled, BaseStyles, Box, Flex } from "theme-ui"
+import { jsx, Styled, BaseStyles, Box } from "theme-ui"
 import { graphql, PageProps } from "gatsby"
 import Image, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
