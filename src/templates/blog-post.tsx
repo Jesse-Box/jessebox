@@ -26,6 +26,9 @@ type Data = {
       title: string
       description: string
     }
+    seoMetaTags: {
+      tags: []
+    }
     title: string
     date: string
     hero: {
@@ -33,13 +36,24 @@ type Data = {
       fluid: FluidObject
     }
     body: any
-    pageContext: any
+
+    pageContext: {
+      next: {
+        slug: string
+        title: string
+      }
+      prev: {
+        slug: string
+        title: string
+      }
+      slug: string
+    }
   }
 }
 
 function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
   const post = data.datoCmsPost
-
+  console.log(data.datoCmsPost.body)
   const { previous, next } = pageContext
 
   const imageFluid = post.hero.fluid
