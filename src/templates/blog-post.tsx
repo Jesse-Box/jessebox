@@ -53,7 +53,6 @@ type Data = {
 
 function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
   const post = data.datoCmsPost
-  console.log(data.datoCmsPost.body)
   const { previous, next } = pageContext
 
   const imageFluid = post.hero.fluid

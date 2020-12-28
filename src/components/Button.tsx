@@ -14,7 +14,6 @@ export const Button = (props: Props) => {
   const { variant, ariaLabel, id, title, children, onClick } = props
   return (
     <button
-      variant={variant}
       id={id}
       title={title}
       aria-label={ariaLabel}

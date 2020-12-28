@@ -12,7 +12,9 @@ interface Data {
       siteName: string
     }
     faviconMetaTags: any
-    datoCmsSeoMetaTags: any
+  }
+  datoCmsSeoMetaTags: {
+    tags: []
   }
 }
 
