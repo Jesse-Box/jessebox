@@ -2,13 +2,24 @@
 import { jsx, Styled } from "theme-ui"
 import { PageProps, graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
+import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Grid from "../components/Grid"
 import Layout from "../components/Layout"
 import CardPost from "../components/CardPost"
-import Bio from "../components/Bio"
+import BlockText from "../components/BlockText"
 
 interface Data {
+  datoCmsHome: {
+    seoMetaTags: {
+      tags: []
+    }
+    introNode: {
+      childMarkdownRemark: {
+        html: string
+      }
+    }
+  }
   allDatoCmsPost: {
     edges: {
       node: {
@@ -26,10 +37,12 @@ interface Data {
 
 function BlogIndex({ data }: PageProps<Data>) {
   const posts = data.allDatoCmsPost.edges
+  const homePage = data.datoCmsHome
 
   return (
     <Layout>
-      <Bio />
+      <HelmetDatoCms seo={homePage.seoMetaTags} />
+      <BlockText html={homePage.introNode.childMarkdownRemark.html} />
       <section>
         <Grid>
           <Styled.ul sx={{ listStyle: "none", gridColumn: "2" }}>
@@ -58,6 +71,16 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
+    datoCmsHome {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      introNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
     allDatoCmsPost(sort: { fields: date, order: DESC }) {
       edges {
         node {
