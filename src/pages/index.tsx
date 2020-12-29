@@ -45,6 +45,7 @@ function BlogIndex({ data }: PageProps<Data>) {
       <BlockText html={homePage.introNode.childMarkdownRemark.html} />
       <section>
         <Grid>
+          <Styled.p sx={{ gridColumn: "2" }}>Recent Posts</Styled.p>
           <Styled.ul sx={{ listStyle: "none", gridColumn: "2" }}>
             {posts.map(({ node }) => {
               const title = node.title || node.fields.slug

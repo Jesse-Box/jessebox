@@ -10,7 +10,7 @@ import Layout from "../components/Layout"
 import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
-import Bio from "../components/Bio"
+import BlockText from "../components/BlockText"
 
 type Data = {
   datoCmsSite: {
@@ -47,6 +47,13 @@ type Data = {
         title: string
       }
       slug: string
+    }
+  }
+  datoCmsAbout: {
+    introNode: {
+      childMarkdownRemark: {
+        html: string
+      }
     }
   }
 }
@@ -115,7 +122,7 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
           </Styled.li>
         </PaginationPost>
       ) : null}
-      <Bio />
+      <BlockText html={data.datoCmsAbout.introNode.childMarkdownRemark.html} />
     </Layout>
   )
 }
@@ -162,6 +169,13 @@ export const pageQuery = graphql`
             title
             alt
           }
+        }
+      }
+    }
+    datoCmsAbout {
+      introNode {
+        childMarkdownRemark {
+          html
         }
       }
     }
