@@ -1,17 +1,14 @@
 /** @jsx jsx */
-import { jsx, Styled, Container, Box, BaseStyles } from "theme-ui"
+import { jsx, Styled, BaseStyles } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
-import Image, { FixedObject } from "gatsby-image"
+
+import Grid from "./Grid"
 
 interface Data {
-  datoCmsBio: {
-    avatar: {
-      alt: string
-      fixed: FixedObject
-    }
+  datoCmsAbout: {
     introNode: {
       childMarkdownRemark: {
-        html: React.ReactNode
+        html: "string"
       }
     }
   }
@@ -20,13 +17,7 @@ interface Data {
 function Bio() {
   const data: Data = useStaticQuery(graphql`
     query BioQuery {
-      datoCmsBio {
-        avatar {
-          fixed(width: 60, height: 60) {
-            ...GatsbyDatoCmsFixed
-          }
-          alt
-        }
+      datoCmsAbout {
         introNode {
           childMarkdownRemark {
             html
@@ -37,39 +28,19 @@ function Bio() {
   `)
 
   return (
-    <Container
-      p={[2, 3, 3]}
-      sx={{
-        borderStyle: "solid",
-        borderWidth: 0,
-        borderColor: "muted",
-        borderRadius: 2,
-      }}
-    >
-      <Box
-        p={[0, 2, 2]}
-        sx={{ display: "flex", flexWrap: "wrap", alignItems: "center" }}
-      >
-        <Box p={2} sx={{ display: "flex", flex: "0 0 76px", minWidth: 76 }}>
-          <Image
-            fixed={data.datoCmsBio.avatar.fixed}
-            alt={data.datoCmsBio.avatar.alt}
-            sx={{ minWidth: 60, borderRadius: 1 }}
+    <section>
+      <BaseStyles>
+        <Grid>
+          <Styled.div
+            dangerouslySetInnerHTML={{
+              __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
+            }}
+            aria-label="About me"
+            sx={{ gridColumn: "2", mb: [3, 4, 5] }}
           />
-        </Box>
-        <Container p={2} sx={{ flex: "1 1 300px" }}>
-          <BaseStyles>
-            <Styled.div
-              dangerouslySetInnerHTML={{
-                __html: data.datoCmsBio.introNode.childMarkdownRemark.html,
-              }}
-              aria-label="About me"
-              sx={{ p: 0 }}
-            />
-          </BaseStyles>
-        </Container>
-      </Box>
-    </Container>
+        </Grid>
+      </BaseStyles>
+    </section>
   )
 }
 

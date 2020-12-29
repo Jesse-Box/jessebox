@@ -2,12 +2,24 @@
 import { jsx, Styled } from "theme-ui"
 import { PageProps, graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
+import { HelmetDatoCms } from "gatsby-source-datocms"
 
+import Grid from "../components/Grid"
 import Layout from "../components/Layout"
-import PageHeader from "../components/HeaderPage"
 import CardPost from "../components/CardPost"
+import BlockText from "../components/BlockText"
 
 interface Data {
+  datoCmsHome: {
+    seoMetaTags: {
+      tags: []
+    }
+    introNode: {
+      childMarkdownRemark: {
+        html: string
+      }
+    }
+  }
   allDatoCmsPost: {
     edges: {
       node: {
@@ -25,26 +37,32 @@ interface Data {
 
 function BlogIndex({ data }: PageProps<Data>) {
   const posts = data.allDatoCmsPost.edges
+  const homePage = data.datoCmsHome
 
   return (
     <Layout>
-      <PageHeader>
-        <Styled.h1>All Posts</Styled.h1>
-      </PageHeader>
-      {posts.map(({ node }) => {
-        const title = node.title || node.fields.slug
-        return (
-          <CardPost
-            key={node.slug}
-            date={node.date}
-            title={title}
-            to={node.slug}
-            description={node.seo.description}
-            alt={node.alt}
-            fluid={node.hero.fluid}
-          />
-        )
-      })}
+      <HelmetDatoCms seo={homePage.seoMetaTags} />
+      <BlockText html={homePage.introNode.childMarkdownRemark.html} />
+      <section>
+        <Grid>
+          <Styled.ul sx={{ listStyle: "none", gridColumn: "2" }}>
+            {posts.map(({ node }) => {
+              const title = node.title || node.fields.slug
+              return (
+                <CardPost
+                  key={node.slug}
+                  date={node.date}
+                  title={title}
+                  to={node.slug}
+                  description={node.seo.description}
+                  alt={node.alt}
+                  fluid={node.hero.fluid}
+                />
+              )
+            })}
+          </Styled.ul>
+        </Grid>
+      </section>
     </Layout>
   )
 }
@@ -53,6 +71,16 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
+    datoCmsHome {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      introNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
     allDatoCmsPost(sort: { fields: date, order: DESC }) {
       edges {
         node {

@@ -5,7 +5,7 @@ export default {
 
   sizes: [540, 680, 720, 1200],
 
-  radii: [2, 8, 16, 32],
+  radii: [2, 8, 16, 32, 99],
 
   fonts: {
     body:
@@ -32,7 +32,7 @@ export default {
 
   lineHeights: {
     body: 1.5,
-    heading: 1.125,
+    heading: 1.2,
   },
 
   colors: {
@@ -67,7 +67,7 @@ export default {
       fontFamily: "body",
       fontWeight: "body",
       lineHeight: "body",
-      fontSize: ["16px", "18px", "20px"],
+      fontSize: ["16px", "20px", "24px"],
       m: 0,
       textRendering: "optimizelegibility",
     },
@@ -77,8 +77,8 @@ export default {
       lineHeight: "heading",
       fontWeight: "heading",
       fontSize: 6,
-      m: 0,
-      py: 2,
+      mt: 0,
+      mb: [2, 2, 3],
       letterSpacing: "-0.64px",
     },
     h2: {
@@ -87,9 +87,8 @@ export default {
       lineHeight: "heading",
       fontWeight: "heading",
       fontSize: 5,
-      m: 0,
-      pt: 3,
-      pb: 2,
+      mt: 0,
+      mb: [2, 2, 3],
     },
     h3: {
       color: "text",
@@ -97,9 +96,8 @@ export default {
       lineHeight: "heading",
       fontWeight: "heading",
       fontSize: 4,
-      margin: 0,
-      pt: 3,
-      pb: 0,
+      mt: 0,
+      mb: [2, 2, 3],
     },
     h4: {
       color: "text",
@@ -113,13 +111,12 @@ export default {
     },
     h5: {
       color: "text",
-      fontFamily: "heading",
-      lineHeight: "heading",
-      fontWeight: "heading",
+      fontFamily: "body",
+      lineHeight: "body",
+      fontWeight: "body",
       fontSize: 2,
-      margin: 0,
-      pt: 2,
-      pb: 0,
+      mt: 0,
+      mb: [3, 3, 4],
     },
 
     h6: {
@@ -128,7 +125,8 @@ export default {
       lineHeight: "body",
       fontWeight: "body",
       fontSize: 0,
-      margin: 0,
+      mt: 0,
+      mb: [3, 3, 4],
     },
     p: {
       color: "text",
@@ -136,29 +134,35 @@ export default {
       fontWeight: "body",
       lineHeight: "body",
       fontSize: 1,
-      margin: 0,
-      pt: 2,
-      pb: 2,
+      mt: 0,
+      mb: [3, 3, 4],
     },
     a: {
       color: "primary.base",
-      textDecoration: "none",
       margin: 0,
       transition: "all 80ms ease-in",
       outline: "none",
       borderRadius: 1,
+      textDecoration: "none",
 
       ":hover": {
         textDecoration: "underline",
+        textUnderlinePosition: "under",
       },
 
       ":active": {
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+        textDecoration: "underline",
+        textUnderlinePosition: "under",
       },
 
       ":focus": {
         boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
       },
+    },
+    ul: {
+      mt: 0,
+      mb: [3, 3, 4],
+      px: 0,
     },
     pre: {
       fontFamily: "monospace",
@@ -236,54 +240,9 @@ export default {
       ":active": {
         bg: "primary.dark",
       },
-    },
-    naked: {
-      bg: "background",
-      outline: "none",
-      color: "primary.base",
-
-      ":hover": {
-        bg: "muted",
-      },
-
-      ":active": {
-        color: "primary.dark",
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
-      },
 
       ":focus": {
-        boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
-      },
-    },
-  },
-
-  borderWidths: [2, 4],
-
-  borderStyles: {
-    primary: "solid",
-  },
-
-  flexDirection: {
-    horizontal: "row",
-    vertical: "column",
-  },
-
-  justifyContent: {
-    start: "flex-start",
-    end: "flex-end",
-    center: "center",
-    spaceBetween: "space-between",
-  },
-
-  alignItems: {
-    center: "center",
-  },
-
-  link: {
-    nav: {
-      ":hover": {
-        bg: "muted",
-        textDecoration: "none",
+        boxShadow: (theme) => `0 0 0 3px ${theme.colors.accent}`,
       },
     },
   },

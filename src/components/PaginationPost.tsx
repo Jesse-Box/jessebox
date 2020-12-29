@@ -1,5 +1,7 @@
 /** @jsx jsx */
-import { jsx, Styled, Box } from "theme-ui"
+import { jsx, Styled } from "theme-ui"
+
+import Grid from "./Grid"
 
 interface Props {
   children: React.ReactNode
@@ -8,23 +10,23 @@ interface Props {
 function PaginationPost(props: Props) {
   const { children } = props
   return (
-    <nav>
-      <Box p={[3, 4, 4]}>
-        <Styled.ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-            margin: 0,
-            maxWidth: [0, 1, 2],
-          }}
-        >
-          {children}
-        </Styled.ul>
-      </Box>
-    </nav>
+    <section>
+      <nav>
+        <Grid>
+          <Styled.ul
+            sx={{
+              gridColumn: "2",
+              display: "flex",
+              flexFlow: "row wrap",
+              justifyContent: "space-between",
+              listStyle: "none",
+            }}
+          >
+            {children}
+          </Styled.ul>
+        </Grid>
+      </nav>
+    </section>
   )
 }
 

@@ -1,20 +1,65 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx } from "theme-ui"
+import { PageProps, graphql } from "gatsby"
+import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/Layout"
-import PageHeader from "../components/HeaderPage"
+import BlockText from "../components/BlockText"
 
-function NotFoundPage() {
+interface Data {
+  datoCmsNotFound: {
+    seoMetaTags: {
+      tags: []
+    }
+    introNode: {
+      childMarkdownRemark: {
+        html: string
+      }
+    }
+  }
+}
+
+function NotFoundPage({ data }: PageProps<Data>) {
+  const notFoundPage = data.datoCmsNotFound
   return (
     <Layout>
-      <PageHeader>
-        <Styled.h1>Not Found</Styled.h1>
-        <Styled.p>
-          You just hit a route that doesn&#39;t exist... the sadness.
-        </Styled.p>
-      </PageHeader>
+      <HelmetDatoCms seo={notFoundPage.seoMetaTags} />
+      <BlockText html={notFoundPage.introNode.childMarkdownRemark.html} />
     </Layout>
   )
 }
 
 export default NotFoundPage
+
+export const pageQuery = graphql`
+  query {
+    datoCmsNotFound {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
+      introNode {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    allDatoCmsPost(sort: { fields: date, order: DESC }) {
+      edges {
+        node {
+          slug
+          title
+          date(formatString: "MMMM DD, YYYY")
+          seo {
+            description
+          }
+          hero {
+            alt
+            fluid(maxWidth: 800) {
+              ...GatsbyDatoCmsFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`

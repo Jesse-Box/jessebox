@@ -8,8 +8,8 @@ interface Props {
   title: string
   ariaLabel?: string
   children: React.ReactNode
-  to: string
-  activeClassName: string
+  to?: string
+  activeClassName?: string
 }
 
 function LinkNav(props: Props) {
@@ -24,9 +24,28 @@ function LinkNav(props: Props) {
       to={to}
       activeClassName={activeClassName}
       sx={{
-        variant: "link.nav",
-        py: 1,
-        px: 3,
+        fontFamily: "body",
+        borderRadius: 4,
+        border: "none",
+        outline: "none",
+        appearance: "none",
+        display: "inline-block",
+        textAlign: "center",
+        lineHeight: "inherit",
+        fontSize: "inherit",
+        fontWeight: "inherit",
+        m: 0,
+        px: [3, 4, 4],
+        py: 2,
+        transition: "all 80ms ease-in",
+
+        ":active": {
+          transform: "scale(.92)",
+        },
+
+        ":focus": {
+          boxShadow: (theme) => `0 0 0 3px ${theme.colors.accent}`,
+        },
       }}
     >
       {children}
@@ -35,7 +54,7 @@ function LinkNav(props: Props) {
 }
 
 LinkNav.defaultProps = {
-  ariaLabel: "Need Label",
+  activeClassName: "active",
 }
 
 export default LinkNav

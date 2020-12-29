@@ -14,7 +14,6 @@ export const Button = (props: Props) => {
   const { variant, ariaLabel, id, title, children, onClick } = props
   return (
     <button
-      variant={variant}
       id={id}
       title={title}
       aria-label={ariaLabel}
@@ -22,28 +21,26 @@ export const Button = (props: Props) => {
       sx={{
         variant: `buttons.${variant}`,
         fontFamily: "body",
-        borderRadius: 1,
+        borderRadius: 4,
         border: "none",
         outline: "none",
         appearance: "none",
         display: "inline-block",
         textAlign: "center",
         lineHeight: "inherit",
-        textDecoration: "none",
         fontSize: "inherit",
         fontWeight: "inherit",
         m: 0,
-        px: 3,
-        py: 1,
-        transition: "all 80ms ease-in",
+        px: [3, 4, 4],
+        py: 2,
+        transition: "all 160ms ease-in",
 
         ":active": {
           transform: "scale(.92)",
-          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
         },
 
-        ":focus": {
-          boxShadow: (theme) => `0 0 0 2px ${theme.colors.accent}`,
+        ":focused": {
+          transform: "scale(1.08)",
         },
       }}
     >
@@ -53,8 +50,7 @@ export const Button = (props: Props) => {
 }
 
 Button.defaultProps = {
-  variant: "naked",
-  ariaLabel: "Need Label",
+  variant: "primary",
 }
 
 export default Button

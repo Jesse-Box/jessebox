@@ -1,59 +1,54 @@
 /** @jsx jsx */
-import { jsx, Container } from "theme-ui"
-import ThemeToggle from "./ThemeToggle"
-import { useStaticQuery, graphql } from "gatsby"
-import LinkNav from "./LinkNav"
+import { jsx } from "theme-ui"
 
-type Data = {
-  datoCmsSite: {
-    globalSeo: {
-      siteName: string
-    }
-  }
-}
+import Grid from "./Grid"
+import LinkNav from "./LinkNav"
+import ThemeToggle from "./ThemeToggle"
 
 function Navigation() {
-  const data: Data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      datoCmsSite {
-        globalSeo {
-          siteName
-        }
-      }
-    }
-  `)
-
   return (
-    <nav
-      aria-label="Navigation Bar"
-      sx={{
-        backgroundColor: "background",
-        borderBottomColor: "muted",
-        borderBottomStyle: "solid",
-        borderBottomWidth: 0,
-      }}
-    >
-      <Container px={[2]} py={2} sx={{ maxWidth: [0, 1, 2] }}>
-        <Container
-          px={[0, 3]}
+    <header sx={{ py: [2, 3, 4] }}>
+      <Grid>
+        <nav
           sx={{
+            gridColumn: "1/4",
+            py: [3, 4, 5],
             display: "flex",
-            justifyContent: "spaceBetween",
+            justifyContent: "space-between",
             alignItems: "center",
           }}
         >
-          <LinkNav
-            title="Home"
-            aria-label="Home"
-            to="/"
-            activeClassName="active"
-          >
-            {data.datoCmsSite.globalSeo.siteName}
+          <LinkNav title="Return Home" aria-label="Return Home" to="/">
+            Home
           </LinkNav>
-          <ThemeToggle />
-        </Container>
-      </Container>
-    </nav>
+          <ul
+            sx={{
+              display: "inline-grid",
+              gridAutoFlow: "column",
+              gridGap: [2, 3, 3],
+              listStyle: "none",
+              my: 0,
+              py: 0,
+              px: [2, 3, 4],
+            }}
+          >
+            <li>
+              <LinkNav
+                title="About me"
+                aria-label="About me"
+                to="/about"
+                activeClassName="active"
+              >
+                About
+              </LinkNav>
+            </li>
+            <li>
+              <ThemeToggle />
+            </li>
+          </ul>
+        </nav>
+      </Grid>
+    </header>
   )
 }
 
