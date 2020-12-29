@@ -8,8 +8,8 @@ interface Props {
   date: string
   title: string
   to: string
-  description: string
-  excerpt: string
+  description?: string
+  excerpt?: string
   alt: string
   fluid: FluidObject
 }

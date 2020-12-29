@@ -1,14 +1,18 @@
 /** @jsx jsx */
 import { jsx, Styled, BaseStyles } from "theme-ui"
 import { PageProps, graphql } from "gatsby"
+import { HelmetDatoCms } from "gatsby-source-datocms"
+import { FluidObject } from "gatsby-image"
 
 import Grid from "../components/Grid"
 import Layout from "../components/Layout"
 import HeaderPost from "../components/HeaderPost"
-import { FluidObject } from "gatsby-image"
 
 interface Data {
   datoCmsAbout: {
+    seoMetaTags: {
+      tags: []
+    }
     title: string
     avatar: {
       alt: string
@@ -17,23 +21,24 @@ interface Data {
     }
     bodyNode: {
       childMarkdownRemark: {
-        html: React.ReactNode
+        html: string
       }
     }
   }
 }
 
 function About({ data }: PageProps<Data>) {
-  const about = data.datoCmsAbout
+  const aboutPage = data.datoCmsAbout
 
   return (
     <Layout>
+      <HelmetDatoCms seo={aboutPage.seoMetaTags} />
       <article>
         <HeaderPost
-          title={about.title}
-          alt={about.avatar.alt}
-          caption={about.avatar.title}
-          fluid={about.avatar.fluid}
+          title={aboutPage.title}
+          alt={aboutPage.avatar.alt}
+          caption={aboutPage.avatar.title}
+          fluid={aboutPage.avatar.fluid}
         />
         <Grid>
           <div sx={{ gridColumn: "2" }}>
@@ -42,8 +47,6 @@ function About({ data }: PageProps<Data>) {
                 dangerouslySetInnerHTML={{
                   __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
                 }}
-                aria-label="About me"
-                sx={{ p: 0 }}
               />
             </BaseStyles>
           </div>
@@ -58,6 +61,9 @@ export default About
 export const pageQuery = graphql`
   query {
     datoCmsAbout {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
       title
       avatar {
         alt
