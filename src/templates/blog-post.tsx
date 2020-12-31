@@ -58,7 +58,7 @@ type Data = {
         slug: string
         title: string
       }
-      prev: {
+      previous: {
         slug: string
         title: string
       }
@@ -77,6 +77,8 @@ type Data = {
 function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
   const post = data.datoCmsPost
   const { previous, next } = pageContext
+
+  console.log(previous)
 
   const imageFluid = post.hero.fluid
   return (
