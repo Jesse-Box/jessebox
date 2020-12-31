@@ -35,14 +35,30 @@ type Data = {
       alt: string
       fluid: FluidObject
     }
-    body: any
+    body: {
+      id: string
+      model: {
+        apiKey: string
+        id: string
+      }
+      textNode: {
+        childMarkdownRemark: {
+          html: string
+        }
+      }
+      media: {
+        alt: string
+        fluid: FluidObject
+        title: string
+      }
+    }[]
 
     pageContext: {
       next: {
         slug: string
         title: string
       }
-      prev: {
+      previous: {
         slug: string
         title: string
       }
@@ -62,8 +78,9 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
   const post = data.datoCmsPost
   const { previous, next } = pageContext
 
-  const imageFluid = post.hero.fluid
+  console.log(previous)
 
+  const imageFluid = post.hero.fluid
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
@@ -76,10 +93,10 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
           fluid={imageFluid}
         />
         <Grid>
-          {data.datoCmsPost.body.map((block, index) => (
+          {data.datoCmsPost.body.map((block) => (
             <div
               sx={{ gridColumn: block.model.apiKey === "visual" ? "1/4" : "2" }}
-              key={`${block.model.id}-${index}`}
+              key={block.id}
             >
               {block.model.apiKey === "text" && (
                 <BaseStyles>
@@ -149,6 +166,7 @@ export const pageQuery = graphql`
       }
       body {
         ... on DatoCmsText {
+          id
           model {
             apiKey
           }
@@ -159,6 +177,7 @@ export const pageQuery = graphql`
           }
         }
         ... on DatoCmsVisual {
+          id
           model {
             apiKey
           }
