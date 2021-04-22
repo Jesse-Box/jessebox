@@ -9,9 +9,9 @@ export default {
 
   fonts: {
     body:
-      "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+      "Unica77LLWeb-Regular, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
     heading:
-      "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+      "Unica77LLWeb-Bold, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
     monospace: "Menlo, monospace",
   },
 
@@ -27,7 +27,7 @@ export default {
 
   fontWeights: {
     body: 400,
-    heading: 600,
+    heading: 400,
   },
 
   lineHeights: {

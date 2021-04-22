@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Unica77LLWeb-Regular";
+  src: url("Unica77LLWeb-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Unica77LLWeb-Regular";
+  src: url("Unica77LLWeb-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Unica77LLWeb-Bold";
+  src: url("Unica77LLWeb-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Unica77LLWeb-Bold";
+  src: url("Unica77LLWeb-Bold.woff2") format("woff2");
+}
