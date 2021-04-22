@@ -79,7 +79,7 @@ export default {
       fontSize: 6,
       mt: 0,
       mb: [2, 2, 3],
-      letterSpacing: "-0.64px",
+      letterSpacing: "-0.48px",
     },
     h2: {
       color: "text",
@@ -89,6 +89,7 @@ export default {
       fontSize: 5,
       mt: 0,
       mb: [2, 2, 3],
+      letterSpacing: "-0.24px",
     },
     h3: {
       color: "text",
@@ -147,12 +148,10 @@ export default {
 
       ":hover": {
         textDecoration: "underline",
-        textUnderlinePosition: "under",
       },
 
       ":active": {
         textDecoration: "underline",
-        textUnderlinePosition: "under",
       },
 
       ":focus": {
