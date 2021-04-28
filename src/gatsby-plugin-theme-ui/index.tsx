@@ -9,9 +9,9 @@ export default {
 
   fonts: {
     body:
-      "Unica77LLWeb-Regular, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+      "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
     heading:
-      "Unica77LLWeb-Bold, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+      "system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif",
     monospace: "Menlo, monospace",
   },
 
@@ -27,7 +27,7 @@ export default {
 
   fontWeights: {
     body: 400,
-    heading: 400,
+    heading: 600,
   },
 
   lineHeights: {
@@ -148,10 +148,12 @@ export default {
 
       ":hover": {
         textDecoration: "underline",
+        textUnderlinePosition: "under",
       },
 
       ":active": {
         textDecoration: "underline",
+        textUnderlinePosition: "under",
       },
 
       ":focus": {
