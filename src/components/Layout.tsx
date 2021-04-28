@@ -8,6 +8,7 @@ import Footer from "./Footer"
 
 interface Data {
   datoCmsSite: {
+    locale: string
     globalSeo: {
       siteName: string
     }
@@ -26,6 +27,7 @@ function Layout({ children }: Props) {
   const data: Data = useStaticQuery(graphql`
     query seoQuery {
       datoCmsSite {
+        locale
         globalSeo {
           siteName
         }
@@ -44,7 +46,9 @@ function Layout({ children }: Props) {
       <HelmetDatoCms
         favicon={data.datoCmsSite.faviconMetaTags}
         seo={data.datoCmsSeoMetaTags}
-      />
+      >
+        <html lang={data.datoCmsSite.locale} />
+      </HelmetDatoCms>
       <Navigation />
       <main sx={{ mx: "auto", px: [2, 3, 4] }}>{children}</main>
       <Footer />
