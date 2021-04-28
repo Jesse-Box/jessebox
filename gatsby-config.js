@@ -79,14 +79,5 @@ module.exports = {
         disableLiveReload: false,
       },
     },
-    {
-  resolve: "gatsby-plugin-web-font-loader",
-  options: {
-    custom: {
-      families: ["Unica77LLWeb-Regular, Unica77LLWeb-Bold"],
-      urls: ["/fonts/fonts.css"],
-    },
-  },
-},
   ],
 }
