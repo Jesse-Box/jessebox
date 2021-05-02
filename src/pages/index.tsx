@@ -46,7 +46,7 @@ function BlogIndex({ data }: PageProps<Data>) {
       <section>
         <Grid>
           <Styled.p sx={{ gridColumn: "2" }}>Recent Posts</Styled.p>
-          <Styled.ul sx={{ listStyle: "none", gridColumn: "2", px: 0 }}>
+          <ul sx={{ listStyle: "none", gridColumn: "2", px: 0, m: 0 }}>
             {posts.map(({ node }) => {
               const title = node.title || node.fields.slug
               return (
@@ -61,7 +61,7 @@ function BlogIndex({ data }: PageProps<Data>) {
                 />
               )
             })}
-          </Styled.ul>
+          </ul>
         </Grid>
       </section>
     </Layout>

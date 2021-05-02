@@ -17,7 +17,7 @@ interface Props {
 function CardPost(props: Props) {
   const { key, date, title, to, description, excerpt, alt, fluid } = props
   return (
-    <li key={key}>
+    <li key={key} sx={{ pb: [2, 3, 3] }}>
       <Image alt={alt} fluid={fluid} sx={{ mb: [3, 3, 4] }} />
       <Styled.h3>
         <Styled.a as={Link} title={title} to={to}>
@@ -30,7 +30,7 @@ function CardPost(props: Props) {
           __html: description || excerpt,
         }}
       />
-      <Styled.p sx={{ color: "secondary", mb: 3 }}>{date}</Styled.p>
+      <Styled.p sx={{ color: "secondary" }}>{date}</Styled.p>
     </li>
   )
 }
