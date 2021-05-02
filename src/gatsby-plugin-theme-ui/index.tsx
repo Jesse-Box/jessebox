@@ -163,7 +163,7 @@ export default {
     ul: {
       mt: 0,
       mb: [3, 3, 4],
-      px: 0,
+      px: 3,
     },
     pre: {
       fontFamily: "monospace",
