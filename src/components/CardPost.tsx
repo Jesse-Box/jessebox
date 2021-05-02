@@ -30,7 +30,7 @@ function CardPost(props: Props) {
           __html: description || excerpt,
         }}
       />
-      <Styled.p sx={{ color: "secondary" }}>{date}</Styled.p>
+      <Styled.p sx={{ color: "secondary", mb: 3 }}>{date}</Styled.p>
     </li>
   )
 }

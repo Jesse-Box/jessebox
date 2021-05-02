@@ -163,7 +163,19 @@ export default {
     ul: {
       mt: 0,
       mb: [3, 3, 4],
-      px: 3,
+      pl: ["14px", "18px", "22px"],
+      pr: 4,
+    },
+    ol: {
+      mt: 0,
+      mb: [3, 3, 4],
+      pl: ["18px", "22px", "26px"],
+      pr: 4,
+    },
+    li: {
+      pl: [2, 3],
+      mb: 2,
+      color: "secondary",
     },
     pre: {
       fontFamily: "monospace",
