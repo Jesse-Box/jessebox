@@ -46,6 +46,12 @@ module.exports = {
       "8xl": ["4.3rem", { lineHeight: "1" }],
       "9xl": ["5.16em", { lineHeight: "1" }],
     },
+    lineHeight: {
+      none: "1",
+      tight: "1.25",
+      normal: "1.5",
+      loose: "2",
+    },
     fontWeight: {
       thin: "100",
       extralight: "200",
@@ -56,6 +62,14 @@ module.exports = {
       bold: "700",
       extrabold: "800",
       black: "900",
+    },
+    letterSpacing: {
+      tighter: "-0.05em",
+      tight: "-0.025em",
+      normal: "0em",
+      wide: "0.025em",
+      wider: "0.05em",
+      widest: "0.1em",
     },
     extend: {},
   },
