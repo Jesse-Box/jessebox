@@ -2,11 +2,6 @@ module.exports = {
   purge: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    screens: {
-      sm: "40em",
-      md: "56em",
-      lg: "64em",
-    },
     colors: {
       text: "#F9FAFB",
       background: "#101010",
@@ -18,18 +13,6 @@ module.exports = {
       accent: "#47A6FF",
       secondary: "#ADB9C2",
       muted: "#292929",
-    },
-    fontFamily: {
-      sans: [
-        "system-ui",
-        "-apple-system",
-        "BlinkMacSystemFont",
-        "Segoe UI",
-        "Roboto",
-        "Helvetica Neue",
-        "sans-serif",
-      ],
-      monospace: ["Menlo", "monospace"],
     },
     fontSize: {
       xs: ["0.694rem", { lineHeight: "1.5rem" }],
@@ -45,31 +28,6 @@ module.exports = {
       "7xl": ["3.583rem", { lineHeight: "1" }],
       "8xl": ["4.3rem", { lineHeight: "1" }],
       "9xl": ["5.16em", { lineHeight: "1" }],
-    },
-    lineHeight: {
-      none: "1",
-      tight: "1.25",
-      normal: "1.5",
-      loose: "2",
-    },
-    fontWeight: {
-      thin: "100",
-      extralight: "200",
-      light: "300",
-      normal: "400",
-      medium: "500",
-      semibold: "600",
-      bold: "700",
-      extrabold: "800",
-      black: "900",
-    },
-    letterSpacing: {
-      tighter: "-0.05em",
-      tight: "-0.025em",
-      normal: "0em",
-      wide: "0.025em",
-      wider: "0.05em",
-      widest: "0.1em",
     },
     extend: {},
   },
