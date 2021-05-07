@@ -26,7 +26,8 @@ interface Data {
   }
 }
 
-function About({ data }: PageProps<Data>) {
+export default function About(props: PageProps<Data>) {
+  const { data } = props
   const aboutPage = data.datoCmsAbout
 
   return (
@@ -52,8 +53,6 @@ function About({ data }: PageProps<Data>) {
     </Layout>
   )
 }
-
-export default About
 
 export const pageQuery = graphql`
   query {

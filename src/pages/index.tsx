@@ -34,7 +34,8 @@ interface Data {
   }
 }
 
-function BlogIndex({ data }: PageProps<Data>) {
+export default function BlogIndex(props: PageProps<Data>) {
+  const { data } = props
   const posts = data.allDatoCmsPost.edges
   const homePage = data.datoCmsHome
 
@@ -66,8 +67,6 @@ function BlogIndex({ data }: PageProps<Data>) {
     </Layout>
   )
 }
-
-export default BlogIndex
 
 export const pageQuery = graphql`
   query {

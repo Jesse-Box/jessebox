@@ -72,7 +72,8 @@ type Data = {
   }
 }
 
-function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
+export default function BlogPostTemplate(props: PageProps<Data>) {
+  const { data, pageContext } = props
   const post = data.datoCmsPost
   const { previous, next } = pageContext
 
@@ -132,8 +133,6 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
     </Layout>
   )
 }
-
-export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

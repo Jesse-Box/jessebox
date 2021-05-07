@@ -18,7 +18,8 @@ interface Data {
   }
 }
 
-function NotFoundPage({ data }: PageProps<Data>) {
+export default function NotFoundPage(props: PageProps<Data>) {
+  const { data } = props
   const notFoundPage = data.datoCmsNotFound
   return (
     <Layout>
@@ -27,8 +28,6 @@ function NotFoundPage({ data }: PageProps<Data>) {
     </Layout>
   )
 }
-
-export default NotFoundPage
 
 export const pageQuery = graphql`
   query {
