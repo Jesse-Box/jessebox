@@ -12,7 +12,7 @@ interface Props {
   fluid: FluidObject
 }
 
-function HeaderPost(props: Props) {
+export default function HeaderPost(props: Props) {
   const { date, title, description, alt, caption, fluid } = props
   return (
     <Grid>
@@ -26,5 +26,3 @@ function HeaderPost(props: Props) {
     </Grid>
   )
 }
-
-export default HeaderPost

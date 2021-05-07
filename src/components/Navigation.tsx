@@ -3,7 +3,7 @@ import Grid from "./Grid"
 import LinkNav from "./LinkNav"
 import ThemeToggle from "./ThemeToggle"
 
-function Navigation() {
+export default function Navigation() {
   return (
     <header>
       <Grid>
@@ -31,5 +31,3 @@ function Navigation() {
     </header>
   )
 }
-
-export default Navigation

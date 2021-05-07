@@ -7,7 +7,7 @@ interface Props {
   title: string
 }
 
-function ListPost(props: Props) {
+export default function ListPost(props: Props) {
   const { to, rel, title } = props
   return (
     <div
@@ -39,5 +39,3 @@ function ListPost(props: Props) {
 ListPost.defaultProps = {
   title: "title",
 }
-
-export default ListPost

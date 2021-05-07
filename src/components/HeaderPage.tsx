@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode
 }
 
-function HeaderPage(props: Props) {
+export default function HeaderPage(props: Props) {
   const { children } = props
   return (
     <header aria-label="Post Header">
@@ -12,4 +12,3 @@ function HeaderPage(props: Props) {
     </header>
   )
 }
-export default HeaderPage

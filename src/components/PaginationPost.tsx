@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode
 }
 
-function PaginationPost(props: Props) {
+export default function PaginationPost(props: Props) {
   const { children } = props
   return (
     <section>
@@ -18,5 +18,3 @@ function PaginationPost(props: Props) {
     </section>
   )
 }
-
-export default PaginationPost

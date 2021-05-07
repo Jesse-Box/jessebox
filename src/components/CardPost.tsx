@@ -13,7 +13,7 @@ interface Props {
   fluid: FluidObject
 }
 
-function CardPost(props: Props) {
+export default function CardPost(props: Props) {
   const { key, date, title, to, description, excerpt, alt, fluid } = props
   return (
     <li key={key}>
@@ -33,5 +33,3 @@ function CardPost(props: Props) {
     </li>
   )
 }
-
-export default CardPost

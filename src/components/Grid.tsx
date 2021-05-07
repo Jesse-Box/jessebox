@@ -4,8 +4,6 @@ interface Props {
   children: React.ReactNode
 }
 
-function Grid({ children }: Props) {
+export default function Grid({ children }: Props) {
   return <section>{children}</section>
 }
-
-export default Grid

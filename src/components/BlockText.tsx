@@ -5,7 +5,7 @@ interface Props {
   html: string
 }
 
-function BlockText({ html }: Props) {
+export default function BlockText({ html }: Props) {
   return (
     <section>
       <Grid>
@@ -18,5 +18,3 @@ function BlockText({ html }: Props) {
     </section>
   )
 }
-
-export default BlockText

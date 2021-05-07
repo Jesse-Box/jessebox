@@ -21,7 +21,9 @@ interface Props {
   children: React.ReactNode
 }
 
-function Layout({ children }: Props) {
+export default function Layout(props: Props) {
+  const { children } = props
+
   const data: Data = useStaticQuery(graphql`
     query seoQuery {
       datoCmsSite {
@@ -50,5 +52,3 @@ function Layout({ children }: Props) {
     </>
   )
 }
-
-export default Layout

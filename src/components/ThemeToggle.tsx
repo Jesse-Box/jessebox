@@ -2,7 +2,7 @@ import React from "react"
 
 import Button from "./Button"
 
-function ThemeToggle() {
+export default function ThemeToggle() {
   //  const [mode, setMode] = useColorMode()
   // const next = mode === "default" ? "light" : "default"
 
@@ -14,5 +14,3 @@ function ThemeToggle() {
     ></Button>
   )
 }
-
-export default ThemeToggle

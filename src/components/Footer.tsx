@@ -2,7 +2,7 @@ import React from "react"
 import Grid from "./Grid"
 import LinkNav from "./LinkNav"
 
-function Footer() {
+export default function Footer() {
   return (
     <footer>
       <Grid>
@@ -42,5 +42,3 @@ function Footer() {
     </footer>
   )
 }
-
-export default Footer

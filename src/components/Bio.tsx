@@ -13,7 +13,7 @@ interface Data {
   }
 }
 
-function Bio() {
+export default function Bio() {
   const data: Data = useStaticQuery(graphql`
     query BioQuery {
       datoCmsAbout {
@@ -39,5 +39,3 @@ function Bio() {
     </section>
   )
 }
-
-export default Bio
