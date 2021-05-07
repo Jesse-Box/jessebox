@@ -20,7 +20,6 @@
     "gatsby-plugin-robots-txt": "^1.5.5",
     "gatsby-plugin-sharp": "^3.1.0",
     "gatsby-plugin-sitemap": "^3.1.0",
-    "gatsby-plugin-theme-ui": "^0.3.5",
     "gatsby-plugin-typescript": "^3.1.0",
     "gatsby-remark-copy-linked-files": "^3.1.0",
     "gatsby-remark-embed-video": "^3.1.1",
@@ -35,7 +34,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "theme-ui": "^0.3.5",
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
