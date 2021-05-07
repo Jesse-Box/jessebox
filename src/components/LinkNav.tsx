@@ -15,7 +15,6 @@ export default function LinkNav(props: Props) {
   const { id, href, title, ariaLabel, children, to, activeClassName } = props
   return (
     <Link
-      as={Link}
       id={id}
       href={href}
       title={title}

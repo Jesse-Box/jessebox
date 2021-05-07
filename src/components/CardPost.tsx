@@ -17,9 +17,9 @@ export default function CardPost(props: Props) {
   const { key, date, title, to, description, excerpt, alt, fluid } = props
   return (
     <li key={key}>
-      <Image alt={alt} fluid={fluid} sx={{ mb: [3, 3, 4] }} />
+      <Image alt={alt} fluid={fluid} />
       <h3>
-        <Link as={Link} title={title} to={to}>
+        <Link title={title} to={to}>
           {title}
         </Link>
       </h3>
