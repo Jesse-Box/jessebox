@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import { PageProps, graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
@@ -45,8 +44,8 @@ function BlogIndex({ data }: PageProps<Data>) {
       <BlockText html={homePage.introNode.childMarkdownRemark.html} />
       <section>
         <Grid>
-          <Styled.p sx={{ gridColumn: "2" }}>Recent Posts</Styled.p>
-          <Styled.ul sx={{ listStyle: "none", gridColumn: "2" }}>
+          <p>Recent Posts</p>
+          <ul>
             {posts.map(({ node }) => {
               const title = node.title || node.fields.slug
               return (
@@ -61,7 +60,7 @@ function BlogIndex({ data }: PageProps<Data>) {
                 />
               )
             })}
-          </Styled.ul>
+          </ul>
         </Grid>
       </section>
     </Layout>

@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Styled, BaseStyles } from "theme-ui"
+import React from "react"
 import { PageProps, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 import { FluidObject } from "gatsby-image"
@@ -41,14 +40,12 @@ function About({ data }: PageProps<Data>) {
           fluid={aboutPage.avatar.fluid}
         />
         <Grid>
-          <div sx={{ gridColumn: "2" }}>
-            <BaseStyles>
-              <Styled.div
-                dangerouslySetInnerHTML={{
-                  __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
-                }}
-              />
-            </BaseStyles>
+          <div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
+              }}
+            />
           </div>
         </Grid>
       </article>

@@ -1,32 +1,14 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
-
+import React from "react"
 import Grid from "./Grid"
 import LinkNav from "./LinkNav"
 
 function Footer() {
   return (
-    <footer sx={{ py: [2, 3, 4] }}>
+    <footer>
       <Grid>
-        <nav
-          sx={{
-            gridColumn: "1/4",
-            py: [3, 4, 5],
-            display: "flex",
-            flexFlow: ["column wrap", "row wrap"],
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <span sx={{ color: "secondary" }}>me(at)jessebox.net</span>
-          <ul
-            sx={{
-              display: "flex",
-              flexFlow: "row wrap",
-              listStyle: "none",
-              p: 0,
-            }}
-          >
+        <nav>
+          <span>me(at)jessebox.net</span>
+          <ul>
             <li>
               <LinkNav
                 title="Twitter Profile"

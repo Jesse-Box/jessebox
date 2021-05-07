@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import { Link } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 
@@ -19,18 +18,18 @@ function CardPost(props: Props) {
   return (
     <li key={key}>
       <Image alt={alt} fluid={fluid} sx={{ mb: [3, 3, 4] }} />
-      <Styled.h3>
-        <Styled.a as={Link} title={title} to={to}>
+      <h3>
+        <Link as={Link} title={title} to={to}>
           {title}
-        </Styled.a>
-      </Styled.h3>
-      <Styled.p
+        </Link>
+      </h3>
+      <p
         aria-label="Post Description"
         dangerouslySetInnerHTML={{
           __html: description || excerpt,
         }}
       />
-      <Styled.p sx={{ color: "secondary" }}>{date}</Styled.p>
+      <p>{date}</p>
     </li>
   )
 }

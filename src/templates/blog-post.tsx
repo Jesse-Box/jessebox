@@ -1,6 +1,4 @@
-/** @jsx jsx */
-
-import { jsx, Styled, BaseStyles, Box } from "theme-ui"
+import React from "react"
 import { graphql, PageProps } from "gatsby"
 import Image, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
@@ -84,7 +82,7 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
-      <article sx={{ pb: [3, 4, 5] }}>
+      <article>
         <HeaderPost
           date={post.date}
           title={post.title}
@@ -94,28 +92,19 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
         />
         <Grid>
           {data.datoCmsPost.body.map((block) => (
-            <div
-              sx={{ gridColumn: block.model.apiKey === "visual" ? "1/4" : "2" }}
-              key={block.id}
-            >
+            <div key={block.id}>
               {block.model.apiKey === "text" && (
-                <BaseStyles>
-                  <Styled.div
-                    dangerouslySetInnerHTML={{
-                      __html: block.textNode.childMarkdownRemark.html,
-                    }}
-                  />
-                </BaseStyles>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: block.textNode.childMarkdownRemark.html,
+                  }}
+                />
               )}
               {block.model.apiKey === "visual" && (
-                <Box my={[3, 4, 5]}>
-                  <Image
-                    sx={{ mb: [2, 3, 4] }}
-                    fluid={block.media.fluid}
-                    alt={block.media.alt}
-                  />
-                  <Styled.h6>{block.media.title}</Styled.h6>
-                </Box>
+                <div>
+                  <Image fluid={block.media.fluid} alt={block.media.alt} />
+                  <h6>{block.media.title}</h6>
+                </div>
               )}
             </div>
           ))}
@@ -123,7 +112,7 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
       </article>
       {previous || next ? (
         <PaginationPost>
-          <Styled.li sx={{ flex: "1 1 50%" }}>
+          <li>
             {previous && (
               <ListPost
                 rel="prev"
@@ -131,12 +120,12 @@ function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
                 title={previous.title}
               />
             )}
-          </Styled.li>
-          <Styled.li sx={{ flex: "1 1 50%" }}>
+          </li>
+          <li>
             {next && (
               <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
             )}
-          </Styled.li>
+          </li>
         </PaginationPost>
       ) : null}
       <BlockText html={data.datoCmsAbout.introNode.childMarkdownRemark.html} />

@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+import React from "react"
 
 interface Props {
   variant?: string
@@ -11,46 +10,12 @@ interface Props {
 }
 
 export const Button = (props: Props) => {
-  const { variant, ariaLabel, id, title, children, onClick } = props
+  const { ariaLabel, id, title, children, onClick } = props
   return (
-    <button
-      id={id}
-      title={title}
-      aria-label={ariaLabel}
-      onClick={onClick}
-      sx={{
-        variant: `buttons.${variant}`,
-        fontFamily: "body",
-        borderRadius: 4,
-        border: "none",
-        outline: "none",
-        appearance: "none",
-        display: "inline-block",
-        textAlign: "center",
-        lineHeight: "inherit",
-        fontSize: "inherit",
-        fontWeight: "inherit",
-        m: 0,
-        px: [3, 4, 4],
-        py: 2,
-        transition: "all 160ms ease-in",
-
-        ":active": {
-          transform: "scale(.92)",
-        },
-
-        ":focused": {
-          transform: "scale(1.08)",
-        },
-      }}
-    >
+    <button id={id} title={title} aria-label={ariaLabel} onClick={onClick}>
       {children}
     </button>
   )
-}
-
-Button.defaultProps = {
-  variant: "primary",
 }
 
 export default Button

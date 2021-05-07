@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Styled, BaseStyles } from "theme-ui"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Grid from "./Grid"
@@ -29,17 +28,14 @@ function Bio() {
 
   return (
     <section>
-      <BaseStyles>
-        <Grid>
-          <Styled.div
-            dangerouslySetInnerHTML={{
-              __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
-            }}
-            aria-label="About me"
-            sx={{ gridColumn: "2", mb: [3, 4, 5] }}
-          />
-        </Grid>
-      </BaseStyles>
+      <Grid>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
+          }}
+          aria-label="About me"
+        />
+      </Grid>
     </section>
   )
 }

@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
@@ -40,15 +39,15 @@ function Layout({ children }: Props) {
   `)
 
   return (
-    <Styled.root>
+    <>
       <HelmetDatoCms
         favicon={data.datoCmsSite.faviconMetaTags}
         seo={data.datoCmsSeoMetaTags}
       />
       <Navigation />
-      <main sx={{ mx: "auto", px: [2, 3, 4] }}>{children}</main>
+      <main>{children}</main>
       <Footer />
-    </Styled.root>
+    </>
   )
 }
 

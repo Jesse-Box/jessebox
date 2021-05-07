@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import { Link } from "gatsby"
 
 interface Props {
@@ -15,7 +14,7 @@ interface Props {
 function LinkNav(props: Props) {
   const { id, href, title, ariaLabel, children, to, activeClassName } = props
   return (
-    <Styled.a
+    <Link
       as={Link}
       id={id}
       href={href}
@@ -23,33 +22,9 @@ function LinkNav(props: Props) {
       aria-label={ariaLabel}
       to={to}
       activeClassName={activeClassName}
-      sx={{
-        fontFamily: "body",
-        borderRadius: 4,
-        border: "none",
-        outline: "none",
-        appearance: "none",
-        display: "inline-block",
-        textAlign: "center",
-        lineHeight: "inherit",
-        fontSize: "inherit",
-        fontWeight: "inherit",
-        m: 0,
-        px: [3, 4, 4],
-        py: 2,
-        transition: "all 80ms ease-in",
-
-        ":active": {
-          transform: "scale(.92)",
-        },
-
-        ":focus": {
-          boxShadow: (theme) => `0 0 0 3px ${theme.colors.accent}`,
-        },
-      }}
     >
       {children}
-    </Styled.a>
+    </Link>
   )
 }
 

@@ -1,6 +1,4 @@
-/** @jsx jsx */
-
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import { Link } from "gatsby"
 
 interface Props {
@@ -18,15 +16,14 @@ function ListPost(props: Props) {
         flexFlow: "column nowrap",
       }}
     >
-      <Styled.h6
+      <h6
         sx={{
           textAlign: rel === "next" ? "right" : "left",
         }}
       >
         {rel}
-      </Styled.h6>
-      <Styled.a
-        sx={{ textAlign: rel === "next" ? "right" : "left" }}
+      </h6>
+      <Link
         title={title}
         aria-label={rel === "next" ? `Next Article` : `Previous Article`}
         as={Link}
@@ -34,7 +31,7 @@ function ListPost(props: Props) {
         rel={rel}
       >
         {rel === "next" ? `${title} →` : `←${title}`}
-      </Styled.a>
+      </Link>
     </div>
   )
 }
