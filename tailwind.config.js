@@ -3,16 +3,16 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
-      text: "#F9FAFB",
-      background: "#101010",
+      text: "#1A1F23",
+      background: "#F9FAFB",
       primary: {
-        light: "#FF7E70",
-        base: "#FF5447",
-        dark: "#D93732",
+        light: "#8870FF",
+        base: "#6047FF",
+        dark: "#4332D9",
       },
-      accent: "#47A6FF",
-      secondary: "#ADB9C2",
-      muted: "#292929",
+      accent: "#CF1726",
+      secondary: "#5F7181",
+      muted: "#E7EBEE",
     },
     fontSize: {
       xs: ["0.694rem", { lineHeight: "1.5rem" }],
