@@ -4,9 +4,7 @@ import Image, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/Layout"
-import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
-import BlockText from "../components/BlockText"
 
 type Data = {
   datoCmsSite: {
@@ -82,6 +80,8 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
   const title = post.title
   const description = post.seo.description
   const date = post.date
+  const body = post.body
+  const about = data.datoCmsAbout.introNode.childMarkdownRemark.html
 
   return (
     <Layout>
@@ -94,7 +94,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
           <h6>{date}</h6>
         </header>
         <section>
-          {post.body.map((block) => (
+          {body.map((block) => (
             <div key={block.id}>
               {block.model.apiKey === "text" && (
                 <div
@@ -114,24 +114,30 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
         </section>
       </article>
       {previous || next ? (
-        <PaginationPost>
-          <li>
-            {previous && (
-              <ListPost
-                rel="prev"
-                to={`/${previous.slug}`}
-                title={previous.title}
-              />
-            )}
-          </li>
-          <li>
-            {next && (
-              <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
-            )}
-          </li>
-        </PaginationPost>
+        <nav>
+          <ul>
+            <li>
+              {previous && (
+                <ListPost
+                  rel="prev"
+                  to={`/${previous.slug}`}
+                  title={previous.title}
+                />
+              )}
+            </li>
+            <li>
+              {next && (
+                <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
+              )}
+            </li>
+          </ul>
+        </nav>
       ) : null}
-      <BlockText html={data.datoCmsAbout.introNode.childMarkdownRemark.html} />
+      <section
+        dangerouslySetInnerHTML={{
+          __html: about,
+        }}
+      ></section>
     </Layout>
   )
 }

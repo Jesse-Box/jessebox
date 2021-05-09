@@ -10,23 +10,11 @@ interface Props {
 export default function ListPost(props: Props) {
   const { to, rel, title } = props
   return (
-    <div
-      sx={{
-        display: "flex",
-        flexFlow: "column nowrap",
-      }}
-    >
-      <h6
-        sx={{
-          textAlign: rel === "next" ? "right" : "left",
-        }}
-      >
-        {rel}
-      </h6>
+    <div>
+      <h6>{rel}</h6>
       <Link
         title={title}
         aria-label={rel === "next" ? `Next Article` : `Previous Article`}
-        as={Link}
         to={to}
         rel={rel}
       >

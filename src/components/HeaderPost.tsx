@@ -1,8 +1,6 @@
 import React from "react"
 import Image, { FluidObject } from "gatsby-image"
 
-import Grid from "./Grid"
-
 interface Props {
   date?: string
   title: string
