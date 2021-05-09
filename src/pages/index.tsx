@@ -42,27 +42,29 @@ export default function BlogIndex(props: PageProps<Data>) {
   return (
     <Layout>
       <HelmetDatoCms seo={homePage.seoMetaTags} />
-      <BlockText html={homePage.introNode.childMarkdownRemark.html} />
+      <header
+        dangerouslySetInnerHTML={{
+          __html: homePage.introNode.childMarkdownRemark.html,
+        }}
+      ></header>
       <section>
-        <Grid>
-          <p>Recent Posts</p>
-          <ul>
-            {posts.map(({ node }) => {
-              const title = node.title || node.fields.slug
-              return (
-                <CardPost
-                  key={node.slug}
-                  date={node.date}
-                  title={title}
-                  to={node.slug}
-                  description={node.seo.description}
-                  alt={node.alt}
-                  fluid={node.hero.fluid}
-                />
-              )
-            })}
-          </ul>
-        </Grid>
+        <p>Recent Posts</p>
+        <ul>
+          {posts.map(({ node }) => {
+            const title = node.title || node.fields.slug
+            return (
+              <CardPost
+                key={node.slug}
+                date={node.date}
+                title={title}
+                to={node.slug}
+                description={node.seo.description}
+                alt={node.alt}
+                fluid={node.hero.fluid}
+              />
+            )
+          })}
+        </ul>
       </section>
     </Layout>
   )

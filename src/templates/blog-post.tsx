@@ -3,9 +3,7 @@ import { graphql, PageProps } from "gatsby"
 import Image, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import Grid from "../components/Grid"
 import Layout from "../components/Layout"
-import HeaderPost from "../components/HeaderPost"
 import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
 import BlockText from "../components/BlockText"
@@ -74,25 +72,29 @@ type Data = {
 
 export default function BlogPostTemplate(props: PageProps<Data>) {
   const { data, pageContext } = props
-  const post = data.datoCmsPost
+
   const { previous, next } = pageContext
 
-  console.log(previous)
+  const post = data.datoCmsPost
+  const seo = post.seoMetaTags
+  const hero = post.hero.fluid
+  const heroAlt = post.hero.alt
+  const title = post.title
+  const description = post.seo.description
+  const date = post.date
 
-  const imageFluid = post.hero.fluid
   return (
     <Layout>
-      <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
+      <HelmetDatoCms seo={seo} />
       <article>
-        <HeaderPost
-          date={post.date}
-          title={post.title}
-          description={post.seo.description}
-          alt={post.hero.alt}
-          fluid={imageFluid}
-        />
-        <Grid>
-          {data.datoCmsPost.body.map((block) => (
+        <header>
+          <Image alt={heroAlt} fluid={hero} />
+          <h1>{title}</h1>
+          <h5>{description}</h5>
+          <h6>{date}</h6>
+        </header>
+        <section>
+          {post.body.map((block) => (
             <div key={block.id}>
               {block.model.apiKey === "text" && (
                 <div
@@ -109,7 +111,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
               )}
             </div>
           ))}
-        </Grid>
+        </section>
       </article>
       {previous || next ? (
         <PaginationPost>

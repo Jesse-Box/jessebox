@@ -15,14 +15,14 @@ interface Props {
 export default function HeaderPost(props: Props) {
   const { date, title, description, alt, caption, fluid } = props
   return (
-    <Grid>
+    <header>
       <div>
         <Image alt={alt} fluid={fluid} />
         {caption ? <h6>{caption}</h6> : null}
       </div>
       <h1>{title}</h1>
-      {description ? <h5>{description}</h5> : null}
-      {date ? <h6>{date}</h6> : null}
-    </Grid>
+      <h5>{description}</h5>
+      <h6>{date}</h6>
+    </header>
   )
 }
