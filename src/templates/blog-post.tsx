@@ -73,6 +73,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
 
   const { previous, next } = pageContext
 
+  //DRY'ing query strings
   const post = data.datoCmsPost
   const seo = post.seoMetaTags
   const hero = post.hero.fluid

@@ -20,11 +20,16 @@ interface Data {
 
 export default function NotFoundPage(props: PageProps<Data>) {
   const { data } = props
-  const notFoundPage = data.datoCmsNotFound
+
+  //DRY'ing query strings
+  const notFound = data.datoCmsNotFound
+  const seo = notFound.seoMetaTags
+  const body = notFound.introNode.childMarkdownRemark.html
+
   return (
     <Layout>
-      <HelmetDatoCms seo={notFoundPage.seoMetaTags} />
-      <BlockText html={notFoundPage.introNode.childMarkdownRemark.html} />
+      <HelmetDatoCms seo={seo} />
+      <BlockText html={body} />
     </Layout>
   )
 }
