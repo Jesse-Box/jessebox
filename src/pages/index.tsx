@@ -3,10 +3,8 @@ import { PageProps, graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import Grid from "../components/Grid"
 import Layout from "../components/Layout"
 import CardPost from "../components/CardPost"
-import BlockText from "../components/BlockText"
 
 interface Data {
   datoCmsHome: {
@@ -36,27 +34,30 @@ interface Data {
 
 export default function BlogIndex(props: PageProps<Data>) {
   const { data } = props
+
+  //DRY'ing query strings
+  const home = data.datoCmsHome
+  const seo = home.seoMetaTags
+  const intro = home.introNode.childMarkdownRemark.html
   const posts = data.allDatoCmsPost.edges
-  const homePage = data.datoCmsHome
 
   return (
     <Layout>
-      <HelmetDatoCms seo={homePage.seoMetaTags} />
+      <HelmetDatoCms seo={seo} />
       <header
         dangerouslySetInnerHTML={{
-          __html: homePage.introNode.childMarkdownRemark.html,
+          __html: intro,
         }}
       ></header>
       <section>
         <p>Recent Posts</p>
         <ul>
           {posts.map(({ node }) => {
-            const title = node.title || node.fields.slug
             return (
               <CardPost
                 key={node.slug}
                 date={node.date}
-                title={title}
+                title={node.title}
                 to={node.slug}
                 description={node.seo.description}
                 alt={node.alt}

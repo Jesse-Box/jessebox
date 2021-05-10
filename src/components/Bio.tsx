@@ -1,8 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Grid from "./Grid"
-
 interface Data {
   datoCmsAbout: {
     introNode: {
@@ -28,14 +26,11 @@ export default function Bio() {
 
   return (
     <section>
-      <Grid>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
-          }}
-          aria-label="About me"
-        />
-      </Grid>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
+        }}
+      />
     </section>
   )
 }

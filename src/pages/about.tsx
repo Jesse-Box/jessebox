@@ -3,7 +3,6 @@ import { PageProps, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 import Image, { FluidObject } from "gatsby-image"
 
-import Grid from "../components/Grid"
 import Layout from "../components/Layout"
 
 interface Data {

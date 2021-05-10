@@ -3,6 +3,7 @@ import { graphql, PageProps } from "gatsby"
 import Image, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
+import Bio from "../components/Bio"
 import Layout from "../components/Layout"
 import ListPost from "../components/ListPost"
 
@@ -59,13 +60,6 @@ type Data = {
       slug: string
     }
   }
-  datoCmsAbout: {
-    introNode: {
-      childMarkdownRemark: {
-        html: string
-      }
-    }
-  }
 }
 
 export default function BlogPostTemplate(props: PageProps<Data>) {
@@ -82,7 +76,6 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
   const description = post.seo.description
   const date = post.date
   const body = post.body
-  const about = data.datoCmsAbout.introNode.childMarkdownRemark.html
 
   return (
     <Layout>
@@ -134,11 +127,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
           </ul>
         </nav>
       ) : null}
-      <section
-        dangerouslySetInnerHTML={{
-          __html: about,
-        }}
-      ></section>
+      <Bio />
     </Layout>
   )
 }
@@ -185,13 +174,6 @@ export const pageQuery = graphql`
             title
             alt
           }
-        }
-      }
-    }
-    datoCmsAbout {
-      introNode {
-        childMarkdownRemark {
-          html
         }
       }
     }
