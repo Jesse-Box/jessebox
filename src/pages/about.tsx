@@ -27,29 +27,23 @@ interface Data {
 export default function About(props: PageProps<Data>) {
   const { data } = props
 
-  //DRY'ing query strings
-  const about = data.datoCmsAbout
-  const seo = about.seoMetaTags
-  const avatar = about.avatar.fluid
-  const avatarAlt = about.avatar.alt
-  const avatarCaption = about.avatar.title
-  const title = about.title
-  const body = about.bodyNode.childMarkdownRemark.html
-
   return (
     <Layout>
-      <HelmetDatoCms seo={seo} />
+      <HelmetDatoCms seo={data.datoCmsAbout.seoMetaTags} />
       <article>
         <header>
           <figure>
-            <Image alt={avatarAlt} fluid={avatar} />
-            <figcaption>{avatarCaption}</figcaption>
+            <Image
+              alt={data.datoCmsAbout.avatar.alt}
+              fluid={data.datoCmsAbout.avatar.fluid}
+            />
+            <figcaption>{data.datoCmsAbout.avatar.title}</figcaption>
           </figure>
-          <h1>{title}</h1>
+          <h1>{data.datoCmsAbout.title}</h1>
         </header>
         <section
           dangerouslySetInnerHTML={{
-            __html: body,
+            __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
           }}
         />
       </article>

@@ -67,28 +67,21 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
 
   const { previous, next } = pageContext
 
-  //DRY'ing query strings
-  const post = data.datoCmsPost
-  const seo = post.seoMetaTags
-  const hero = post.hero.fluid
-  const heroAlt = post.hero.alt
-  const title = post.title
-  const description = post.seo.description
-  const date = post.date
-  const body = post.body
-
   return (
     <Layout>
-      <HelmetDatoCms seo={seo} />
+      <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
       <article>
         <header>
-          <Image alt={heroAlt} fluid={hero} />
-          <h1>{title}</h1>
-          <h5>{description}</h5>
-          <h6>{date}</h6>
+          <Image
+            alt={data.datoCmsPost.hero.alt}
+            fluid={data.datoCmsPost.hero.fluid}
+          />
+          <h1>{data.datoCmsPost.title}</h1>
+          <h5>{data.datoCmsPost.seo.description}</h5>
+          <h6>{data.datoCmsPost.date}</h6>
         </header>
         <section>
-          {body.map((block) => (
+          {data.datoCmsPost.body.map((block) => (
             <div key={block.id}>
               {block.model.apiKey === "text" && (
                 <div

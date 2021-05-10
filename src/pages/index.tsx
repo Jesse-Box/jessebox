@@ -35,24 +35,18 @@ interface Data {
 export default function BlogIndex(props: PageProps<Data>) {
   const { data } = props
 
-  //DRY'ing query strings
-  const home = data.datoCmsHome
-  const seo = home.seoMetaTags
-  const intro = home.introNode.childMarkdownRemark.html
-  const posts = data.allDatoCmsPost.edges
-
   return (
     <Layout>
-      <HelmetDatoCms seo={seo} />
+      <HelmetDatoCms seo={data.datoCmsHome.seoMetaTags} />
       <header
         dangerouslySetInnerHTML={{
-          __html: intro,
+          __html: data.datoCmsHome.introNode.childMarkdownRemark.html,
         }}
       ></header>
       <section>
         <p>Recent Posts</p>
         <ul>
-          {posts.map(({ node }) => {
+          {data.allDatoCmsPost.edges.map(({ node }) => {
             return (
               <CardPost
                 key={node.slug}

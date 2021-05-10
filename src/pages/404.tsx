@@ -3,7 +3,6 @@ import { PageProps, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/Layout"
-import BlockText from "../components/BlockText"
 
 interface Data {
   datoCmsNotFound: {
@@ -21,15 +20,14 @@ interface Data {
 export default function NotFoundPage(props: PageProps<Data>) {
   const { data } = props
 
-  //DRY'ing query strings
-  const notFound = data.datoCmsNotFound
-  const seo = notFound.seoMetaTags
-  const body = notFound.introNode.childMarkdownRemark.html
-
   return (
     <Layout>
-      <HelmetDatoCms seo={seo} />
-      <BlockText html={body} />
+      <HelmetDatoCms seo={data.datoCmsNotFound.seoMetaTags} />
+      <header
+        dangerouslySetInnerHTML={{
+          __html: data.datoCmsNotFound.introNode.childMarkdownRemark.html,
+        }}
+      />
     </Layout>
   )
 }

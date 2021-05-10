@@ -7,14 +7,14 @@ interface Props {
   date: string
   title: string
   to: string
-  description?: string
-  excerpt?: string
+  description: string
   alt: string
   fluid: FluidObject
 }
 
 export default function CardPost(props: Props) {
-  const { key, date, title, to, description, excerpt, alt, fluid } = props
+  const { key, date, title, to, description, alt, fluid } = props
+
   return (
     <li key={key}>
       <Image alt={alt} fluid={fluid} />
@@ -24,9 +24,8 @@ export default function CardPost(props: Props) {
         </Link>
       </h3>
       <p
-        aria-label="Post Description"
         dangerouslySetInnerHTML={{
-          __html: description || excerpt,
+          __html: description,
         }}
       />
       <p>{date}</p>
