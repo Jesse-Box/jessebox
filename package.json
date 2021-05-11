@@ -10,6 +10,7 @@
   "dependencies": {
     "@emotion/core": "^10.1.1",
     "@emotion/styled": "^11.1.5",
+    "@tailwindcss/typography": "^0.4.0",
     "all": "0.0.0",
     "dotenv": "^8.2.0",
     "gatsby": "^3.1.0",

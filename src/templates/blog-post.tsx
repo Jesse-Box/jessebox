@@ -80,21 +80,22 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
           <h5>{data.datoCmsPost.seo.description}</h5>
           <h6>{data.datoCmsPost.date}</h6>
         </header>
-        <section>
+        <section class="flex flex-col items-center">
           {data.datoCmsPost.body.map((block) => (
             <div key={block.id}>
               {block.model.apiKey === "text" && (
                 <div
+                  class="prose prose-l prose-xl prose-2xl"
                   dangerouslySetInnerHTML={{
                     __html: block.textNode.childMarkdownRemark.html,
                   }}
                 />
               )}
               {block.model.apiKey === "visual" && (
-                <div>
+                <figure>
                   <Image fluid={block.media.fluid} alt={block.media.alt} />
-                  <h6>{block.media.title}</h6>
-                </div>
+                  <figcaption>{block.media.title}</figcaption>
+                </figure>
               )}
             </div>
           ))}
