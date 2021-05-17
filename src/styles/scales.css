@@ -1,0 +1,69 @@
+:root {
+  /* Color */
+  --color-primary: #1a1f23;
+  --color-secondary: #5f7181;
+  --color-accent-light: #8870ff;
+  --color-accent-default: #6047ff;
+  --color-accent-dark: #4332d9;
+  --color-focus: #cf1726;
+  --color-background: #f9fafb;
+  --color-border: #e7ebee;
+
+  /* Space */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 32px;
+  --space-5: 64px;
+  --space-6: 128px;
+
+  /* Break Point */
+  --breakpoint-0: 40rem;
+  --breakpoint-1: 56rem;
+  --breakpoint-2: 64rem;
+
+  /* Border Radius */
+  --borderRadius-0: 0px;
+  --borderRadius-1: 2px;
+  --borderRadius-2: 4px;
+  --borderRadius-3: 8px;
+  --borderRadius-4: 16px;
+  --borderRadius-5: 32px;
+  --borderRadius-6: 99px;
+
+  /* Font Family */
+  --fontFamily-sans: 
+      system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+  --fontFamily-mono: Menlo, monospace;
+
+  /*Font Sizes */
+  --fontSize-0: 0.833rem;
+  --fontSize-1: 1rem;
+  --fontSize-2: 1.2rem;
+  --fontSize-3: 1.44rem;
+  --fontSize-4: 1.728rem;
+  --fontSize-5: 2.074rem;
+  --fontSize-6: 2.488rem;
+
+  /*Line Height */
+  --lineHeight-0: 1;
+  --lineHeight-1: 1.25;
+  --lineHeight-2: 1.5;
+
+  /* Font Weight */
+  --fontWeight-0: 400;
+  --fontWeight-1: 600;
+}
+
+[data-theme="dark"] {
+  --color-primary: #f9fafb;
+  --color-secondary: #adb9c2;
+  --color-accent-light: #ff7e70;
+  --color-accent-default: #ff5447;
+  --color-accent-dark: #d93732;
+  --color-focus: #47a6ff;
+  --color-background: #101010;
+  --color-border: #292929;
+}
+
