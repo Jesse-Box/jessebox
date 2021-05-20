@@ -1,0 +1,16 @@
+a {
+  color: var(--color-accent-dafault);
+  transition: all 80ms ease-in;
+  outline: none;
+  border-radius: var(--borderRadius-1);
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+a:focus {
+  box-shadow: 0 0 0 2px var(--color-focus) ;
+}
