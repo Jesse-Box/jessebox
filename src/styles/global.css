@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "./scales.css";
+
+body {
+  font-size: 16px;
+  line-height: var(--lineHeight-2);
+  font-family: var(--fontFamily-sans);
+  font-weight: var(--fontWeight-400);
+  color: var(--color-primary);
+}
+
+@media (min-width: var(--breakpoint-0)){
+  body {
+    font-size: 20px;
+  }
+}
+@media (min-width: var(--breakpoint-1)){
+  body {
+    font-size: 24px;
+  }
+}
