@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import "./scales.css";
 
 body {
@@ -17,8 +13,22 @@ body {
     font-size: 20px;
   }
 }
+
 @media (min-width: var(--breakpoint-1)){
   body {
     font-size: 24px;
   }
+}
+
+@media (prefers-color-scheme: dark) {
+ :root {
+  --color-primary: #F9FAFB;
+  --color-secondary: #ADB9C2;
+  --color-accent-light: #FF7E70;
+  --color-accent-default: #FF5447;
+  --color-accent-dark: #D93732;
+  --color-focus: #47A6FF;
+  --color-background: #101010;
+  --color-border: #292929;
+ }
 }
