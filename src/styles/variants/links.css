@@ -1,5 +1,5 @@
 a {
-  color: var(--color-accent-dafault);
+  color: var(--color-accent-default);
   transition: all 80ms ease-in;
   outline: none;
   border-radius: var(--borderRadius-1);
@@ -12,5 +12,5 @@ a:hover, a:active {
 }
 
 a:focus {
-  box-shadow: 0 0 0 2px var(--color-focus) ;
+  box-shadow: 0 0 0 2px var(--color-focus);
 }

@@ -38,13 +38,13 @@
   --fontFamily-mono: Menlo, monospace;
 
   /*Font Size */
-  --fontSize-0: 0.833rem;
-  --fontSize-1: 1rem;
-  --fontSize-2: 1.2rem;
-  --fontSize-3: 1.44rem;
-  --fontSize-4: 1.728rem;
-  --fontSize-5: 2.074rem;
-  --fontSize-6: 2.488rem;
+  --fontSize-0: 0.833em;
+  --fontSize-1: 1em;
+  --fontSize-2: 1.2em;
+  --fontSize-3: 1.44em;
+  --fontSize-4: 1.728em;
+  --fontSize-5: 2.074em;
+  --fontSize-6: 2.488em;
 
   /*Line Height */
   --lineHeight-0: 1;

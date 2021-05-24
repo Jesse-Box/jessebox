@@ -2,21 +2,21 @@
 
 body {
   background-color: var(--color-background);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: var(--lineHeight-2);
   font-family: var(--fontFamily-sans);
   font-weight: var(--fontWeight-400);
   color: var(--color-primary);
 }
 
-@media (min-width: var(--breakpoint-0)){
+@media (min-width: 600px){
   body {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 }
 
-@media (min-width: var(--breakpoint-1)){
+@media (min-width: 1000px) {
   body {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 }

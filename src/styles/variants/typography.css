@@ -1,5 +1,3 @@
-@import "../scales.css";
-
 h1 {
   font-size: var(--fontSize-6);
 }
