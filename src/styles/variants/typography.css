@@ -18,7 +18,7 @@ h1, h2, h3, h4 {
   line-height: var(--lineHeight-1);
   font-weight: var(--fontWeight-600);
   margin-top: var(--space-0);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
 }
 
 h5 {
@@ -43,11 +43,10 @@ h5, h6, p {
 ul, ol {
   margin-top: var(--space-0);
   margin-bottom: var(--space-3);
-  padding: 0px var(--space--3);
+  padding: 0px var(--space-3);
 }
 
 li {
-  padding: 0px var(--space--2);
+  padding: 0px var(--space-2);
   margin-bottom: var(--space-2);
-  color: var(--color-secondary);
 }

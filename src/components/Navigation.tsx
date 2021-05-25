@@ -21,9 +21,6 @@ export default function Navigation() {
               About
             </LinkNav>
           </li>
-          <li>
-            <ThemeToggle />
-          </li>
         </ul>
       </nav>
     </header>

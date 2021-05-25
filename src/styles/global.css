@@ -6,6 +6,8 @@ body {
   line-height: var(--lineHeight-2);
   font-family: var(--fontFamily-sans);
   font-weight: var(--fontWeight-400);
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
   color: var(--color-primary);
 }
 
