@@ -102,7 +102,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
       </article>
       {previous || next ? (
         <nav>
-          <ul>
+          <ul className="listStyle-none">
             <li>
               {previous && (
                 <ListPost

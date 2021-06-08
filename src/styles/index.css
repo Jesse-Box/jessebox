@@ -1,5 +1,7 @@
 @import "./normalize.css";
 @import "./scales.css";
 @import "./global.css";
+@import "./utils.css";
 @import "./variants/typography.css";
 @import "./variants/links.css";
+

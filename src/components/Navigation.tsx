@@ -1,7 +1,5 @@
 import React from "react"
-import Grid from "./Grid"
 import LinkNav from "./LinkNav"
-import ThemeToggle from "./ThemeToggle"
 
 export default function Navigation() {
   return (
@@ -10,7 +8,7 @@ export default function Navigation() {
         Home
       </LinkNav>
       <nav>
-        <ul>
+        <ul className="listStyle-none">
           <li>
             <LinkNav
               title="About me"

@@ -50,3 +50,8 @@ li {
   padding: 0px var(--space-2);
   margin-bottom: var(--space-2);
 }
+
+.listStyle-none > li {
+  padding: var(--space-0);
+  margin: var(--space-0);
+}
