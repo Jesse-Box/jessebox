@@ -33,9 +33,12 @@
   --borderRadius-6: 99px;
 
   /* Font Family */
-  --fontFamily-sans: 
+  --fontFamily-header: 'GT-Flexa-Expanded-Bold',
       system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-  --fontFamily-mono: Menlo, monospace;
+  --fontFamily-text-sans: 
+      'GT-Flexa-Standard-Regular', system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+  --fontFamily-text-serif: 
+      'GT-Alpina-Standard-Regular', Georgia, Times, Times New Roman, serif;
 
   /*Font Size */
   --fontSize-0: 0.833em;

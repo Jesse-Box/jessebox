@@ -2,6 +2,27 @@
 @import "./tokens.css";
 @import "./utils.css";
 
+/* Fonts
+   ========================================================================== */
+
+@font-face {
+ font-family: 'GT-Flexa-Expanded-Bold';
+ src: url('../../static/fonts/GT-Flexa-Expanded-Bold.woff2'),
+  url('../../static/fonts/GT-Flexa-Expanded-Bold.woff');
+}
+
+@font-face {
+ font-family: 'GT-Flexa-Standard-Regular';
+ src: url('../../static/fonts/GT-Flexa-Standard-Regular.woff2'),
+  url('../../static/fonts/GT-Flexa-Standard-Regular.woff');
+}
+
+@font-face {
+ font-family: 'GT-Alpina-Standard-Regular';
+ src: url('../../static/fonts/GT-Alpina-Standard-Regular.woff2'),
+  url('../../static/fonts/GT-Alpina-Standard-Regular.woff');
+}
+
 /* Body
    ========================================================================== */
 
@@ -9,7 +30,7 @@ body {
   background-color: var(--color-background);
   font-size: 1rem;
   line-height: var(--lineHeight-2);
-  font-family: var(--fontFamily-sans);
+  font-family: var(--fontFamily-text-sans);
   font-weight: var(--fontWeight-400);
   font-feature-settings: "kern" 1;
   font-kerning: normal;
@@ -68,13 +89,14 @@ h4 {
 }
 
 h1, h2, h3, h4 {
+  font-family: var(--fontFamily-header);
   line-height: var(--lineHeight-1);
-  font-weight: var(--fontWeight-600);
   margin-top: var(--space-0);
   margin-bottom: var(--space-1);
 }
 
 h5 {
+  font-family: var(--fontFamily-text-serif);
   font-size: var(--fontSize-2);
 }
 
@@ -83,12 +105,12 @@ h6 {
 }
 
 p {
+  font-family: var(--fontFamily-text-serif);
   font-size: var(--fontSize-1);
 }
 
 h5, h6, p {
   line-height: var(--lineHeight-2);
-  font-weight: var(--fontWeight-400);
   margin-top: var(--space-0);
   margin-bottom: var(--space-3);
 }
