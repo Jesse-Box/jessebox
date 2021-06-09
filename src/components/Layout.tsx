@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import "../styles/index.css"
+import "../styles/global.css"
 import Navigation from "./Navigation"
 import Footer from "./Footer"
 
