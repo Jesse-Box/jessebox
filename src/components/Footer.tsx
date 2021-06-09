@@ -7,7 +7,7 @@ export default function Footer() {
     <footer>
       <span>me(at)jessebox.net</span>
       <nav>
-        <ul className="listStyle-none">
+        <ul className="listStyle-none fontFamily-text-sans">
           <li>
             <LinkNav
               title="Twitter Profile"

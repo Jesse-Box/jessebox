@@ -24,11 +24,12 @@ export default function CardPost(props: Props) {
         </Link>
       </h3>
       <p
+        class="margin-bottom-2"
         dangerouslySetInnerHTML={{
           __html: description,
         }}
       />
-      <p>{date}</p>
+      <h6>{date}</h6>
     </li>
   )
 }

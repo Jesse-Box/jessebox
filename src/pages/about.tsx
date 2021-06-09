@@ -42,6 +42,7 @@ export default function About(props: PageProps<Data>) {
           <h1>{data.datoCmsAbout.title}</h1>
         </header>
         <section
+          class="fontFamily-text-serif"
           dangerouslySetInnerHTML={{
             __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
           }}

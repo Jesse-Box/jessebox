@@ -8,7 +8,7 @@ export default function Navigation() {
         Home
       </LinkNav>
       <nav>
-        <ul className="listStyle-none">
+        <ul className="listStyle-none fontFamily-text-sans">
           <li>
             <LinkNav
               title="About me"

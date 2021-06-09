@@ -44,7 +44,7 @@ export default function BlogIndex(props: PageProps<Data>) {
         }}
       ></header>
       <section>
-        <p>Recent Posts</p>
+        <h6>Recent Posts</h6>
         <ul className="listStyle-none">
           {data.allDatoCmsPost.edges.map(({ node }) => {
             return (

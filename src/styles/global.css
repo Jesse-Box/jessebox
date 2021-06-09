@@ -28,7 +28,7 @@
 
 body {
   background-color: var(--color-background);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: var(--lineHeight-2);
   font-family: var(--fontFamily-text-sans);
   font-weight: var(--fontWeight-400);
@@ -39,13 +39,13 @@ body {
 
 @media (min-width: 600px){
   body {
-    font-size: 1.25rem;
+    font-size: 1.3125rem;
   }
 }
 
 @media (min-width: 1000px) {
   body {
-    font-size: 1.5rem;
+    font-size: 1.5625rem;
   }
 }
 
@@ -89,15 +89,18 @@ h4 {
 }
 
 h1, h2, h3, h4 {
+  font-weight: var(--fontWeight-400);
   font-family: var(--fontFamily-header);
-  line-height: var(--lineHeight-1);
+  line-height: var(--lineHeight-0);
   margin-top: var(--space-0);
   margin-bottom: var(--space-1);
 }
 
 h5 {
-  font-family: var(--fontFamily-text-serif);
   font-size: var(--fontSize-2);
+  margin-bottom: var(--space-2);
+  line-height: var(--lineHeight-1);
+  color: var(--color-secondary);
 }
 
 h6 {
@@ -109,10 +112,14 @@ p {
   font-size: var(--fontSize-1);
 }
 
-h5, h6, p {
-  line-height: var(--lineHeight-2);
-  margin-top: var(--space-0);
+h6, p {
   margin-bottom: var(--space-3);
+  line-height: var(--lineHeight-2);
+}
+
+h5, h6, p {
+  font-weight: var(--fontWeight-400);
+  margin-top: var(--space-0);
 }
 
 ul, ol {
@@ -123,10 +130,17 @@ ul, ol {
 
 li {
   padding: 0px var(--space-2);
-  margin-bottom: var(--space-2);
 }
+
+/* Overrides
+   ========================================================================== */
 
 .listStyle-none > li {
   padding: var(--space-0);
   margin: var(--space-0);
+}
+
+.fontFamily-text-serif  ul, ol {
+  font-family: var(--fontFamily-text-serif);
+  color: var(--color-secondary);
 }
