@@ -32,7 +32,7 @@ body {
   line-height: var(--lineHeight-2);
   font-family: var(--fontFamily-text-sans);
   font-weight: var(--fontWeight-400);
-  font-feature-settings: "kern" 1;
+  font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "ss01" 1;
   font-kerning: normal;
   color: var(--color-primary);
 }
@@ -92,6 +92,7 @@ h1, h2, h3, h4 {
   font-weight: var(--fontWeight-400);
   font-family: var(--fontFamily-header);
   line-height: var(--lineHeight-0);
+  letter-spacing: -0.015em;
   margin-top: var(--space-0);
   margin-bottom: var(--space-1);
 }
@@ -110,6 +111,10 @@ h6 {
 p {
   font-family: var(--fontFamily-text-serif);
   font-size: var(--fontSize-1);
+}
+
+h5, p {
+  font-family: var(--fontFamily-text-serif);
 }
 
 h6, p {

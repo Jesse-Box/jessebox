@@ -29,7 +29,7 @@ export default function CardPost(props: Props) {
           __html: description,
         }}
       />
-      <h6>{date}</h6>
+      <span>{date}</span>
     </li>
   )
 }
