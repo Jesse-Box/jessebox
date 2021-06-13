@@ -4,6 +4,7 @@ import { FluidObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/Layout"
+import HeaderPage from "../components/HeaderPage"
 import CardPost from "../components/CardPost"
 
 interface Data {
@@ -11,11 +12,10 @@ interface Data {
     seoMetaTags: {
       tags: []
     }
-    introNode: {
-      childMarkdownRemark: {
-        html: string
-      }
-    }
+    header: string
+    subheader: string
+    linkTo: string
+    linkLabel: string
   }
   allDatoCmsPost: {
     edges: {
@@ -38,12 +38,13 @@ export default function BlogIndex(props: PageProps<Data>) {
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsHome.seoMetaTags} />
-      <header
-        dangerouslySetInnerHTML={{
-          __html: data.datoCmsHome.introNode.childMarkdownRemark.html,
-        }}
-      ></header>
       <section>
+        <HeaderPage
+          header={data.datoCmsHome.header}
+          subheader={data.datoCmsHome.subheader}
+          linkTo={data.datoCmsHome.linkTo}
+          linkLabel={data.datoCmsHome.linkLabel}
+        />
         <span>Recent Posts</span>
         <ul className="listStyle-none">
           {data.allDatoCmsPost.edges.map(({ node }) => {
@@ -71,11 +72,10 @@ export const pageQuery = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      introNode {
-        childMarkdownRemark {
-          html
-        }
-      }
+      header
+      subheader
+      linkTo
+      linkLabel
     }
     allDatoCmsPost(sort: { fields: date, order: DESC }) {
       edges {

@@ -3,15 +3,29 @@ import { PageProps, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/Layout"
+import HeaderPage from "../components/HeaderPage"
+import CardPost from "../components/CardPost"
 
 interface Data {
   datoCmsNotFound: {
     seoMetaTags: {
       tags: []
     }
-    introNode: {
-      childMarkdownRemark: {
-        html: string
+    header: string
+    subheader: string
+    linkTo: string
+    linkLabel: string
+  }
+  allDatoCmsPost: {
+    edges: {
+      node: {
+        slug: string
+        title: string
+        date: string
+        hero: {
+          alt: string
+          fluid: FluidObject
+        }
       }
     }
   }
@@ -23,11 +37,30 @@ export default function NotFoundPage(props: PageProps<Data>) {
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsNotFound.seoMetaTags} />
-      <header
-        dangerouslySetInnerHTML={{
-          __html: data.datoCmsNotFound.introNode.childMarkdownRemark.html,
-        }}
+      <HeaderPage
+        header={data.datoCmsNotFound.header}
+        subheader={data.datoCmsNotFound.subheader}
+        linkTo={data.datoCmsNotFound.linkTo}
+        linkLabel={data.datoCmsNotFound.linkLabel}
       />
+      <section>
+        <span>Recent Posts</span>
+        <ul className="listStyle-none">
+          {data.allDatoCmsPost.edges.map(({ node }) => {
+            return (
+              <CardPost
+                key={node.slug}
+                date={node.date}
+                title={node.title}
+                to={node.slug}
+                description={node.seo.description}
+                alt={node.alt}
+                fluid={node.hero.fluid}
+              />
+            )
+          })}
+        </ul>
+      </section>
     </Layout>
   )
 }
@@ -38,11 +71,10 @@ export const pageQuery = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      introNode {
-        childMarkdownRemark {
-          html
-        }
-      }
+      header
+      subheader
+      linkTo
+      linkLabel
     }
     allDatoCmsPost(sort: { fields: date, order: DESC }) {
       edges {
