@@ -20,7 +20,7 @@ export default function CardPost(props: Props) {
       <Image alt={alt} fluid={fluid} />
       <h3>
         <Link title={title} to={to}>
-          {title}
+          {title} &rarr;
         </Link>
       </h3>
       <p
