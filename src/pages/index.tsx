@@ -13,7 +13,11 @@ interface Data {
       tags: []
     }
     header: string
-    subheader: string
+    subheaderNode: {
+      childMarkdownRemark: {
+        html: string
+      }
+    }
     linkTo: string
     linkLabel: string
   }
@@ -41,7 +45,7 @@ export default function BlogIndex(props: PageProps<Data>) {
       <section>
         <HeaderPage
           header={data.datoCmsHome.header}
-          subheader={data.datoCmsHome.subheader}
+          subheader={data.datoCmsHome.subheaderNode.childMarkdownRemark.html}
           linkTo={data.datoCmsHome.linkTo}
           linkLabel={data.datoCmsHome.linkLabel}
         />
@@ -73,7 +77,11 @@ export const pageQuery = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       header
-      subheader
+      subheaderNode {
+        childMarkdownRemark {
+          html
+        }
+      }
       linkTo
       linkLabel
     }

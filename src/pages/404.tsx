@@ -1,5 +1,6 @@
 import React from "react"
 import { PageProps, graphql } from "gatsby"
+import { FluidObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/Layout"
@@ -12,7 +13,11 @@ interface Data {
       tags: []
     }
     header: string
-    subheader: string
+    subheaderNode: {
+      childMarkdownRemark: {
+        html: string
+      }
+    }
     linkTo: string
     linkLabel: string
   }
@@ -39,7 +44,7 @@ export default function NotFoundPage(props: PageProps<Data>) {
       <HelmetDatoCms seo={data.datoCmsNotFound.seoMetaTags} />
       <HeaderPage
         header={data.datoCmsNotFound.header}
-        subheader={data.datoCmsNotFound.subheader}
+        subheader={data.datoCmsNotFound.subheaderNode.childMarkdownRemark.html}
         linkTo={data.datoCmsNotFound.linkTo}
         linkLabel={data.datoCmsNotFound.linkLabel}
       />
@@ -72,7 +77,11 @@ export const pageQuery = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       header
-      subheader
+      subheaderNode {
+        childMarkdownRemark {
+          html
+        }
+      }
       linkTo
       linkLabel
     }

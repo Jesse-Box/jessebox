@@ -1,7 +1,7 @@
 import React from "react"
 import { PageProps, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
-import Image, { FluidObject } from "gatsby-image"
+import { FluidObject } from "gatsby-image"
 
 import Layout from "../components/Layout"
 import HeaderPage from "../components/HeaderPage"
@@ -17,7 +17,11 @@ interface Data {
       fluid: FluidObject
     }
     header: string
-    subheader: string
+    subheaderNode: {
+      childMarkdownRemark: {
+        html: string
+      }
+    }
     bodyNode: {
       childMarkdownRemark: {
         html: string
@@ -38,7 +42,7 @@ export default function About(props: PageProps<Data>) {
           alt={data.datoCmsAbout.hero.alt}
           caption={data.datoCmsAbout.hero.title}
           header={data.datoCmsAbout.header}
-          subheader={data.datoCmsAbout.subheader}
+          subheader={data.datoCmsAbout.subheaderNode.childMarkdownRemark.html}
         />
         <section
           class="fontFamily-text-serif"
@@ -65,7 +69,11 @@ export const pageQuery = graphql`
         title
       }
       header
-      subheader
+      subheaderNode {
+        childMarkdownRemark {
+          html
+        }
+      }
       bodyNode {
         childMarkdownRemark {
           html

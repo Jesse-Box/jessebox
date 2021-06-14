@@ -23,8 +23,11 @@ export default function HeaderPage(props: Props) {
         </figure>
       ) : null}
       <h1>{header}</h1>
-      <h5 className="fontFamily-text-serif">{subheader}</h5>
-      {linkTo ? <Link to={linkTo}>{linkLabel}</Link> : null}
+      <div
+        className="fontFamily-text-serif"
+        dangerouslySetInnerHTML={{ __html: subheader }}
+      />
+      {linkTo ? <Link to={linkTo}>{linkLabel} &rarr;</Link> : null}
     </header>
   )
 }
