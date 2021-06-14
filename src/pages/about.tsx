@@ -4,18 +4,20 @@ import { HelmetDatoCms } from "gatsby-source-datocms"
 import Image, { FluidObject } from "gatsby-image"
 
 import Layout from "../components/Layout"
+import HeaderPage from "../components/HeaderPage"
 
 interface Data {
   datoCmsAbout: {
     seoMetaTags: {
       tags: []
     }
-    title: string
-    avatar: {
+    hero: {
       alt: string
       title: string
       fluid: FluidObject
     }
+    header: string
+    subheader: string
     bodyNode: {
       childMarkdownRemark: {
         html: string
@@ -31,16 +33,13 @@ export default function About(props: PageProps<Data>) {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsAbout.seoMetaTags} />
       <article>
-        <header>
-          <figure>
-            <Image
-              alt={data.datoCmsAbout.avatar.alt}
-              fluid={data.datoCmsAbout.avatar.fluid}
-            />
-            <figcaption>{data.datoCmsAbout.avatar.title}</figcaption>
-          </figure>
-          <h1>{data.datoCmsAbout.title}</h1>
-        </header>
+        <HeaderPage
+          hero={data.datoCmsAbout.hero.fluid}
+          alt={data.datoCmsAbout.hero.alt}
+          caption={data.datoCmsAbout.hero.title}
+          header={data.datoCmsAbout.header}
+          subheader={data.datoCmsAbout.subheader}
+        />
         <section
           class="fontFamily-text-serif"
           dangerouslySetInnerHTML={{
@@ -58,14 +57,15 @@ export const pageQuery = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      title
-      avatar {
+      hero {
         alt
         fluid(maxWidth: 1200) {
           ...GatsbyDatoCmsFluid
         }
         title
       }
+      header
+      subheader
       bodyNode {
         childMarkdownRemark {
           html
