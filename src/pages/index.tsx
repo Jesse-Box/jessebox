@@ -48,9 +48,9 @@ export default function BlogIndex(props: PageProps<Data>) {
         linkTo={data.datoCmsHome.linkTo}
         linkLabel={data.datoCmsHome.linkLabel}
       />
-      <section className="display-grid gridTemplateColumns-body">
-        <span className="gridColumn-body-span-2to3">Recent Posts</span>
-        <ul className="listStyle-none gridColumn-body-span-2to3">
+      <section className="gridTemplateColumns-body">
+        <h6 className="gridColumn-body-span-2to3">Recent Posts</h6>
+        <ul className="ls-none p-0 gridColumn-body-span-2to3">
           {data.allDatoCmsPost.edges.map(({ node }) => {
             return (
               <CardPost

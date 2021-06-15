@@ -16,8 +16,8 @@ export default function CardPost(props: Props) {
   const { key, date, title, to, description, alt, fluid } = props
 
   return (
-    <li className="margin-bottom-2" key={key}>
-      <figure className="margin-bottom-2">
+    <li className="px-0 pb-3" key={key}>
+      <figure className="mb-2">
         <Image alt={alt} fluid={fluid} />
       </figure>
       <h3>
@@ -25,13 +25,8 @@ export default function CardPost(props: Props) {
           {title} &rarr;
         </Link>
       </h3>
-      <p
-        className="margin-bottom-2"
-        dangerouslySetInnerHTML={{
-          __html: description,
-        }}
-      />
-      <time>{date}</time>
+      <p className="mb-2">{description}</p>
+      <h6>{date}</h6>
     </li>
   )
 }

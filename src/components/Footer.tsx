@@ -1,14 +1,13 @@
 import React from "react"
-import Grid from "./Grid"
 import LinkNav from "./LinkNav"
 
 export default function Footer() {
   return (
-    <footer>
-      <span>me(at)jessebox.net</span>
+    <footer className="d-flex">
+      <span className="px-3 py-2">me(at)jessebox.net</span>
       <nav>
-        <ul className="listStyle-none fontFamily-text-sans">
-          <li>
+        <ul className="d-flex ls-none m-0 p-0 ">
+          <li className="d-flex m-0 p-0">
             <LinkNav
               title="Twitter Profile"
               aria-label="Twitter Profile"
@@ -17,7 +16,7 @@ export default function Footer() {
               Twitter
             </LinkNav>
           </li>
-          <li>
+          <li className="d-flex m-0 p-0">
             <LinkNav
               title="Github Profile"
               aria-label="Github Profile"
@@ -26,7 +25,7 @@ export default function Footer() {
               Github
             </LinkNav>
           </li>
-          <li>
+          <li className="d-flex m-0 p-0">
             <LinkNav
               title="LinkedIn Profile"
               aria-label="LinkedIn Profile"

@@ -71,8 +71,8 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
       <article>
-        <header className="display-grid gridTemplateColumns-header ">
-          <figure className="gridColumn-header-span-1to3 margin-bottom-3">
+        <header className="gridTemplateColumns-header">
+          <figure className="gridColumn-header-span-1to3 mb-3">
             <Image
               alt={data.datoCmsPost.hero.alt}
               fluid={data.datoCmsPost.hero.fluid}
@@ -88,7 +88,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
             {data.datoCmsPost.date}
           </h6>
         </header>
-        <section className="fontFamily-text-serif display-grid gridTemplateColumns-body">
+        <section className="ff-serif gridTemplateColumns-body">
           {data.datoCmsPost.body.map((block) => (
             <div
               className={
@@ -106,7 +106,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
                 />
               )}
               {block.model.apiKey === "visual" && (
-                <figure className="margin-bottom-3">
+                <figure className="mb-3">
                   <Image fluid={block.media.fluid} alt={block.media.alt} />
                   <figcaption>{block.media.title}</figcaption>
                 </figure>
@@ -117,8 +117,8 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
       </article>
       {previous || next ? (
         <nav>
-          <ul className="listStyle-none">
-            <li>
+          <ul className="ls-none p-0">
+            <li className="p-0">
               {previous && (
                 <ListPost
                   rel="prev"
@@ -127,7 +127,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
                 />
               )}
             </li>
-            <li>
+            <li className="p-0">
               {next && (
                 <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
               )}
