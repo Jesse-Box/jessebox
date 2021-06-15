@@ -15,19 +15,23 @@ interface Props {
 export default function HeaderPage(props: Props) {
   const { hero, alt, caption, header, subheader, linkTo, linkLabel } = props
   return (
-    <header>
+    <header className="display-grid gridTemplateColumns-header">
       {hero ? (
-        <figure>
+        <figure className="gridColumn-header-span-1to3">
           <Image alt={alt} fluid={hero} />
           <figcaption>{caption}</figcaption>
         </figure>
       ) : null}
-      <h1>{header}</h1>
+      <h1 className="gridColumn-header-span-1to3">{header}</h1>
       <div
-        className="fontFamily-text-serif"
+        className="fontFamily-text-serif gridColumn-header-span-1to2"
         dangerouslySetInnerHTML={{ __html: subheader }}
       />
-      {linkTo ? <Link to={linkTo}>{linkLabel} &rarr;</Link> : null}
+      {linkTo ? (
+        <Link className="gridColumn-header-span-1to3" to={linkTo}>
+          {linkLabel} &rarr;
+        </Link>
+      ) : null}
     </header>
   )
 }

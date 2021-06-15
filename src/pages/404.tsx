@@ -48,7 +48,7 @@ export default function NotFoundPage(props: PageProps<Data>) {
         linkTo={data.datoCmsNotFound.linkTo}
         linkLabel={data.datoCmsNotFound.linkLabel}
       />
-      <section>
+      <section class="display-grid gridTemplateColumns-3">
         <span>Recent Posts</span>
         <ul className="listStyle-none">
           {data.allDatoCmsPost.edges.map(({ node }) => {

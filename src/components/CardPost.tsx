@@ -16,15 +16,17 @@ export default function CardPost(props: Props) {
   const { key, date, title, to, description, alt, fluid } = props
 
   return (
-    <li key={key}>
-      <Image alt={alt} fluid={fluid} />
+    <li className="margin-bottom-2" key={key}>
+      <figure className="margin-bottom-2">
+        <Image alt={alt} fluid={fluid} />
+      </figure>
       <h3>
         <Link title={title} to={to}>
           {title} &rarr;
         </Link>
       </h3>
       <p
-        class="margin-bottom-2"
+        className="margin-bottom-2"
         dangerouslySetInnerHTML={{
           __html: description,
         }}

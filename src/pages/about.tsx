@@ -1,7 +1,7 @@
 import React from "react"
 import { PageProps, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
-import { FluidObject } from "gatsby-image"
+import Image, { FluidObject } from "gatsby-image"
 
 import Layout from "../components/Layout"
 import HeaderPage from "../components/HeaderPage"
@@ -22,11 +22,23 @@ interface Data {
         html: string
       }
     }
-    bodyNode: {
-      childMarkdownRemark: {
-        html: string
+    body: {
+      id: string
+      model: {
+        apiKey: string
+        id: string
       }
-    }
+      textNode: {
+        childMarkdownRemark: {
+          html: string
+        }
+      }
+      media: {
+        alt: string
+        fluid: FluidObject
+        title: string
+      }
+    }[]
   }
 }
 
@@ -44,12 +56,32 @@ export default function About(props: PageProps<Data>) {
           header={data.datoCmsAbout.header}
           subheader={data.datoCmsAbout.subheaderNode.childMarkdownRemark.html}
         />
-        <section
-          class="fontFamily-text-serif"
-          dangerouslySetInnerHTML={{
-            __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
-          }}
-        />
+        <section className="fontFamily-text-serif display-grid gridTemplateColumns-body">
+          {data.datoCmsAbout.body.map((block) => (
+            <div
+              className={
+                block.model.apiKey === "visual"
+                  ? "gridColumn-body-span-1to4"
+                  : "gridColumn-body-span-2to3"
+              }
+              key={block.id}
+            >
+              {block.model.apiKey === "text" && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: block.textNode.childMarkdownRemark.html,
+                  }}
+                />
+              )}
+              {block.model.apiKey === "visual" && (
+                <figure className="margin-bottom-3">
+                  <Image fluid={block.media.fluid} alt={block.media.alt} />
+                  <figcaption>{block.media.title}</figcaption>
+                </figure>
+              )}
+            </div>
+          ))}
+        </section>
       </article>
     </Layout>
   )
@@ -74,9 +106,30 @@ export const pageQuery = graphql`
           html
         }
       }
-      bodyNode {
-        childMarkdownRemark {
-          html
+      body {
+        ... on DatoCmsText {
+          id
+          model {
+            apiKey
+          }
+          textNode {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+        ... on DatoCmsVisual {
+          id
+          model {
+            apiKey
+          }
+          media {
+            fluid(maxWidth: 1200) {
+              ...GatsbyDatoCmsFluid
+            }
+            title
+            alt
+          }
         }
       }
     }

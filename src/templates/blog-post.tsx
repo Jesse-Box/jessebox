@@ -71,18 +71,33 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
       <article>
-        <header>
-          <Image
-            alt={data.datoCmsPost.hero.alt}
-            fluid={data.datoCmsPost.hero.fluid}
-          />
-          <h1>{data.datoCmsPost.title}</h1>
-          <h5>{data.datoCmsPost.seo.description}</h5>
-          <h6>{data.datoCmsPost.date}</h6>
+        <header className="display-grid gridTemplateColumns-header ">
+          <figure className="gridColumn-header-span-1to3 margin-bottom-3">
+            <Image
+              alt={data.datoCmsPost.hero.alt}
+              fluid={data.datoCmsPost.hero.fluid}
+            />
+          </figure>
+          <h1 className="gridColumn-header-span-1to3">
+            {data.datoCmsPost.title}
+          </h1>
+          <h5 className="gridColumn-header-span-1to2">
+            {data.datoCmsPost.seo.description}
+          </h5>
+          <h6 className="gridColumn-header-span-1to2">
+            {data.datoCmsPost.date}
+          </h6>
         </header>
-        <section class="fontFamily-text-serif">
+        <section className="fontFamily-text-serif display-grid gridTemplateColumns-body">
           {data.datoCmsPost.body.map((block) => (
-            <div key={block.id}>
+            <div
+              className={
+                block.model.apiKey === "visual"
+                  ? "gridColumn-body-span-1to4"
+                  : "gridColumn-body-span-2to3"
+              }
+              key={block.id}
+            >
               {block.model.apiKey === "text" && (
                 <div
                   dangerouslySetInnerHTML={{
@@ -91,7 +106,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
                 />
               )}
               {block.model.apiKey === "visual" && (
-                <figure>
+                <figure className="margin-bottom-3">
                   <Image fluid={block.media.fluid} alt={block.media.alt} />
                   <figcaption>{block.media.title}</figcaption>
                 </figure>

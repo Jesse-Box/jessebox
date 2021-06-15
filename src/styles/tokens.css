@@ -57,6 +57,9 @@
   /* Font Weight */
   --fontWeight-400: 400;
   --fontWeight-600: 600;
+
+  /* Grid */
+  --gridTemplate-default: '1fr min(720px, 100%) 1fr';
 }
 
 @media (prefers-color-scheme: dark) {

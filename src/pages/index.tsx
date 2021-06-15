@@ -42,15 +42,15 @@ export default function BlogIndex(props: PageProps<Data>) {
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsHome.seoMetaTags} />
-      <section>
-        <HeaderPage
-          header={data.datoCmsHome.header}
-          subheader={data.datoCmsHome.subheaderNode.childMarkdownRemark.html}
-          linkTo={data.datoCmsHome.linkTo}
-          linkLabel={data.datoCmsHome.linkLabel}
-        />
-        <span>Recent Posts</span>
-        <ul className="listStyle-none">
+      <HeaderPage
+        header={data.datoCmsHome.header}
+        subheader={data.datoCmsHome.subheaderNode.childMarkdownRemark.html}
+        linkTo={data.datoCmsHome.linkTo}
+        linkLabel={data.datoCmsHome.linkLabel}
+      />
+      <section className="display-grid gridTemplateColumns-body">
+        <span className="gridColumn-body-span-2to3">Recent Posts</span>
+        <ul className="listStyle-none gridColumn-body-span-2to3">
           {data.allDatoCmsPost.edges.map(({ node }) => {
             return (
               <CardPost
