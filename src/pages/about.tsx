@@ -56,13 +56,13 @@ export default function About(props: PageProps<Data>) {
           header={data.datoCmsAbout.header}
           subheader={data.datoCmsAbout.subheaderNode.childMarkdownRemark.html}
         />
-        <section className="fontFamily-text-serif display-grid gridTemplateColumns-body">
+        <section className="ff-serif gtc-body">
           {data.datoCmsAbout.body.map((block) => (
             <div
               className={
                 block.model.apiKey === "visual"
-                  ? "gridColumn-body-span-1to4"
-                  : "gridColumn-body-span-2to3"
+                  ? "gc-body-wide"
+                  : "gc-body-narrow"
               }
               key={block.id}
             >

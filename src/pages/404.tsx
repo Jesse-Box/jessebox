@@ -48,9 +48,9 @@ export default function NotFoundPage(props: PageProps<Data>) {
         linkTo={data.datoCmsNotFound.linkTo}
         linkLabel={data.datoCmsNotFound.linkLabel}
       />
-      <section className="gridTemplateColumns-body">
-        <h6 className="gridColumn-body-span-2to3">Recent Posts</h6>
-        <ul className="ls-none p-0 gridColumn-body-span-2to3">
+      <section className="gtc-body">
+        <h6 className="gc-body-narrow">Recent Posts</h6>
+        <ul className="ls-none p-0 gc-body-narrow">
           {data.allDatoCmsPost.edges.map(({ node }) => {
             return (
               <CardPost

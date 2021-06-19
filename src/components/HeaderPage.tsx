@@ -15,20 +15,20 @@ interface Props {
 export default function HeaderPage(props: Props) {
   const { hero, alt, caption, header, subheader, linkTo, linkLabel } = props
   return (
-    <header className="gridTemplateColumns-header">
+    <header className="gtc-header">
       {hero ? (
-        <figure className="gridColumn-header-span-1to3">
+        <figure className="gc-header-center">
           <Image alt={alt} fluid={hero} />
           <figcaption>{caption}</figcaption>
         </figure>
       ) : null}
-      <h1 className="gridColumn-header-span-1to3">{header}</h1>
+      <h1 className="gc-header-center">{header}</h1>
       <div
-        className="ff-serif gridColumn-header-span-1to2"
+        className="ff-serif gc-header-leanLeft"
         dangerouslySetInnerHTML={{ __html: subheader }}
       />
       {linkTo ? (
-        <div className="gridColumn-header-span-1to3">
+        <div className="gc-header-leanLeft">
           <Link to={linkTo}>{linkLabel} &rarr;</Link>
         </div>
       ) : null}

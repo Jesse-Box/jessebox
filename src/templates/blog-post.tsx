@@ -71,30 +71,26 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
       <article>
-        <header className="gridTemplateColumns-header">
-          <figure className="gridColumn-header-span-1to3 mb-3">
+        <header className="gtc-header">
+          <figure className="gc-header-center mb-3">
             <Image
               alt={data.datoCmsPost.hero.alt}
               fluid={data.datoCmsPost.hero.fluid}
             />
           </figure>
-          <h1 className="gridColumn-header-span-1to3">
-            {data.datoCmsPost.title}
-          </h1>
-          <h5 className="gridColumn-header-span-1to2">
+          <h1 className="gc-header-center">{data.datoCmsPost.title}</h1>
+          <h5 className="gc-header-leanLeft">
             {data.datoCmsPost.seo.description}
           </h5>
-          <h6 className="gridColumn-header-span-1to2">
-            {data.datoCmsPost.date}
-          </h6>
+          <h6 className="gc-header-leanLeft">{data.datoCmsPost.date}</h6>
         </header>
-        <section className="ff-serif gridTemplateColumns-body">
+        <section className="ff-serif gtc-body">
           {data.datoCmsPost.body.map((block) => (
             <div
               className={
                 block.model.apiKey === "visual"
-                  ? "gridColumn-body-span-1to4"
-                  : "gridColumn-body-span-2to3"
+                  ? "gc-body-wide"
+                  : "gc-body-narrow"
               }
               key={block.id}
             >
