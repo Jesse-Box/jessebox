@@ -21,8 +21,20 @@
    ========================================================================== */
 
 .gtc-header {
+  --margin: var(--space-3);
+  --marginX: var(--margin) * 2;
   display: grid;
-  grid-template-columns: minmax(var(--space-3), var(--space-5)) min(800px, 100%) 1fr minmax(var(--space-3), var(--space-5));
+  grid-template-columns: var(--margin) min(55ch, calc(100% - var(--marginX))) 1fr var(--margin);
+}
+
+@media (min-width: 600px) {
+  .gtc-header {
+    --margin: var(--space-5);
+  }
+
+  .gtc-body {
+    --margin: var(--space-5em);
+  }
 }
 
 .gc-header-center {
@@ -34,8 +46,10 @@
 }
 
 .gtc-body {
+  --margin: var(--space-3);
+  --marginX: var(--margin) * 2;
   display: grid;
-  grid-template-columns: minmax(var(--space-3), var(--space-5)) 1fr min(750px, 100%) 1fr minmax(var(--space-3), var(--space-5));
+  grid-template-columns: var(--margin) 1fr min(55ch, calc(100% - var(--marginX))) 1fr var(--margin);
 }
 
 .gc-body-wide {
