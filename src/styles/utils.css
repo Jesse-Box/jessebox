@@ -20,13 +20,23 @@
 /* Grid
    ========================================================================== */
 
+.gtc-nav {
+  --m: var(--space-3);
+  --mx: var(--m) * 2;
+  display: grid;
+  grid-template-columns: calc(var(--m) - var(--space-3)) 1fr calc(var(--m) - var(--space-3));
+}
+
+.gc-nav-center {
+  grid-column: 2/3;
+}
+
 .gtc-header {
   --m: var(--space-3);
   --mx: var(--m) * 2;
   display: grid;
   grid-template-columns: var(--m) min(55ch, calc(100% - var(--mx))) 1fr var(--m);
 }
-
 
 .gc-header-center {
   grid-column: 2/4;
@@ -52,6 +62,11 @@
 }
 
 @media (min-width: 600px) {
+
+  .gtc-nav {
+    --m: var(--space-5);
+  }
+  
   .gtc-header {
     --m: var(--space-5);
   }
@@ -115,4 +130,11 @@
 }
 .pb-3 {
   padding-bottom: var(--space-3);
+}
+
+/* Sizing
+   ========================================================================== */
+
+.w-fill {
+  width: 100%;
 }
