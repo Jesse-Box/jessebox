@@ -32,16 +32,19 @@ export default function Bio() {
   `)
 
   return (
-    <>
-      <h2>{data.datoCmsAbout.header}</h2>
+    <section className="gtc-header">
+      <h2 className="gc-header-center">{data.datoCmsAbout.header}</h2>
       <div
+        className="gc-header-leanLeft"
         dangerouslySetInnerHTML={{
           __html: data.datoCmsAbout.subheaderNode.childMarkdownRemark.html,
         }}
       />
-      <Link to={data.datoCmsAbout.linkTo}>
-        {data.datoCmsAbout.linkLabel} &rarr;
-      </Link>
-    </>
+      <div className="gc-header-leanLeft">
+        <Link to={data.datoCmsAbout.linkTo}>
+          {data.datoCmsAbout.linkLabel} &rarr;
+        </Link>
+      </div>
+    </section>
   )
 }

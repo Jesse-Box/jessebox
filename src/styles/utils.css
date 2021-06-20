@@ -21,21 +21,12 @@
    ========================================================================== */
 
 .gtc-header {
-  --margin: var(--space-3);
-  --marginX: var(--margin) * 2;
+  --m: var(--space-3);
+  --mx: var(--m) * 2;
   display: grid;
-  grid-template-columns: var(--margin) min(55ch, calc(100% - var(--marginX))) 1fr var(--margin);
+  grid-template-columns: var(--m) min(55ch, calc(100% - var(--mx))) 1fr var(--m);
 }
 
-@media (min-width: 600px) {
-  .gtc-header {
-    --margin: var(--space-5);
-  }
-
-  .gtc-body {
-    --margin: var(--space-5em);
-  }
-}
 
 .gc-header-center {
   grid-column: 2/4;
@@ -46,10 +37,10 @@
 }
 
 .gtc-body {
-  --margin: var(--space-3);
-  --marginX: var(--margin) * 2;
+  --m: var(--space-3);
+  --mx: var(--m) * 2;
   display: grid;
-  grid-template-columns: var(--margin) 1fr min(55ch, calc(100% - var(--marginX))) 1fr var(--margin);
+  grid-template-columns: var(--m) 1fr min(55ch, calc(100% - var(--mx))) 1fr var(--m);
 }
 
 .gc-body-wide {
@@ -58,6 +49,16 @@
 
 .gc-body-narrow {
  grid-column: 3/4;
+}
+
+@media (min-width: 600px) {
+  .gtc-header {
+    --m: var(--space-5);
+  }
+
+  .gtc-body {
+    --m: var(--space-5);
+  }
 }
 
 /* Lists
