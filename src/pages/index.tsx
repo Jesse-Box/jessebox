@@ -50,7 +50,7 @@ export default function BlogIndex(props: PageProps<Data>) {
       />
       <section className="gtc-body">
         <h6 className="gc-body-narrow">Recent Posts</h6>
-        <ul className="ls-none p-0 gc-body-narrow">
+        <ul className="ls-none m-0 p-0 gc-body-narrow">
           {data.allDatoCmsPost.edges.map(({ node }) => {
             return (
               <CardPost

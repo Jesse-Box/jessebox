@@ -1,6 +1,8 @@
 @import "./normalize.css";
 @import "./tokens.css";
 @import "./utils.css";
+@import "./variants/layout.css";
+@import "./variants/links.css";
 
 /* Fonts
    ========================================================================== */

@@ -32,7 +32,7 @@ export default function Bio() {
   `)
 
   return (
-    <section className="gtc-header">
+    <section className="gtc-header pb-4">
       <h2 className="gc-header-center">{data.datoCmsAbout.header}</h2>
       <div
         className="gc-header-leanLeft"

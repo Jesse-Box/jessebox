@@ -21,7 +21,7 @@ export default function LinkNav(props: Props) {
       aria-label={ariaLabel}
       to={to}
       activeClassName={activeClassName}
-      className="px-3 py-2"
+      className="link-button-transparent"
     >
       {children}
     </Link>

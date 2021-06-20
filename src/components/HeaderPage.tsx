@@ -15,7 +15,7 @@ interface Props {
 export default function HeaderPage(props: Props) {
   const { hero, alt, caption, header, subheader, linkTo, linkLabel } = props
   return (
-    <header className="gtc-header">
+    <header className="gtc-header pb-4">
       {hero ? (
         <figure className="gc-header-center">
           <Image alt={alt} fluid={hero} />

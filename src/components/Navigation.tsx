@@ -3,7 +3,7 @@ import LinkNav from "./LinkNav"
 
 export default function Navigation() {
   return (
-    <header>
+    <header className="py-4">
       <nav className="gtc-nav w-fill">
         <ul className="gc-nav-center d-flex ls-none p-0 m-0">
           <li className="d-flex lsnone p-0 m-0">

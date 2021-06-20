@@ -17,65 +17,6 @@
   font-family: var(--fontFamily-text-serif);
 }
 
-/* Grid
-   ========================================================================== */
-
-.gtc-nav {
-  --m: var(--space-3);
-  --mx: var(--m) * 2;
-  display: grid;
-  grid-template-columns: calc(var(--m) - var(--space-3)) 1fr calc(var(--m) - var(--space-3));
-}
-
-.gc-nav-center {
-  grid-column: 2/3;
-}
-
-.gtc-header {
-  --m: var(--space-3);
-  --mx: var(--m) * 2;
-  display: grid;
-  grid-template-columns: var(--m) min(55ch, calc(100% - var(--mx))) 1fr var(--m);
-}
-
-.gc-header-center {
-  grid-column: 2/4;
-}
-
-.gc-header-leanLeft{
-  grid-column: 2/3;
-}
-
-.gtc-body {
-  --m: var(--space-3);
-  --mx: var(--m) * 2;
-  display: grid;
-  grid-template-columns: var(--m) 1fr min(55ch, calc(100% - var(--mx))) 1fr var(--m);
-}
-
-.gc-body-wide {
-  grid-column: 2/5;
-}
-
-.gc-body-narrow {
- grid-column: 3/4;
-}
-
-@media (min-width: 600px) {
-
-  .gtc-nav {
-    --m: var(--space-5);
-  }
-  
-  .gtc-header {
-    --m: var(--space-5);
-  }
-
-  .gtc-body {
-    --m: var(--space-5);
-  }
-}
-
 /* Lists
    ========================================================================== */
 
@@ -114,6 +55,11 @@
   padding-bottom: var(--space-2);
 }
 
+.py-4 {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+}
+
 .px-0 {
   padding-left: var(--space-0);
   padding-right: var(--space-0);
@@ -130,6 +76,14 @@
 }
 .pb-3 {
   padding-bottom: var(--space-3);
+}
+
+.pb-4 {
+  padding-bottom: var(--space-4);
+}
+
+.pb-5 {
+  padding-bottom: var(--space-5);
 }
 
 /* Sizing
