@@ -112,8 +112,8 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
         </section>
       </article>
       {previous || next ? (
-        <nav>
-          <ul className="ls-none p-0">
+        <nav className="gtc-body">
+          <ul className="gc-body-narrow ls-none p-0">
             <li className="p-0">
               {previous && (
                 <ListPost

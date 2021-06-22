@@ -18,7 +18,7 @@ export default function ListPost(props: Props) {
         to={to}
         rel={rel}
       >
-        {rel === "next" ? `${title} →` : `←${title}`}
+        {rel === "next" ? `${title} →` : `← ${title}`}
       </Link>
     </div>
   )
