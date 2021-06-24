@@ -112,9 +112,9 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
         </section>
       </article>
       {previous || next ? (
-        <nav className="gtc-pagination">
-          <ul className="gc-pagination-narrow ls-none p-0 gtc-col2">
-            <li className="p-0 gc-col2-left">
+        <nav className="pb-3">
+          <ul className="gtc-pagination ls-none p-0 ">
+            <li className="p-0 gc-pagination-left">
               {previous && (
                 <ListPost
                   rel="prev"
@@ -123,7 +123,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
                 />
               )}
             </li>
-            <li className="p-0 gtc-col2-right">
+            <li className="p-0 gc-pagination-right">
               {next && (
                 <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
               )}

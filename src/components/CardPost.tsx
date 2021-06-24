@@ -16,8 +16,8 @@ export default function CardPost(props: Props) {
   const { key, date, title, to, description, alt, fluid } = props
 
   return (
-    <li className="px-0 pb-4 gtc-post" key={key}>
-      <figure className="pb-2 br-4 ">
+    <li className="px-0 pb-3 gtc-post" key={key}>
+      <figure>
         <Image alt={alt} fluid={fluid} />
       </figure>
       <article>
