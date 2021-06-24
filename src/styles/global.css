@@ -39,15 +39,37 @@ body {
   color: var(--color-primary);
 }
 
+main {
+  margin: 0 var(--space-3);
+}
+
 @media (min-width: 600px){
   body {
     font-size: 1.3125rem;
+  }
+
+  main {
+    margin: 0 var(--space-4);
   }
 }
 
 @media (min-width: 1000px) {
   body {
     font-size: 1.5625rem;
+  }
+
+  main {
+    margin: 0 var(--space-5);
+  }
+}
+
+@media (min-width: 1400px) {
+  body {
+    font-size: 1.7058rem;
+  }
+
+  main {
+    margin: 0 var(--space-6);
   }
 }
 
@@ -143,9 +165,7 @@ li {
    ========================================================================== */
 
 figure {
-  margin-top: var(--space-0);
-  margin-left: var(--space-0);
-  margin-right: var(--space-0);
+  margin: var(--space-0);
 }
 
 figcaption {
@@ -153,4 +173,8 @@ figcaption {
  font-size: var(--fontSize-0);
  color: var(--color-secondary);
  margin-bottom: var(--space-3);
+}
+
+img {
+  border-radius: var(--borderRadius-4);
 }

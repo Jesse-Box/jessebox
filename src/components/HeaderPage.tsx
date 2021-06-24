@@ -29,7 +29,7 @@ export default function HeaderPage(props: Props) {
       />
       {linkTo ? (
         <div className="gc-header-leanLeft">
-          <Link to={linkTo}>{linkLabel} &rarr;</Link>
+          <Link to={linkTo}>{linkLabel} </Link>
         </div>
       ) : null}
     </header>
