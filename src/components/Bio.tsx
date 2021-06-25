@@ -41,9 +41,7 @@ export default function Bio() {
         }}
       />
       <div className="gc-header-leanLeft">
-        <Link to={data.datoCmsAbout.linkTo}>
-          {data.datoCmsAbout.linkLabel} &rarr;
-        </Link>
+        <Link to={data.datoCmsAbout.linkTo}>{data.datoCmsAbout.linkLabel}</Link>
       </div>
     </section>
   )

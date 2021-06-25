@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="pb-4">
       <nav className="gtc-nav">
-        <ul className="gc-nav-center d-flex ls-none m-0 p-0 ">
+        <ul className="gc-nav-center d-flex ff-row-wrap ls-none m-0 p-0 ">
           <li className="d-flex m-0 p-0">
             <a
               title="me@jessebox.net"

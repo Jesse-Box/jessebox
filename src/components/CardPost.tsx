@@ -17,7 +17,7 @@ export default function CardPost(props: Props) {
 
   return (
     <li className="px-0 pb-3 gtc-post" key={key}>
-      <figure>
+      <figure className="pb-2">
         <Image alt={alt} fluid={fluid} />
       </figure>
       <article>

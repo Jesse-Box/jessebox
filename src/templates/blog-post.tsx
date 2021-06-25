@@ -103,8 +103,12 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
               )}
               {block.model.apiKey === "visual" && (
                 <figure className="mb-3">
-                  <Image fluid={block.media.fluid} alt={block.media.alt} />
-                  <figcaption>{block.media.title}</figcaption>
+                  <Image
+                    className="mb-1"
+                    fluid={block.media.fluid}
+                    alt={block.media.alt}
+                  />
+                  <figcaption className="mt-2">{block.media.title}</figcaption>
                 </figure>
               )}
             </div>
