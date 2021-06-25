@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 
 import Grid from "./Grid"
 
@@ -7,27 +6,15 @@ interface Props {
   children: React.ReactNode
 }
 
-function PaginationPost(props: Props) {
+export default function PaginationPost(props: Props) {
   const { children } = props
   return (
     <section>
       <nav>
         <Grid>
-          <Styled.ul
-            sx={{
-              gridColumn: "2",
-              display: "flex",
-              flexFlow: "row wrap",
-              justifyContent: "space-between",
-              listStyle: "none",
-            }}
-          >
-            {children}
-          </Styled.ul>
+          <ul>{children}</ul>
         </Grid>
       </nav>
     </section>
   )
 }
-
-export default PaginationPost

@@ -1,6 +1,4 @@
-/** @jsx jsx */
-
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import { Link } from "gatsby"
 
 interface Props {
@@ -9,32 +7,21 @@ interface Props {
   title: string
 }
 
-function ListPost(props: Props) {
+export default function ListPost(props: Props) {
   const { to, rel, title } = props
   return (
-    <div
-      sx={{
-        display: "flex",
-        flexFlow: "column nowrap",
-      }}
-    >
-      <Styled.h6
-        sx={{
-          textAlign: rel === "next" ? "right" : "left",
-        }}
-      >
-        {rel}
-      </Styled.h6>
-      <Styled.a
-        sx={{ textAlign: rel === "next" ? "right" : "left" }}
+    <div>
+      <h6 className="tt-capitalize">
+        {rel === "next" ? `${rel} →` : `← ${rel}`}
+      </h6>
+      <Link
         title={title}
         aria-label={rel === "next" ? `Next Article` : `Previous Article`}
-        as={Link}
         to={to}
         rel={rel}
       >
-        {rel === "next" ? `${title} →` : `←${title}`}
-      </Styled.a>
+        {title}
+      </Link>
     </div>
   )
 }
@@ -42,5 +29,3 @@ function ListPost(props: Props) {
 ListPost.defaultProps = {
   title: "title",
 }
-
-export default ListPost

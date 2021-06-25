@@ -1,27 +1,15 @@
-/** @jsx jsx */
-import { jsx, BaseStyles } from "theme-ui"
-
-import Grid from "./Grid"
+import React from "react"
 
 interface Props {
   html: string
 }
 
-function BlockText({ html }: Props) {
+export default function BlockText({ html }: Props) {
   return (
-    <section>
-      <BaseStyles>
-        <Grid>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: html,
-            }}
-            sx={{ gridColumn: "2", mb: [3, 4, 5] }}
-          />
-        </Grid>
-      </BaseStyles>
-    </section>
+    <section
+      dangerouslySetInnerHTML={{
+        __html: html,
+      }}
+    ></section>
   )
 }
-
-export default BlockText

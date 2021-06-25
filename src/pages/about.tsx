@@ -1,62 +1,91 @@
-/** @jsx jsx */
-import { jsx, Styled, BaseStyles } from "theme-ui"
+import React from "react"
 import { PageProps, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
-import { FluidObject } from "gatsby-image"
+import Image, { FluidObject } from "gatsby-image"
 
-import Grid from "../components/Grid"
 import Layout from "../components/Layout"
-import HeaderPost from "../components/HeaderPost"
+import HeaderPage from "../components/HeaderPage"
 
 interface Data {
   datoCmsAbout: {
     seoMetaTags: {
       tags: []
     }
-    title: string
-    avatar: {
+    hero: {
       alt: string
       title: string
       fluid: FluidObject
     }
-    bodyNode: {
+    header: string
+    subheaderNode: {
       childMarkdownRemark: {
         html: string
       }
     }
+    body: {
+      id: string
+      model: {
+        apiKey: string
+        id: string
+      }
+      textNode: {
+        childMarkdownRemark: {
+          html: string
+        }
+      }
+      media: {
+        alt: string
+        fluid: FluidObject
+        title: string
+      }
+    }[]
   }
 }
 
-function About({ data }: PageProps<Data>) {
-  const aboutPage = data.datoCmsAbout
+export default function About(props: PageProps<Data>) {
+  const { data } = props
 
   return (
     <Layout>
-      <HelmetDatoCms seo={aboutPage.seoMetaTags} />
+      <HelmetDatoCms seo={data.datoCmsAbout.seoMetaTags} />
       <article>
-        <HeaderPost
-          title={aboutPage.title}
-          alt={aboutPage.avatar.alt}
-          caption={aboutPage.avatar.title}
-          fluid={aboutPage.avatar.fluid}
+        <HeaderPage
+          hero={data.datoCmsAbout.hero.fluid}
+          alt={data.datoCmsAbout.hero.alt}
+          caption={data.datoCmsAbout.hero.title}
+          header={data.datoCmsAbout.header}
+          subheader={data.datoCmsAbout.subheaderNode.childMarkdownRemark.html}
         />
-        <Grid>
-          <div sx={{ gridColumn: "2" }}>
-            <BaseStyles>
-              <Styled.div
-                dangerouslySetInnerHTML={{
-                  __html: data.datoCmsAbout.bodyNode.childMarkdownRemark.html,
-                }}
-              />
-            </BaseStyles>
-          </div>
-        </Grid>
+        <section className="ff-serif gtc-body">
+          {data.datoCmsAbout.body.map((block) => (
+            <div
+              className={
+                block.model.apiKey === "visual"
+                  ? "gc-body-wide"
+                  : "gc-body-narrow"
+              }
+              key={block.id}
+            >
+              {block.model.apiKey === "text" && (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: block.textNode.childMarkdownRemark.html,
+                  }}
+                />
+              )}
+              {block.model.apiKey === "visual" && (
+                <figure className="margin-bottom-3">
+                  <Image fluid={block.media.fluid} alt={block.media.alt} />
+                  <figcaption>{block.media.title}</figcaption>
+                </figure>
+              )}
+            </div>
+          ))}
+        </section>
       </article>
     </Layout>
   )
 }
-
-export default About
 
 export const pageQuery = graphql`
   query {
@@ -64,17 +93,43 @@ export const pageQuery = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      title
-      avatar {
+      hero {
         alt
         fluid(maxWidth: 1200) {
           ...GatsbyDatoCmsFluid
         }
         title
       }
-      bodyNode {
+      header
+      subheaderNode {
         childMarkdownRemark {
           html
+        }
+      }
+      body {
+        ... on DatoCmsText {
+          id
+          model {
+            apiKey
+          }
+          textNode {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+        ... on DatoCmsVisual {
+          id
+          model {
+            apiKey
+          }
+          media {
+            fluid(maxWidth: 1200) {
+              ...GatsbyDatoCmsFluid
+            }
+            title
+            alt
+          }
         }
       }
     }

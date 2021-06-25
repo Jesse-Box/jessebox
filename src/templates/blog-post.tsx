@@ -1,16 +1,11 @@
-/** @jsx jsx */
-
-import { jsx, Styled, BaseStyles, Box } from "theme-ui"
+import React from "react"
 import { graphql, PageProps } from "gatsby"
 import Image, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import Grid from "../components/Grid"
+import Bio from "../components/Bio"
 import Layout from "../components/Layout"
-import HeaderPost from "../components/HeaderPost"
-import PaginationPost from "../components/PaginationPost"
 import ListPost from "../components/ListPost"
-import BlockText from "../components/BlockText"
 
 type Data = {
   datoCmsSite: {
@@ -65,86 +60,85 @@ type Data = {
       slug: string
     }
   }
-  datoCmsAbout: {
-    introNode: {
-      childMarkdownRemark: {
-        html: string
-      }
-    }
-  }
 }
 
-function BlogPostTemplate({ data, pageContext }: PageProps<Data>) {
-  const post = data.datoCmsPost
+export default function BlogPostTemplate(props: PageProps<Data>) {
+  const { data, pageContext } = props
+
   const { previous, next } = pageContext
 
-  console.log(previous)
-
-  const imageFluid = post.hero.fluid
   return (
     <Layout>
       <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
-      <article sx={{ pb: [3, 4, 5] }}>
-        <HeaderPost
-          date={post.date}
-          title={post.title}
-          description={post.seo.description}
-          alt={post.hero.alt}
-          fluid={imageFluid}
-        />
-        <Grid>
+      <article>
+        <header className="gtc-header">
+          <figure className="gc-header-center mb-3">
+            <Image
+              alt={data.datoCmsPost.hero.alt}
+              fluid={data.datoCmsPost.hero.fluid}
+            />
+          </figure>
+          <h1 className="gc-header-center">{data.datoCmsPost.title}</h1>
+          <h5 className="gc-header-leanLeft">
+            {data.datoCmsPost.seo.description}
+          </h5>
+          <h6 className="gc-header-leanLeft">{data.datoCmsPost.date}</h6>
+        </header>
+        <section className="ff-serif gtc-body">
           {data.datoCmsPost.body.map((block) => (
             <div
-              sx={{ gridColumn: block.model.apiKey === "visual" ? "1/4" : "2" }}
+              className={
+                block.model.apiKey === "visual"
+                  ? "gc-body-wide"
+                  : "gc-body-narrow"
+              }
               key={block.id}
             >
               {block.model.apiKey === "text" && (
-                <BaseStyles>
-                  <Styled.div
-                    dangerouslySetInnerHTML={{
-                      __html: block.textNode.childMarkdownRemark.html,
-                    }}
-                  />
-                </BaseStyles>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: block.textNode.childMarkdownRemark.html,
+                  }}
+                />
               )}
               {block.model.apiKey === "visual" && (
-                <Box my={[3, 4, 5]}>
+                <figure className="mb-3">
                   <Image
-                    sx={{ mb: [2, 3, 4] }}
+                    className="mb-1"
                     fluid={block.media.fluid}
                     alt={block.media.alt}
                   />
-                  <Styled.h6>{block.media.title}</Styled.h6>
-                </Box>
+                  <figcaption className="mt-2">{block.media.title}</figcaption>
+                </figure>
               )}
             </div>
           ))}
-        </Grid>
+        </section>
       </article>
       {previous || next ? (
-        <PaginationPost>
-          <Styled.li sx={{ flex: "1 1 50%" }}>
-            {previous && (
-              <ListPost
-                rel="prev"
-                to={`/${previous.slug}`}
-                title={previous.title}
-              />
-            )}
-          </Styled.li>
-          <Styled.li sx={{ flex: "1 1 50%" }}>
-            {next && (
-              <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
-            )}
-          </Styled.li>
-        </PaginationPost>
+        <nav className="pb-3">
+          <ul className="gtc-pagination ls-none p-0 ">
+            <li className="p-0 gc-pagination-left">
+              {previous && (
+                <ListPost
+                  rel="prev"
+                  to={`/${previous.slug}`}
+                  title={previous.title}
+                />
+              )}
+            </li>
+            <li className="p-0 gc-pagination-right">
+              {next && (
+                <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
+              )}
+            </li>
+          </ul>
+        </nav>
       ) : null}
-      <BlockText html={data.datoCmsAbout.introNode.childMarkdownRemark.html} />
+      <Bio />
     </Layout>
   )
 }
-
-export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -188,13 +182,6 @@ export const pageQuery = graphql`
             title
             alt
           }
-        }
-      }
-    }
-    datoCmsAbout {
-      introNode {
-        childMarkdownRemark {
-          html
         }
       }
     }

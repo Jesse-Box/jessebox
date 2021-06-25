@@ -1,17 +1,14 @@
-/** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
+import "../styles/global.css"
 import Navigation from "./Navigation"
 import Footer from "./Footer"
 
 interface Data {
   datoCmsSite: {
     locale: string
-    globalSeo: {
-      siteName: string
-    }
     faviconMetaTags: any
   }
   datoCmsSeoMetaTags: {
@@ -23,14 +20,13 @@ interface Props {
   children: React.ReactNode
 }
 
-function Layout({ children }: Props) {
+export default function Layout(props: Props) {
+  const { children } = props
+
   const data: Data = useStaticQuery(graphql`
     query seoQuery {
       datoCmsSite {
         locale
-        globalSeo {
-          siteName
-        }
         faviconMetaTags {
           ...GatsbyDatoCmsFaviconMetaTags
         }
@@ -42,7 +38,7 @@ function Layout({ children }: Props) {
   `)
 
   return (
-    <Styled.root>
+    <>
       <HelmetDatoCms
         favicon={data.datoCmsSite.faviconMetaTags}
         seo={data.datoCmsSeoMetaTags}
@@ -50,10 +46,8 @@ function Layout({ children }: Props) {
         <html lang={data.datoCmsSite.locale} />
       </HelmetDatoCms>
       <Navigation />
-      <main sx={{ mx: "auto", px: [2, 3, 4] }}>{children}</main>
+      <main>{children}</main>
       <Footer />
-    </Styled.root>
+    </>
   )
 }
-
-export default Layout

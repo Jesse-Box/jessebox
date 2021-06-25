@@ -1,24 +1,25 @@
-/** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import { PageProps, graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import Grid from "../components/Grid"
 import Layout from "../components/Layout"
+import HeaderPage from "../components/HeaderPage"
 import CardPost from "../components/CardPost"
-import BlockText from "../components/BlockText"
 
 interface Data {
   datoCmsHome: {
     seoMetaTags: {
       tags: []
     }
-    introNode: {
+    header: string
+    subheaderNode: {
       childMarkdownRemark: {
         html: string
       }
     }
+    linkTo: string
+    linkLabel: string
   }
   allDatoCmsPost: {
     edges: {
@@ -35,40 +36,39 @@ interface Data {
   }
 }
 
-function BlogIndex({ data }: PageProps<Data>) {
-  const posts = data.allDatoCmsPost.edges
-  const homePage = data.datoCmsHome
+export default function BlogIndex(props: PageProps<Data>) {
+  const { data } = props
 
   return (
     <Layout>
-      <HelmetDatoCms seo={homePage.seoMetaTags} />
-      <BlockText html={homePage.introNode.childMarkdownRemark.html} />
+      <HelmetDatoCms seo={data.datoCmsHome.seoMetaTags} />
+      <HeaderPage
+        header={data.datoCmsHome.header}
+        subheader={data.datoCmsHome.subheaderNode.childMarkdownRemark.html}
+        linkTo={data.datoCmsHome.linkTo}
+        linkLabel={data.datoCmsHome.linkLabel}
+      />
       <section>
-        <Grid>
-          <Styled.p sx={{ gridColumn: "2" }}>Recent Posts</Styled.p>
-          <Styled.ul sx={{ listStyle: "none", gridColumn: "2" }}>
-            {posts.map(({ node }) => {
-              const title = node.title || node.fields.slug
-              return (
-                <CardPost
-                  key={node.slug}
-                  date={node.date}
-                  title={title}
-                  to={node.slug}
-                  description={node.seo.description}
-                  alt={node.alt}
-                  fluid={node.hero.fluid}
-                />
-              )
-            })}
-          </Styled.ul>
-        </Grid>
+        <h6 className="gc-body-narrow">Recent Posts</h6>
+        <ul className="ls-none m-0 p-0">
+          {data.allDatoCmsPost.edges.map(({ node }) => {
+            return (
+              <CardPost
+                key={node.slug}
+                date={node.date}
+                title={node.title}
+                to={node.slug}
+                description={node.seo.description}
+                alt={node.alt}
+                fluid={node.hero.fluid}
+              />
+            )
+          })}
+        </ul>
       </section>
     </Layout>
   )
 }
-
-export default BlogIndex
 
 export const pageQuery = graphql`
   query {
@@ -76,11 +76,14 @@ export const pageQuery = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      introNode {
+      header
+      subheaderNode {
         childMarkdownRemark {
           html
         }
       }
+      linkTo
+      linkLabel
     }
     allDatoCmsPost(sort: { fields: date, order: DESC }) {
       edges {

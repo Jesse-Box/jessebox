@@ -1,0 +1,180 @@
+@import "./normalize.css";
+@import "./tokens.css";
+@import "./utils.css";
+@import "./variants/layout.css";
+@import "./variants/links.css";
+
+/* Fonts
+   ========================================================================== */
+
+@font-face {
+ font-family: 'GT-Flexa-Expanded-Bold';
+ src: url('../../static/fonts/GT-Flexa-Expanded-Bold.woff2'),
+  url('../../static/fonts/GT-Flexa-Expanded-Bold.woff');
+}
+
+@font-face {
+ font-family: 'GT-Flexa-Standard-Regular';
+ src: url('../../static/fonts/GT-Flexa-Standard-Regular.woff2'),
+  url('../../static/fonts/GT-Flexa-Standard-Regular.woff');
+}
+
+@font-face {
+ font-family: 'GT-Alpina-Standard-Regular';
+ src: url('../../static/fonts/GT-Alpina-Standard-Regular.woff2'),
+  url('../../static/fonts/GT-Alpina-Standard-Regular.woff');
+}
+
+/* Body
+   ========================================================================== */
+
+body {
+  background-color: var(--color-background);
+  font-size: 1.0625rem;
+  line-height: var(--lineHeight-2);
+  font-family: var(--fontFamily-text-sans);
+  font-weight: var(--fontWeight-400);
+  font-feature-settings: "onum" 1, "pnum" 1, "kern" 1, "ss01" 1;
+  font-kerning: normal;
+  color: var(--color-primary);
+}
+
+main {
+  margin: 0 var(--space-3);
+}
+
+@media (min-width: 600px){
+  body {
+    font-size: 1.3125rem;
+  }
+
+  main {
+    margin: 0 var(--space-4);
+  }
+}
+
+@media (min-width: 1000px) {
+  body {
+    font-size: 1.5625rem;
+  }
+
+  main {
+    margin: 0 var(--space-5);
+  }
+}
+
+@media (min-width: 1500px) {
+  body {
+    font-size: 1.7058rem;
+  }
+
+  main {
+    margin: 0 var(--space-6);
+  }
+}
+
+/* Links
+   ========================================================================== */
+
+a {
+  color: var(--color-accent-default);
+  transition: all 80ms ease-in;
+  outline: none;
+  border-radius: var(--borderRadius-1);
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+a:focus {
+  box-shadow: 0 0 0 2px var(--color-focus);
+}
+
+/* Text
+   ========================================================================== */
+
+h1 {
+  font-size: var(--fontSize-6);
+}
+
+h2 {
+  font-size: var(--fontSize-5);
+}
+
+h3 {
+  font-size: var(--fontSize-4);
+}
+
+h4 {
+  font-size: var(--fontSize-3);
+}
+
+h1, h2, h3, h4 {
+  font-weight: var(--fontWeight-400);
+  font-family: var(--fontFamily-header);
+  line-height: var(--lineHeight-0);
+  letter-spacing: -0.015em;
+  margin-top: var(--space-0);
+  margin-bottom: var(--space-1);
+}
+
+h5 {
+  font-size: var(--fontSize-2);
+  margin-bottom: var(--space-2);
+  line-height: var(--lineHeight-1);
+}
+
+h6 {
+  font-size: var(--fontSize-0);
+  color: var(--color-secondary);
+}
+
+p {
+  font-family: var(--fontFamily-text-serif);
+  font-size: var(--fontSize-1);
+}
+
+h5, p {
+  font-family: var(--fontFamily-text-serif);
+}
+
+h6, p {
+  margin-bottom: var(--space-3);
+  line-height: var(--lineHeight-2);
+}
+
+h5, h6, p {
+  font-weight: var(--fontWeight-400);
+  margin-top: var(--space-0);
+}
+
+ul, ol {
+  margin-top: var(--space-0);
+  margin-bottom: var(--space-3);
+  padding: 0px var(--space-3);
+}
+
+li {
+  padding: 0px var(--space-2);
+}
+
+/* Visual
+   ========================================================================== */
+
+figure {
+  margin: var(--space-0);
+}
+
+figcaption {
+ font-family: var(--fontFamily-text-sans);
+ font-size: var(--fontSize-0);
+ color: var(--color-secondary);
+ margin-bottom: var(--space-3);
+}
+
+img {
+  border-radius: var(--borderRadius-4);
+}

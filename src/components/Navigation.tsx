@@ -1,55 +1,28 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
-
-import Grid from "./Grid"
+import React from "react"
 import LinkNav from "./LinkNav"
-import ThemeToggle from "./ThemeToggle"
 
-function Navigation() {
+export default function Navigation() {
   return (
-    <header sx={{ py: [2, 3, 4] }}>
-      <Grid>
-        <nav
-          sx={{
-            gridColumn: "1/4",
-            py: [3, 4, 5],
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <LinkNav title="Return Home" aria-label="Return Home" to="/">
-            Home
-          </LinkNav>
-          <ul
-            sx={{
-              display: "inline-grid",
-              gridAutoFlow: "column",
-              gridGap: [2, 3, 3],
-              listStyle: "none",
-              my: 0,
-              py: 0,
-              px: [2, 3, 4],
-            }}
-          >
-            <li>
-              <LinkNav
-                title="About me"
-                aria-label="About me"
-                to="/about"
-                activeClassName="active"
-              >
-                About
-              </LinkNav>
-            </li>
-            <li>
-              <ThemeToggle />
-            </li>
-          </ul>
-        </nav>
-      </Grid>
+    <header className="py-4">
+      <nav className="gtc-nav w-fill">
+        <ul className="gc-nav-center d-flex ls-none p-0 m-0">
+          <li className="d-flex lsnone p-0 m-0">
+            <LinkNav title="Return Home" aria-label="Return Home" to="/">
+              Home
+            </LinkNav>
+          </li>
+          <li className="d-flex p-0">
+            <LinkNav
+              title="About me"
+              aria-label="About me"
+              to="/about"
+              activeClassName="active"
+            >
+              About
+            </LinkNav>
+          </li>
+        </ul>
+      </nav>
     </header>
   )
 }
-
-export default Navigation

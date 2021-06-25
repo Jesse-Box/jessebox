@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import { Link } from "gatsby"
 import Image, { FluidObject } from "gatsby-image"
 
@@ -8,31 +7,28 @@ interface Props {
   date: string
   title: string
   to: string
-  description?: string
-  excerpt?: string
+  description: string
   alt: string
   fluid: FluidObject
 }
 
-function CardPost(props: Props) {
-  const { key, date, title, to, description, excerpt, alt, fluid } = props
+export default function CardPost(props: Props) {
+  const { key, date, title, to, description, alt, fluid } = props
+
   return (
-    <li key={key}>
-      <Image alt={alt} fluid={fluid} sx={{ mb: [3, 3, 4] }} />
-      <Styled.h3>
-        <Styled.a as={Link} title={title} to={to}>
-          {title}
-        </Styled.a>
-      </Styled.h3>
-      <Styled.p
-        aria-label="Post Description"
-        dangerouslySetInnerHTML={{
-          __html: description || excerpt,
-        }}
-      />
-      <Styled.p sx={{ color: "secondary" }}>{date}</Styled.p>
+    <li className="px-0 pb-3 gtc-post" key={key}>
+      <figure className="pb-2">
+        <Image alt={alt} fluid={fluid} />
+      </figure>
+      <article>
+        <h3>
+          <Link title={title} to={to}>
+            {title}
+          </Link>
+        </h3>
+        <p className="mb-2">{description}</p>
+        <h6>{date}</h6>
+      </article>
     </li>
   )
 }
-
-export default CardPost

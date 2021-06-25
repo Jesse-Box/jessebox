@@ -1,35 +1,74 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+import React from "react"
 import { PageProps, graphql } from "gatsby"
+import { FluidObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/Layout"
-import BlockText from "../components/BlockText"
+import HeaderPage from "../components/HeaderPage"
+import CardPost from "../components/CardPost"
 
 interface Data {
   datoCmsNotFound: {
     seoMetaTags: {
       tags: []
     }
-    introNode: {
+    header: string
+    subheaderNode: {
       childMarkdownRemark: {
         html: string
+      }
+    }
+    linkTo: string
+    linkLabel: string
+  }
+  allDatoCmsPost: {
+    edges: {
+      node: {
+        slug: string
+        title: string
+        date: string
+        hero: {
+          alt: string
+          fluid: FluidObject
+        }
       }
     }
   }
 }
 
-function NotFoundPage({ data }: PageProps<Data>) {
-  const notFoundPage = data.datoCmsNotFound
+export default function NotFoundPage(props: PageProps<Data>) {
+  const { data } = props
+
   return (
     <Layout>
-      <HelmetDatoCms seo={notFoundPage.seoMetaTags} />
-      <BlockText html={notFoundPage.introNode.childMarkdownRemark.html} />
+      <HelmetDatoCms seo={data.datoCmsNotFound.seoMetaTags} />
+      <HeaderPage
+        header={data.datoCmsNotFound.header}
+        subheader={data.datoCmsNotFound.subheaderNode.childMarkdownRemark.html}
+        linkTo={data.datoCmsNotFound.linkTo}
+        linkLabel={data.datoCmsNotFound.linkLabel}
+      />
+      <section className="gtc-body">
+        <h6 className="gc-body-narrow">Recent Posts</h6>
+        <ul className="ls-none p-0 gc-body-narrow">
+          {data.allDatoCmsPost.edges.map(({ node }) => {
+            return (
+              <CardPost
+                key={node.slug}
+                date={node.date}
+                title={node.title}
+                to={node.slug}
+                description={node.seo.description}
+                alt={node.alt}
+                fluid={node.hero.fluid}
+              />
+            )
+          })}
+        </ul>
+      </section>
     </Layout>
   )
 }
-
-export default NotFoundPage
 
 export const pageQuery = graphql`
   query {
@@ -37,11 +76,14 @@ export const pageQuery = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
-      introNode {
+      header
+      subheaderNode {
         childMarkdownRemark {
           html
         }
       }
+      linkTo
+      linkLabel
     }
     allDatoCmsPost(sort: { fields: date, order: DESC }) {
       edges {

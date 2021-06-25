@@ -1,47 +1,48 @@
-/** @jsx jsx */
-import { jsx, Styled, BaseStyles } from "theme-ui"
+import React from "react"
+import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
-
-import Grid from "./Grid"
 
 interface Data {
   datoCmsAbout: {
-    introNode: {
+    header: string
+    subheaderNode: {
       childMarkdownRemark: {
         html: "string"
       }
     }
+    linkTo: string
+    linkLabel: string
   }
 }
 
-function Bio() {
+export default function Bio() {
   const data: Data = useStaticQuery(graphql`
     query BioQuery {
       datoCmsAbout {
-        introNode {
+        header
+        subheaderNode {
           childMarkdownRemark {
             html
           }
         }
+        linkTo
+        linkLabel
       }
     }
   `)
 
   return (
-    <section>
-      <BaseStyles>
-        <Grid>
-          <Styled.div
-            dangerouslySetInnerHTML={{
-              __html: data.datoCmsAbout.introNode.childMarkdownRemark.html,
-            }}
-            aria-label="About me"
-            sx={{ gridColumn: "2", mb: [3, 4, 5] }}
-          />
-        </Grid>
-      </BaseStyles>
+    <section className="gtc-header pb-4">
+      <h2 className="gc-header-center">{data.datoCmsAbout.header}</h2>
+      <div
+        className="gc-header-leanLeft"
+        dangerouslySetInnerHTML={{
+          __html: data.datoCmsAbout.subheaderNode.childMarkdownRemark.html,
+        }}
+      />
+      <div className="gc-header-leanLeft">
+        <Link to={data.datoCmsAbout.linkTo}>{data.datoCmsAbout.linkLabel}</Link>
+      </div>
     </section>
   )
 }
-
-export default Bio
