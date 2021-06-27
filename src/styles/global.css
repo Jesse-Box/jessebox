@@ -8,21 +8,24 @@
    ========================================================================== */
 
 @font-face {
- font-family: 'GT-Flexa-Expanded-Bold';
- src: url('../../static/fonts/GT-Flexa-Expanded-Bold.woff2'),
-  url('../../static/fonts/GT-Flexa-Expanded-Bold.woff');
+  font-family: "GT-Flexa-Expanded-Bold";
+  src:
+    url("../../static/fonts/GT-Flexa-Expanded-Bold.woff2"),
+    url("../../static/fonts/GT-Flexa-Expanded-Bold.woff");
 }
 
 @font-face {
- font-family: 'GT-Flexa-Standard-Regular';
- src: url('../../static/fonts/GT-Flexa-Standard-Regular.woff2'),
-  url('../../static/fonts/GT-Flexa-Standard-Regular.woff');
+  font-family: "GT-Flexa-Standard-Regular";
+  src:
+    url("../../static/fonts/GT-Flexa-Standard-Regular.woff2"),
+    url("../../static/fonts/GT-Flexa-Standard-Regular.woff");
 }
 
 @font-face {
- font-family: 'GT-Alpina-Standard-Regular';
- src: url('../../static/fonts/GT-Alpina-Standard-Regular.woff2'),
-  url('../../static/fonts/GT-Alpina-Standard-Regular.woff');
+  font-family: "GT-Alpina-Standard-Regular";
+  src:
+    url("../../static/fonts/GT-Alpina-Standard-Regular.woff2"),
+    url("../../static/fonts/GT-Alpina-Standard-Regular.woff");
 }
 
 /* Body
@@ -43,7 +46,7 @@ main {
   margin: 0 var(--space-3);
 }
 
-@media (min-width: 600px){
+@media (min-width: 600px) {
   body {
     font-size: 1.3125rem;
   }
@@ -84,7 +87,8 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:active {
+a:hover,
+a:active {
   text-decoration: underline;
   text-underline-position: under;
 }
@@ -112,7 +116,10 @@ h4 {
   font-size: var(--fontSize-3);
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: var(--fontWeight-400);
   font-family: var(--fontFamily-header);
   line-height: var(--lineHeight-0);
@@ -137,28 +144,33 @@ p {
   font-size: var(--fontSize-1);
 }
 
-h5, p {
+h5,
+p {
   font-family: var(--fontFamily-text-serif);
 }
 
-h6, p {
+h6,
+p {
   margin-bottom: var(--space-3);
   line-height: var(--lineHeight-2);
 }
 
-h5, h6, p {
+h5,
+h6,
+p {
   font-weight: var(--fontWeight-400);
   margin-top: var(--space-0);
 }
 
-ul, ol {
+ul,
+ol {
   margin-top: var(--space-0);
   margin-bottom: var(--space-3);
-  padding: 0px var(--space-3);
+  padding: 0 var(--space-3);
 }
 
 li {
-  padding: 0px var(--space-2);
+  padding: 0 var(--space-2);
 }
 
 /* Visual
@@ -169,10 +181,10 @@ figure {
 }
 
 figcaption {
- font-family: var(--fontFamily-text-sans);
- font-size: var(--fontSize-0);
- color: var(--color-secondary);
- margin-bottom: var(--space-3);
+  font-family: var(--fontFamily-text-sans);
+  font-size: var(--fontSize-0);
+  color: var(--color-secondary);
+  margin-bottom: var(--space-3);
 }
 
 img {
