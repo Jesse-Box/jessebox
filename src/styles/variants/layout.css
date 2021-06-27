@@ -4,6 +4,7 @@
 .gtc-nav {
   --m: var(--space-3);
   --mx: var(--m) * 2;
+
   display: grid;
   grid-template-columns: calc(var(--m) - var(--space-3)) 1fr calc(var(--m) - var(--space-3));
 }
@@ -21,7 +22,7 @@
   grid-column: 1/3;
 }
 
-.gc-header-leanLeft{
+.gc-header-leanLeft {
   grid-column: 1/2;
 }
 
@@ -51,7 +52,7 @@
 }
 
 .gc-body-narrow {
- grid-column: 2/3;
+  grid-column: 2/3;
 }
 
 .gtc-pagination {
@@ -69,10 +70,9 @@
 }
 
 @media (min-width: 600px) {
-
   .gtc-nav {
-  --m: var(--space-4);
-  }  
+    --m: var(--space-4);
+  }
 
   .gtc-post {
     display: grid;
@@ -82,10 +82,9 @@
 }
 
 @media (min-width: 1000px) {
-
   .gtc-nav {
-  --m: var(--space-5);
-  }  
+    --m: var(--space-5);
+  }
 
   .gtc-post {
     --g: var(--space-3);
@@ -93,11 +92,7 @@
 }
 
 @media (min-width: 1500px) {
-
   .gtc-nav {
     --m: var(--space-6);
-  }  
-
-
-
+  }
 }

@@ -10,7 +10,7 @@
   --color-border: #e7ebee;
 
   /* Space */
-  --space-0: 0em;
+  --space-0: 0;
   --space-1: 0.25em;
   --space-2: 0.5em;
   --space-3: 1em;
@@ -24,7 +24,7 @@
   --breakpoint-2: 64rem;
 
   /* Border Radius */
-  --borderRadius-0: 0px;
+  --borderRadius-0: 0;
   --borderRadius-1: 2px;
   --borderRadius-2: 4px;
   --borderRadius-3: 8px;
@@ -33,14 +33,32 @@
   --borderRadius-6: 99px;
 
   /* Font Family */
-  --fontFamily-header: 'GT-Flexa-Expanded-Bold',
-      system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-  --fontFamily-text-sans: 
-      'GT-Flexa-Standard-Regular', system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-  --fontFamily-text-serif: 
-      'GT-Alpina-Standard-Regular', Georgia, Times, Times New Roman, serif;
+  --fontFamily-header:
+    "GT-Flexa-Expanded-Bold",
+    system-ui,
+    -apple-system,
+    blinkmacsystemfont,
+    segoe ui,
+    roboto,
+    helvetica neue,
+    sans-serif;
+  --fontFamily-text-sans:
+    "GT-Flexa-Standard-Regular",
+    system-ui,
+    -apple-system,
+    blinkmacsystemfont,
+    segoe ui,
+    roboto,
+    helvetica neue,
+    sans-serif;
+  --fontFamily-text-serif:
+    "GT-Alpina-Standard-Regular",
+    georgia,
+    times,
+    times new roman,
+    serif;
 
-  /*Font Size */
+  /* Font Size */
   --fontSize-0: 0.833em;
   --fontSize-1: 1em;
   --fontSize-2: 1.2em;
@@ -49,7 +67,7 @@
   --fontSize-5: 2.074em;
   --fontSize-6: 2.488em;
 
-  /*Line Height */
+  /* Line Height */
   --lineHeight-0: 1;
   --lineHeight-1: 1.35;
   --lineHeight-2: 1.5;
@@ -57,18 +75,17 @@
   /* Font Weight */
   --fontWeight-400: 400;
   --fontWeight-600: 600;
-
 }
 
 @media (prefers-color-scheme: dark) {
- :root {
-  --color-primary: #F9FAFB;
-  --color-secondary: #ADB9C2;
-  --color-accent-light: #FF7E70;
-  --color-accent-default: #FF5447;
-  --color-accent-dark: #D93732;
-  --color-focus: #47A6FF;
-  --color-background: #101010;
-  --color-border: #292929;
- }
+  :root {
+    --color-primary: #f9fafb;
+    --color-secondary: #adb9c2;
+    --color-accent-light: #ff7e70;
+    --color-accent-default: #ff5447;
+    --color-accent-dark: #d93732;
+    --color-focus: #47a6ff;
+    --color-background: #101010;
+    --color-border: #292929;
+  }
 }
