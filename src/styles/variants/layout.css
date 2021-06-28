@@ -3,7 +3,7 @@
 
 .navigation {
   --m: var(--space-3);
-  --mx: var(--m) * 2;
+
   display: grid;
   grid-template-columns: calc(var(--m) - var(--space-3)) 1fr calc(
       var(--m) - var(--space-3)
@@ -45,6 +45,12 @@
   grid-column: 1/3;
 }
 
+.page__hero--post {
+  /*Duplication*/
+  grid-column: 1/3;
+  margin-bottom: var(--space-3);
+}
+
 .page__title {
   grid-column: 1/3;
 }
@@ -70,16 +76,23 @@
   margin-bottom: var(--space-2);
 }
 
-.gtc-body {
+.section--post {
   display: grid;
   grid-template-columns: 1fr min(55ch, 100%) 1fr;
+  margin-bottom: var(--space-3);
+  font-family: var(--fontFamily-serif);
 }
 
-.gc-body-wide {
+.post__visual {
   grid-column: 1/4;
+  padding: var(--space-3) 0;
 }
 
-.gc-body-narrow {
+.post__visual__media {
+  margin-bottom: var(--space-2);
+}
+
+.post__text {
   grid-column: 2/3;
 }
 

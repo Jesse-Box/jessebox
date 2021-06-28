@@ -71,26 +71,24 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
       <article>
-        <header className="gtc-header">
-          <figure className="gc-header-center mb-3">
+        <header className="header header--page">
+          <figure className="page__hero--post">
             <Image
               alt={data.datoCmsPost.hero.alt}
               fluid={data.datoCmsPost.hero.fluid}
             />
           </figure>
-          <h1 className="gc-header-center">{data.datoCmsPost.title}</h1>
-          <h5 className="gc-header-leanLeft">
+          <h1 className="page__title">{data.datoCmsPost.title}</h1>
+          <h5 className="page__description">
             {data.datoCmsPost.seo.description}
           </h5>
-          <h6 className="gc-header-leanLeft">{data.datoCmsPost.date}</h6>
+          <h6 className="page__description">{data.datoCmsPost.date}</h6>
         </header>
-        <section className="ff-serif gtc-body">
+        <section className="section--post">
           {data.datoCmsPost.body.map((block) => (
             <div
               className={
-                block.model.apiKey === "visual"
-                  ? "gc-body-wide"
-                  : "gc-body-narrow"
+                block.model.apiKey === "visual" ? "post__visual" : "post__text"
               }
               key={block.id}
             >
@@ -102,13 +100,13 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
                 />
               )}
               {block.model.apiKey === "visual" && (
-                <figure className="mb-3">
+                <figure>
                   <Image
-                    className="mb-1"
+                    className="post__visual__media"
                     fluid={block.media.fluid}
                     alt={block.media.alt}
                   />
-                  <figcaption className="mt-2">{block.media.title}</figcaption>
+                  <figcaption>{block.media.title}</figcaption>
                 </figure>
               )}
             </div>
