@@ -1,16 +1,26 @@
 /* Grid
    ========================================================================== */
 
-.gtc-nav {
+.navigation {
   --m: var(--space-3);
   --mx: var(--m) * 2;
-
   display: grid;
-  grid-template-columns: calc(var(--m) - var(--space-3)) 1fr calc(var(--m) - var(--space-3));
+  grid-template-columns: calc(var(--m) - var(--space-3)) 1fr calc(
+      var(--m) - var(--space-3)
+    );
 }
 
-.gc-nav-center {
+.menu {
   grid-column: 2/3;
+  display: flex;
+  padding: var(--spacing-0);
+  margin: var(--spacing-0);
+}
+
+.menu__item {
+  padding: var(--spacing-0);
+  margin: var(--spacing-0);
+  list-style: none;
 }
 
 .gtc-header {
@@ -70,7 +80,7 @@
 }
 
 @media (min-width: 600px) {
-  .gtc-nav {
+  .navigation {
     --m: var(--space-4);
   }
 
@@ -82,7 +92,7 @@
 }
 
 @media (min-width: 1000px) {
-  .gtc-nav {
+  .navigation {
     --m: var(--space-5);
   }
 
@@ -92,7 +102,7 @@
 }
 
 @media (min-width: 1500px) {
-  .gtc-nav {
+  .navigation {
     --m: var(--space-6);
   }
 }
