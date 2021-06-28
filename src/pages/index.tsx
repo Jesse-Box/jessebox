@@ -49,8 +49,8 @@ export default function BlogIndex(props: PageProps<Data>) {
         linkLabel={data.datoCmsHome.linkLabel}
       />
       <section>
-        <h6 className="gc-body-narrow">Recent Posts</h6>
-        <ul className="ls-none m-0 p-0">
+        <h6>Recent Posts</h6>
+        <ul className="list">
           {data.allDatoCmsPost.edges.map(({ node }) => {
             return (
               <CardPost

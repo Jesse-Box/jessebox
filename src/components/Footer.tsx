@@ -2,9 +2,9 @@ import React from "react"
 
 export default function Footer() {
   return (
-    <footer className="pb-4">
+    <footer className="header">
       <nav className="navigation">
-        <ul className="menu">
+        <ul className="list list--menu">
           <li className="menu__item">
             <a
               title="me@jessebox.net"

@@ -6,7 +6,7 @@ interface Props {
   title: string
   ariaLabel?: string
   children: React.ReactNode
-  to?: string
+  to: string
   activeClassName?: string
 }
 
