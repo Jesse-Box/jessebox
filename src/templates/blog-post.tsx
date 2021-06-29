@@ -71,18 +71,18 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
     <Layout>
       <HelmetDatoCms seo={data.datoCmsPost.seoMetaTags} />
       <article>
-        <header className="header header--page">
-          <figure className="page__hero--post">
+        <header className="container intro">
+          <figure className="intro__hero intro__hero_post">
             <Image
               alt={data.datoCmsPost.hero.alt}
               fluid={data.datoCmsPost.hero.fluid}
             />
           </figure>
-          <h1 className="page__title">{data.datoCmsPost.title}</h1>
-          <h5 className="page__description">
+          <h1 className="intro__title">{data.datoCmsPost.title}</h1>
+          <h5 className="intro__description">
             {data.datoCmsPost.seo.description}
           </h5>
-          <h6 className="page__description">{data.datoCmsPost.date}</h6>
+          <h6 className="intro__description">{data.datoCmsPost.date}</h6>
         </header>
         <section className="post">
           {data.datoCmsPost.body.map((block) => (
@@ -114,9 +114,9 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
         </section>
       </article>
       {previous || next ? (
-        <nav className="header">
-          <ul className="list list--pagination">
-            <li className="list__item pagination__item--prev">
+        <nav className="container">
+          <ul className="list pagination">
+            <li className="list__item pagination__item_prev">
               {previous && (
                 <ListPost
                   rel="prev"
@@ -125,7 +125,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
                 />
               )}
             </li>
-            <li className="list_item pagination__item--next">
+            <li className="list_item pagination__item_next">
               {next && (
                 <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
               )}

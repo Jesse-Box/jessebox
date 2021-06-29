@@ -1,7 +1,4 @@
-/* Grid
-   ========================================================================== */
-
-.navigation {
+.nav {
   --m: var(--space-3);
 
   display: grid;
@@ -16,50 +13,57 @@
   list-style: none;
 }
 
-.list__item {
-  padding: var(--spacing-0);
-  margin: var(--spacing-0);
-}
-
-.list--menu {
+.list_nav {
   grid-column: 2/3;
   display: flex;
   flex-flow: row wrap;
 }
 
-.menu__item__link {
+.list__item {
+  padding: var(--spacing-0);
+  margin: var(--spacing-0);
+}
+
+.link-button {
   padding: var(--space-2) var(--space-3);
   border-radius: var(--borderRadius-6);
 }
 
 .header {
+  /*Deprecated*/
   padding-bottom: var(--space-4);
 }
 
-.header--page {
+.container {
+  padding-bottom: var(--space-4);
+}
+
+.container_nav {
+  padding-top: var(--space-4);
+}
+
+.intro {
   display: grid;
   grid-template-columns: min(55ch, 100%) 1fr;
 }
 
-.page__hero {
+.intro__hero {
   grid-column: 1/3;
 }
 
-.page__hero--post {
-  /*Duplication*/
-  grid-column: 1/3;
+.intro__hero_post {
   margin-bottom: var(--space-3);
 }
 
-.page__title {
+.intro__title {
   grid-column: 1/3;
 }
 
-.page__description {
+.intro__description {
   grid-column: 1/2;
 }
 
-.posts__item {
+.post-item {
   --display: block;
 
   display: var(--display);
@@ -68,11 +72,11 @@
   padding: var(--space-0) var(--space-0) var(--space-3);
 }
 
-.posts__item__img {
+.post-item__thumb {
   padding-bottom: var(--space-2);
 }
 
-.posts__item__description {
+.post-item__description {
   margin-bottom: var(--space-2);
 }
 
@@ -80,7 +84,7 @@
   display: grid;
   grid-template-columns: 1fr min(55ch, 100%) 1fr;
   margin-bottom: var(--space-3);
-  font-family: var(--fontFamily-serif);
+  font-family: var(--fontFamily-text-serif);
 }
 
 .post__visual {
@@ -96,38 +100,38 @@
   grid-column: 2/3;
 }
 
-.list--pagination {
+.pagination {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: var(--space-3);
 }
 
-.pagination__item--prev {
+.pagination__item_prev {
   grid-column: 1/2;
 }
 
-.pagination__item--next {
+.pagination__item_next {
   grid-column: 2/3;
 }
 
 @media (min-width: 600px) {
-  .navigation {
+  .nav {
     --m: var(--space-4);
   }
 
-  .posts__item {
+  .post-item {
     --display: grid;
   }
 }
 
 @media (min-width: 1000px) {
-  .navigation {
+  .nav {
     --m: var(--space-5);
   }
 }
 
 @media (min-width: 1500px) {
-  .navigation {
+  .nav {
     --m: var(--space-6);
   }
 }

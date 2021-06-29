@@ -15,20 +15,20 @@ interface Props {
 export default function HeaderPage(props: Props) {
   const { hero, alt, caption, header, subheader, linkTo, linkLabel } = props
   return (
-    <header className="header header--page">
+    <header className="container intro">
       {hero ? (
-        <figure className="page__hero">
+        <figure className="intro__hero">
           <Image alt={alt} fluid={hero} />
           <figcaption>{caption}</figcaption>
         </figure>
       ) : null}
-      <h1 className="page__title">{header}</h1>
+      <h1 className="intro__title">{header}</h1>
       <div
-        className="page__description"
+        className="intro__description"
         dangerouslySetInnerHTML={{ __html: subheader }}
       />
       {linkTo ? (
-        <div className="page__description">
+        <div className="intro__description">
           <Link to={linkTo}>{linkLabel} </Link>
         </div>
       ) : null}

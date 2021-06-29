@@ -11,9 +11,7 @@ export default function ListPost(props: Props) {
   const { to, rel, title } = props
   return (
     <div>
-      <h6 className="tt-capitalize">
-        {rel === "next" ? `${rel} →` : `← ${rel}`}
-      </h6>
+      <h6>{rel === "next" ? `${rel} →` : `← ${rel}`}</h6>
       <Link
         title={title}
         aria-label={rel === "next" ? `Next Article` : `Previous Article`}

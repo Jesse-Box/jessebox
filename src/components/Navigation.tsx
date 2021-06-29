@@ -3,9 +3,9 @@ import LinkNav from "./LinkNav"
 
 export default function Navigation() {
   return (
-    <header className="header">
-      <nav className="navigation">
-        <ul className="list list--menu">
+    <header className="container container_nav">
+      <nav className="nav">
+        <ul className="list list_nav">
           <li className="list__item">
             <LinkNav title="Return Home" aria-label="Return Home" to="/">
               Home

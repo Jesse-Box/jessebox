@@ -19,7 +19,7 @@ export default function LinkNav(props: Props) {
       aria-label={ariaLabel}
       to={to}
       activeClassName={activeClassName}
-      className="menu__item__link"
+      className="link-button"
     >
       {children}
     </Link>
