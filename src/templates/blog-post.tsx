@@ -84,7 +84,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
           </h5>
           <h6 className="page__description">{data.datoCmsPost.date}</h6>
         </header>
-        <section className="section--post">
+        <section className="post">
           {data.datoCmsPost.body.map((block) => (
             <div
               className={
@@ -114,9 +114,9 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
         </section>
       </article>
       {previous || next ? (
-        <nav className="pb-3">
-          <ul className="gtc-pagination ls-none p-0 ">
-            <li className="p-0 gc-pagination-left">
+        <nav className="header">
+          <ul className="list list--pagination">
+            <li className="list__item pagination__item--prev">
               {previous && (
                 <ListPost
                   rel="prev"
@@ -125,7 +125,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
                 />
               )}
             </li>
-            <li className="p-0 gc-pagination-right">
+            <li className="list_item pagination__item--next">
               {next && (
                 <ListPost rel="next" to={`/${next.slug}`} title={next.title} />
               )}

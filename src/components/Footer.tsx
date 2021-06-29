@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="header">
       <nav className="navigation">
         <ul className="list list--menu">
-          <li className="menu__item">
+          <li className="list__item">
             <a
               title="me@jessebox.net"
               aria-label="Email Address"
@@ -15,7 +15,7 @@ export default function Footer() {
               Email
             </a>
           </li>
-          <li className="menu__item">
+          <li className="list__item">
             <a
               title="Twitter Profile"
               aria-label="Twitter Profile"
@@ -25,7 +25,7 @@ export default function Footer() {
               Twitter
             </a>
           </li>
-          <li className="menu__item">
+          <li className="list__item">
             <a
               title="Github Profile"
               aria-label="Github Profile"
@@ -35,7 +35,7 @@ export default function Footer() {
               Github
             </a>
           </li>
-          <li className="menu__item">
+          <li className="list__item">
             <a
               title="LinkedIn Profile"
               aria-label="LinkedIn Profile"

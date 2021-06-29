@@ -56,13 +56,11 @@ export default function About(props: PageProps<Data>) {
           header={data.datoCmsAbout.header}
           subheader={data.datoCmsAbout.subheaderNode.childMarkdownRemark.html}
         />
-        <section className="ff-serif gtc-body">
+        <section className="post">
           {data.datoCmsAbout.body.map((block) => (
             <div
               className={
-                block.model.apiKey === "visual"
-                  ? "gc-body-wide"
-                  : "gc-body-narrow"
+                block.model.apiKey === "visual" ? "post__visual" : "post__text"
               }
               key={block.id}
             >
@@ -74,7 +72,7 @@ export default function About(props: PageProps<Data>) {
                 />
               )}
               {block.model.apiKey === "visual" && (
-                <figure className="margin-bottom-3">
+                <figure className="post__visual__media">
                   <Image fluid={block.media.fluid} alt={block.media.alt} />
                   <figcaption>{block.media.title}</figcaption>
                 </figure>
