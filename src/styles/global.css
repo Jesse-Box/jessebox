@@ -8,21 +8,18 @@
   font-family: "GT-Flexa-Expanded-Bold";
   src: url("../../static/fonts/GT-Flexa-Expanded-Bold.woff2"),
     url("../../static/fonts/GT-Flexa-Expanded-Bold.woff");
-  font-display: swap;
 }
 
 @font-face {
   font-family: "GT-Flexa-Standard-Regular";
   src: url("../../static/fonts/GT-Flexa-Standard-Regular.woff2"),
     url("../../static/fonts/GT-Flexa-Standard-Regular.woff");
-  font-display: swap;
 }
 
 @font-face {
   font-family: "GT-Alpina-Standard-Regular";
   src: url("../../static/fonts/GT-Alpina-Standard-Regular.woff2"),
     url("../../static/fonts/GT-Alpina-Standard-Regular.woff");
-  font-display: swap;
 }
 
 /* Tag Selectors
