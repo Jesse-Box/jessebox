@@ -1,35 +1,31 @@
 @import "./normalize.css";
 @import "./tokens.css";
-@import "./utils.css";
-@import "./variants/layout.css";
-@import "./variants/links.css";
 
-/* Fonts
+/* Custom Fonts
    ========================================================================== */
 
 @font-face {
   font-family: "GT-Flexa-Expanded-Bold";
-  src:
-    url("../../static/fonts/GT-Flexa-Expanded-Bold.woff2"),
+  src: url("../../static/fonts/GT-Flexa-Expanded-Bold.woff2"),
     url("../../static/fonts/GT-Flexa-Expanded-Bold.woff");
 }
 
 @font-face {
   font-family: "GT-Flexa-Standard-Regular";
-  src:
-    url("../../static/fonts/GT-Flexa-Standard-Regular.woff2"),
+  src: url("../../static/fonts/GT-Flexa-Standard-Regular.woff2"),
     url("../../static/fonts/GT-Flexa-Standard-Regular.woff");
 }
 
 @font-face {
   font-family: "GT-Alpina-Standard-Regular";
-  src:
-    url("../../static/fonts/GT-Alpina-Standard-Regular.woff2"),
+  src: url("../../static/fonts/GT-Alpina-Standard-Regular.woff2"),
     url("../../static/fonts/GT-Alpina-Standard-Regular.woff");
 }
 
-/* Body
+/* Tag Selectors
    ========================================================================== */
+
+/* Containers */
 
 body {
   background-color: var(--color-background);
@@ -76,8 +72,17 @@ main {
   }
 }
 
-/* Links
-   ========================================================================== */
+@media (min-width: 2100px) {
+  body {
+    font-size: 1.9411rem;
+  }
+
+  main {
+    margin: 0 var(--space-7);
+  }
+}
+
+/* Link */
 
 a {
   color: var(--color-accent-default);
@@ -97,8 +102,7 @@ a:focus {
   box-shadow: 0 0 0 2px var(--color-focus);
 }
 
-/* Text
-   ========================================================================== */
+/* Text */
 
 h1 {
   font-size: var(--fontSize-6);
@@ -173,8 +177,7 @@ li {
   padding: 0 var(--space-2);
 }
 
-/* Visual
-   ========================================================================== */
+/* Visual */
 
 figure {
   margin: var(--space-0);
@@ -189,4 +192,151 @@ figcaption {
 
 img {
   border-radius: var(--borderRadius-4);
+}
+
+/* Class Selectors
+   ========================================================================== */
+
+.nav {
+  --m: var(--space-3);
+
+  display: grid;
+  grid-template-columns: calc(var(--m) - var(--space-3)) 1fr calc(
+      var(--m) - var(--space-3)
+    );
+}
+
+.list {
+  padding: var(--spacing-0);
+  margin: var(--spacing-0);
+  list-style: none;
+}
+
+.list_nav {
+  grid-column: 2/3;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.list__item {
+  padding: var(--spacing-0);
+  margin: var(--spacing-0);
+}
+
+.link-button {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--borderRadius-6);
+}
+
+.header {
+  /*Deprecated*/
+  padding-bottom: var(--space-4);
+}
+
+.container {
+  padding-bottom: var(--space-4);
+}
+
+.container_nav {
+  padding-top: var(--space-4);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: min(55ch, 100%) 1fr;
+}
+
+.intro__hero {
+  grid-column: 1/3;
+}
+
+.intro__hero_post {
+  margin-bottom: var(--space-3);
+}
+
+.intro__title {
+  grid-column: 1/3;
+}
+
+.intro__description {
+  grid-column: 1/2;
+}
+
+.post-item {
+  --display: block;
+
+  display: var(--display);
+  grid-template-columns: 1fr 2fr;
+  grid-gap: var(--space-3);
+  padding: var(--space-0) var(--space-0) var(--space-3);
+}
+
+.post-item__thumb {
+  padding-bottom: var(--space-2);
+}
+
+.post-item__description {
+  margin-bottom: var(--space-2);
+}
+
+.post {
+  display: grid;
+  grid-template-columns: 1fr min(55ch, 100%) 1fr;
+  margin-bottom: var(--space-3);
+  font-family: var(--fontFamily-text-serif);
+}
+
+.post__visual {
+  grid-column: 1/4;
+  padding: var(--space-3) 0;
+}
+
+.post__visual__media {
+  margin-bottom: var(--space-2);
+}
+
+.post__text {
+  grid-column: 2/3;
+}
+
+.pagination {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: var(--space-3);
+}
+
+.pagination__item_prev {
+  grid-column: 1/2;
+}
+
+.pagination__item_next {
+  grid-column: 2/3;
+}
+
+@media (min-width: 600px) {
+  .nav {
+    --m: var(--space-4);
+  }
+
+  .post-item {
+    --display: grid;
+  }
+}
+
+@media (min-width: 1000px) {
+  .nav {
+    --m: var(--space-5);
+  }
+}
+
+@media (min-width: 1500px) {
+  .nav {
+    --m: var(--space-6);
+  }
+}
+
+@media (min-width: 2100px) {
+  .nav {
+    --m: var(--space-7);
+  }
 }
