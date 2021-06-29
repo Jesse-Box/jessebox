@@ -72,6 +72,16 @@ main {
   }
 }
 
+@media (min-width: 2100px) {
+  body {
+    font-size: 1.9411rem;
+  }
+
+  main {
+    margin: 0 var(--space-7);
+  }
+}
+
 /* Link */
 
 a {
@@ -322,5 +332,11 @@ img {
 @media (min-width: 1500px) {
   .nav {
     --m: var(--space-6);
+  }
+}
+
+@media (min-width: 2100px) {
+  .nav {
+    --m: var(--space-7);
   }
 }

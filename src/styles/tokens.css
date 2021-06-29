@@ -17,6 +17,7 @@
   --space-4: 2em;
   --space-5: 4em;
   --space-6: 8em;
+  --space-7: 16em;
 
   /* Break Point */
   --breakpoint-0: 40rem;
@@ -33,30 +34,12 @@
   --borderRadius-6: 99px;
 
   /* Font Family */
-  --fontFamily-header:
-    "GT-Flexa-Expanded-Bold",
-    system-ui,
-    -apple-system,
-    blinkmacsystemfont,
-    segoe ui,
-    roboto,
-    helvetica neue,
-    sans-serif;
-  --fontFamily-text-sans:
-    "GT-Flexa-Standard-Regular",
-    system-ui,
-    -apple-system,
-    blinkmacsystemfont,
-    segoe ui,
-    roboto,
-    helvetica neue,
-    sans-serif;
-  --fontFamily-text-serif:
-    "GT-Alpina-Standard-Regular",
-    georgia,
-    times,
-    times new roman,
-    serif;
+  --fontFamily-header: "GT-Flexa-Expanded-Bold", system-ui, -apple-system,
+    blinkmacsystemfont, segoe ui, roboto, helvetica neue, sans-serif;
+  --fontFamily-text-sans: "GT-Flexa-Standard-Regular", system-ui, -apple-system,
+    blinkmacsystemfont, segoe ui, roboto, helvetica neue, sans-serif;
+  --fontFamily-text-serif: "GT-Alpina-Standard-Regular", georgia, times,
+    times new roman, serif;
 
   /* Font Size */
   --fontSize-0: 0.833em;
