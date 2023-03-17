@@ -85,7 +85,7 @@ export const pageQuery = graphql`
       linkTo
       linkLabel
     }
-    allDatoCmsPost(sort: { fields: date, order: DESC }) {
+    allDatoCmsPost(sort: { date: DESC }) {
       edges {
         node {
           slug
