@@ -7,8 +7,8 @@ import Layout from "../components/Layout"
 import HeaderPage from "../components/HeaderPage"
 
 interface Data {
-  datoCmsAbout: {
-    seoMetaTags: {
+  about: {
+    seo: {
       tags: []
     }
     hero: {
@@ -17,25 +17,19 @@ interface Data {
       fluid: FluidObject
     }
     header: string
-    subheaderNode: {
-      childMarkdownRemark: {
-        html: string
-      }
-    }
+    subheader: string
     body: {
       id: string
       model: {
         apiKey: string
-        id: string
       }
-      textNode: {
-        childMarkdownRemark: {
-          html: string
-        }
-      }
+      text: string
       media: {
         alt: string
         fluid: FluidObject
+        model: {
+          apiKey: string
+        }
         title: string
       }
     }[]
@@ -47,17 +41,17 @@ export default function About(props: PageProps<Data>) {
 
   return (
     <Layout>
-      <HelmetDatoCms seo={data.datoCmsAbout.seoMetaTags} />
+      <HelmetDatoCms seo={data.about.seo} />
       <article>
         <HeaderPage
-          hero={data.datoCmsAbout.hero.fluid}
-          alt={data.datoCmsAbout.hero.alt}
-          caption={data.datoCmsAbout.hero.title}
-          header={data.datoCmsAbout.header}
-          subheader={data.datoCmsAbout.subheaderNode.childMarkdownRemark.html}
+          hero={data.about.hero.fluid}
+          alt={data.about.hero.alt}
+          caption={data.about.hero.title}
+          header={data.about.header}
+          subheader={data.about.subheader}
         />
         <section className="post">
-          {data.datoCmsAbout.body.map((block) => (
+          {data.about.body.map((block) => (
             <div
               className={
                 block.model.apiKey === "visual" ? "post__visual" : "post__text"
@@ -67,7 +61,7 @@ export default function About(props: PageProps<Data>) {
               {block.model.apiKey === "text" && (
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: block.textNode.childMarkdownRemark.html,
+                    __html: block.text,
                   }}
                 />
               )}
@@ -87,8 +81,8 @@ export default function About(props: PageProps<Data>) {
 
 export const pageQuery = graphql`
   query {
-    datoCmsAbout {
-      seoMetaTags {
+    about: datoCmsAbout {
+      seo: seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
       hero {
@@ -99,10 +93,7 @@ export const pageQuery = graphql`
         title
       }
       header
-      subheaderNode {
-        childMarkdownRemark {
-          html
-        }
+      subheader
       }
       body {
         ... on DatoCmsText {
@@ -110,10 +101,7 @@ export const pageQuery = graphql`
           model {
             apiKey
           }
-          textNode {
-            childMarkdownRemark {
-              html
-            }
+          text
           }
         }
         ... on DatoCmsVisual {

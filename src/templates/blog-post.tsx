@@ -36,11 +36,7 @@ type Data = {
         apiKey: string
         id: string
       }
-      textNode: {
-        childMarkdownRemark: {
-          html: string
-        }
-      }
+      text: string
       media: {
         alt: string
         fluid: FluidObject
@@ -95,7 +91,7 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
               {block.model.apiKey === "text" && (
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: block.textNode.childMarkdownRemark.html,
+                    __html: block.text,
                   }}
                 />
               )}
@@ -162,11 +158,7 @@ export const pageQuery = graphql`
           model {
             apiKey
           }
-          textNode {
-            childMarkdownRemark {
-              html
-            }
-          }
+          text
         }
         ... on DatoCmsVisual {
           id

@@ -13,11 +13,7 @@ interface Data {
       tags: []
     }
     header: string
-    subheaderNode: {
-      childMarkdownRemark: {
-        html: string
-      }
-    }
+    subheader: string
     linkTo: string
     linkLabel: string
   }
@@ -44,7 +40,7 @@ export default function BlogIndex(props: PageProps<Data>) {
       <HelmetDatoCms seo={data.datoCmsHome.seoMetaTags} />
       <HeaderPage
         header={data.datoCmsHome.header}
-        subheader={data.datoCmsHome.subheaderNode.childMarkdownRemark.html}
+        subheader={data.datoCmsHome.subheader}
         linkTo={data.datoCmsHome.linkTo}
         linkLabel={data.datoCmsHome.linkLabel}
       />
@@ -77,11 +73,7 @@ export const pageQuery = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       header
-      subheaderNode {
-        childMarkdownRemark {
-          html
-        }
-      }
+      subheader
       linkTo
       linkLabel
     }

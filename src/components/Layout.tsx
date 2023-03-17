@@ -7,12 +7,14 @@ import Navigation from "./Navigation"
 import Footer from "./Footer"
 
 interface Data {
-  datoCmsSite: {
-    locale: string
-    faviconMetaTags: any
+  site: {
+    locales: string
+    favicon: any
   }
-  datoCmsSeoMetaTags: {
-    tags: []
+  home: {
+    seo: {
+      tags: []
+    }
   }
 }
 
@@ -25,25 +27,24 @@ export default function Layout(props: Props) {
 
   const data: Data = useStaticQuery(graphql`
     query seoQuery {
-      datoCmsSite {
-        locale
-        faviconMetaTags {
+      site: datoCmsSite {
+        locales
+        favicon: faviconMetaTags {
           ...GatsbyDatoCmsFaviconMetaTags
         }
       }
-      datoCmsSeoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
+      home: datoCmsHome {
+        seo: seoMetaTags {
+          ...GatsbyDatoCmsSeoMetaTags
+        }
       }
     }
   `)
 
   return (
     <>
-      <HelmetDatoCms
-        favicon={data.datoCmsSite.faviconMetaTags}
-        seo={data.datoCmsSeoMetaTags}
-      >
-        <html lang={data.datoCmsSite.locale} />
+      <HelmetDatoCms favicon={data.site.favicon} seo={data.home.seo}>
+        <html lang={data.site.locales} />
       </HelmetDatoCms>
       <Navigation />
       <main>{children}</main>

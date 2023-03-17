@@ -13,11 +13,7 @@ interface Data {
       tags: []
     }
     header: string
-    subheaderNode: {
-      childMarkdownRemark: {
-        html: string
-      }
-    }
+    subheader: string
     linkTo: string
     linkLabel: string
   }
@@ -44,7 +40,7 @@ export default function NotFoundPage(props: PageProps<Data>) {
       <HelmetDatoCms seo={data.datoCmsNotFound.seoMetaTags} />
       <HeaderPage
         header={data.datoCmsNotFound.header}
-        subheader={data.datoCmsNotFound.subheaderNode.childMarkdownRemark.html}
+        subheader={data.datoCmsNotFound.subheader}
         linkTo={data.datoCmsNotFound.linkTo}
         linkLabel={data.datoCmsNotFound.linkLabel}
       />
@@ -77,11 +73,7 @@ export const pageQuery = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       header
-      subheaderNode {
-        childMarkdownRemark {
-          html
-        }
-      }
+      subheader
       linkTo
       linkLabel
     }

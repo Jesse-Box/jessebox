@@ -5,11 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 interface Data {
   datoCmsAbout: {
     header: string
-    subheaderNode: {
-      childMarkdownRemark: {
-        html: "string"
-      }
-    }
+    subheader: string
     linkTo: string
     linkLabel: string
   }
@@ -20,11 +16,7 @@ export default function Bio() {
     query BioQuery {
       datoCmsAbout {
         header
-        subheaderNode {
-          childMarkdownRemark {
-            html
-          }
-        }
+        subheader
         linkTo
         linkLabel
       }
@@ -37,7 +29,7 @@ export default function Bio() {
       <div
         className="intro__description"
         dangerouslySetInnerHTML={{
-          __html: data.datoCmsAbout.subheaderNode.childMarkdownRemark.html,
+          __html: data.datoCmsAbout.subheader,
         }}
       />
       <div className="intro__description">
