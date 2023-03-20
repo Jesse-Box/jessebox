@@ -79,45 +79,45 @@ export default function About(props: PageProps<Data>) {
   )
 }
 
-export const pageQuery = graphql`
-  query {
-    about: datoCmsAbout {
-      seo: seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
-      }
-      hero {
-        alt
-        fluid(maxWidth: 1200) {
-          ...GatsbyDatoCmsFluid
-        }
-        title
-      }
-      header
-      subheader
-      }
-      body {
-        ... on DatoCmsText {
-          id
-          model {
-            apiKey
-          }
-          text
-          }
-        }
-        ... on DatoCmsVisual {
-          id
-          model {
-            apiKey
-          }
-          media {
-            fluid(maxWidth: 1200) {
-              ...GatsbyDatoCmsFluid
-            }
-            title
-            alt
-          }
-        }
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query {
+//     about: datoCmsAbout {
+//       seo: seoMetaTags {
+//         ...GatsbyDatoCmsSeoMetaTags
+//       }
+//       hero {
+//         alt
+//         fluid(maxWidth: 1200) {
+//           ...GatsbyDatoCmsFluid
+//         }
+//         title
+//       }
+//       header
+//       subheader
+//       }
+//       body {
+//         ... on DatoCmsText {
+//           id
+//           model {
+//             apiKey
+//           }
+//           text
+//           }
+//         }
+//         ... on DatoCmsVisual {
+//           id
+//           model {
+//             apiKey
+//           }
+//           media {
+//             fluid(maxWidth: 1200) {
+//               ...GatsbyDatoCmsFluid
+//             }
+//             title
+//             alt
+//           }
+//         }
+//       }
+//     }
+//   }
+//`
