@@ -2,7 +2,7 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { StructuredText } from "react-datocms"
 
-export default function PostBody({ content }) {
+export default function BodyPost({ content }) {
   return (
     <section className="post">
       <StructuredText
