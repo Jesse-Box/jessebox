@@ -9,14 +9,18 @@ export default function BodyPost({ content }) {
         data={content}
         renderBlock={({ record }) => {
           if (record.__typename === "DatoCmsVisual") {
-            return <GatsbyImage image={record.image.gatsbyImageData} />
-          }
-          return (
-            <>
-              <p>Don't know how to render a block!</p>
-              <pre>{JSON.stringify(record, null, 2)}</pre>
-            </>
-          )
+            return (
+              <div classname="post__visual">
+                <GatsbyImage image={record.image.gatsbyImageData} />
+              </div>
+            )
+          } else
+            return (
+              <>
+                <p>Don't know how to render a block!</p>
+                <pre>{JSON.stringify(record, null, 2)}</pre>
+              </>
+            )
         }}
       />
     </section>
