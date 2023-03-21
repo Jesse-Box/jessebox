@@ -80,38 +80,40 @@ export default function About(props: PageProps<Data>) {
 }
 
 export const pageQuery = graphql`
-  query datoCmsAbout {
-    seoMetaTags {
-      ...GatsbyDatoCmsSeoMetaTags
-    }
-    hero {
-      alt
-      fluid(maxWidth: 1200) {
-        ...GatsbyDatoCmsFluid
+  query {
+    datoCmsAbout {
+      seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
       }
-      title
-    }
-    header
-    subheader
-    body {
-      ... on DatoCmsText {
-        id
-        model {
-          apiKey
+      hero {
+        alt
+        fluid(maxWidth: 1200) {
+          ...GatsbyDatoCmsFluid
         }
-        text
+        title
       }
-      ... on DatoCmsVisual {
-        id
-        model {
-          apiKey
-        }
-        media {
-          fluid(maxWidth: 1200) {
-            ...GatsbyDatoCmsFluid
+      header
+      subheader
+      body {
+        ... on DatoCmsText {
+          id
+          model {
+            apiKey
           }
-          title
-          alt
+          text
+        }
+        ... on DatoCmsVisual {
+          id
+          model {
+            apiKey
+          }
+          media {
+            fluid(maxWidth: 1200) {
+              ...GatsbyDatoCmsFluid
+            }
+            title
+            alt
+          }
         }
       }
     }
