@@ -24,7 +24,7 @@ interface Data {
         apiKey: string
       }
       text: string
-      media: {
+      image: {
         alt: string
         fluid: FluidObject
         model: {
@@ -66,9 +66,9 @@ export default function About(props: PageProps<Data>) {
                 />
               )}
               {block.model.apiKey === "visual" && (
-                <figure className="post__visual__media">
-                  <Image fluid={block.media.fluid} alt={block.media.alt} />
-                  <figcaption>{block.media.title}</figcaption>
+                <figure className="post__visual__image">
+                  <Image fluid={block.image.fluid} alt={block.image.alt} />
+                  <figcaption>{block.image.title}</figcaption>
                 </figure>
               )}
             </div>
@@ -107,7 +107,7 @@ export const pageQuery = graphql`
           model {
             apiKey
           }
-          media {
+          image {
             fluid(maxWidth: 1200) {
               ...GatsbyDatoCmsFluid
             }

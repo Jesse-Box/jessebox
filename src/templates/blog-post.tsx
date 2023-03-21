@@ -37,7 +37,7 @@ type Data = {
         id: string
       }
       text: string
-      media: {
+      image: {
         alt: string
         fluid: FluidObject
         title: string
@@ -98,11 +98,11 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
               {block.model.apiKey === "visual" && (
                 <figure>
                   <Image
-                    className="post__visual__media"
-                    fluid={block.media.fluid}
-                    alt={block.media.alt}
+                    className="post__visual__image"
+                    fluid={block.image.fluid}
+                    alt={block.image.alt}
                   />
-                  <figcaption>{block.media.title}</figcaption>
+                  <figcaption>{block.image.title}</figcaption>
                 </figure>
               )}
             </div>
@@ -165,7 +165,7 @@ export const pageQuery = graphql`
           model {
             apiKey
           }
-          media {
+          image {
             fluid(maxWidth: 1200) {
               ...GatsbyDatoCmsFluid
             }
