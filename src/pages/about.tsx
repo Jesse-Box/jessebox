@@ -7,8 +7,8 @@ import Layout from "../components/Layout"
 import HeaderPage from "../components/HeaderPage"
 
 interface Data {
-  about: {
-    seo: {
+  datoCmsAbout: {
+    seoMetaTags: {
       tags: []
     }
     hero: {
@@ -41,17 +41,17 @@ export default function About(props: PageProps<Data>) {
 
   return (
     <Layout>
-      <HelmetDatoCms seo={data.about.seo} />
+      <HelmetDatoCms seo={data.datoCmsAbout.seoMetaTags} />
       <article>
         <HeaderPage
-          hero={data.about.hero.fluid}
-          alt={data.about.hero.alt}
-          caption={data.about.hero.title}
-          header={data.about.header}
-          subheader={data.about.subheader}
+          hero={data.datoCmsAbout.hero.fluid}
+          alt={data.datoCmsAbout.hero.alt}
+          caption={data.datoCmsAbout.hero.title}
+          header={data.datoCmsAbout.header}
+          subheader={data.datoCmsAbout.subheader}
         />
         <section className="post">
-          {data.about.body.map((block) => (
+          {data.datoCmsAbout.body.map((block) => (
             <div
               className={
                 block.model.apiKey === "visual" ? "post__visual" : "post__text"
@@ -79,45 +79,41 @@ export default function About(props: PageProps<Data>) {
   )
 }
 
-// export const pageQuery = graphql`
-//   query {
-//     about: datoCmsAbout {
-//       seo: seoMetaTags {
-//         ...GatsbyDatoCmsSeoMetaTags
-//       }
-//       hero {
-//         alt
-//         fluid(maxWidth: 1200) {
-//           ...GatsbyDatoCmsFluid
-//         }
-//         title
-//       }
-//       header
-//       subheader
-//       }
-//       body {
-//         ... on DatoCmsText {
-//           id
-//           model {
-//             apiKey
-//           }
-//           text
-//           }
-//         }
-//         ... on DatoCmsVisual {
-//           id
-//           model {
-//             apiKey
-//           }
-//           media {
-//             fluid(maxWidth: 1200) {
-//               ...GatsbyDatoCmsFluid
-//             }
-//             title
-//             alt
-//           }
-//         }
-//       }
-//     }
-//   }
-//`
+export const pageQuery = graphql`
+  query datoCmsAbout {
+    seoMetaTags {
+      ...GatsbyDatoCmsSeoMetaTags
+    }
+    hero {
+      alt
+      fluid(maxWidth: 1200) {
+        ...GatsbyDatoCmsFluid
+      }
+      title
+    }
+    header
+    subheader
+    body {
+      ... on DatoCmsText {
+        id
+        model {
+          apiKey
+        }
+        text
+      }
+      ... on DatoCmsVisual {
+        id
+        model {
+          apiKey
+        }
+        media {
+          fluid(maxWidth: 1200) {
+            ...GatsbyDatoCmsFluid
+          }
+          title
+          alt
+        }
+      }
+    }
+  }
+`
