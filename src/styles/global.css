@@ -295,6 +295,10 @@ img {
   margin-bottom: var(--space-2);
 }
 
+.post > :not(.post__visual) {
+  grid-column: 2/3;
+}
+
 .post__text {
   grid-column: 2/3;
 }

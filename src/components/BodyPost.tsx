@@ -10,7 +10,7 @@ export default function BodyPost({ content }) {
         renderBlock={({ record }) => {
           if (record.__typename === "DatoCmsVisual") {
             return (
-              <div classname="post__visual">
+              <div className="post__visual">
                 <GatsbyImage image={record.image.gatsbyImageData} />
               </div>
             )
