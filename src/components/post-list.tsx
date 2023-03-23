@@ -7,6 +7,7 @@ interface Data {
     edges: {
       nodes: {
         title: string
+        summary: string
         slug: string
         id: string
         date: string
@@ -26,6 +27,7 @@ export default function PostList() {
         edges {
           node {
             title
+            summary
             slug
             id
             date(formatString: "MMMM DD, YYYY")
