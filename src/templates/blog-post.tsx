@@ -3,9 +3,9 @@ import { graphql, PageProps } from "gatsby"
 import Image, { FluidObject, FixedObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import Bio from "../components/Bio"
-import Layout from "../components/Layout"
-import ListPost from "../components/ListPost"
+import Bio from "../components/bio"
+import Layout from "../components/layout"
+import ListPost from "../components/post-suggestions"
 
 type Data = {
   datoCmsSite: {
@@ -75,10 +75,8 @@ export default function BlogPostTemplate(props: PageProps<Data>) {
             />
           </figure>
           <h1 className="intro__title">{data.datoCmsPost.title}</h1>
-          <h5 className="intro__description">
-            {data.datoCmsPost.seo.description}
-          </h5>
-          <h6 className="intro__description">{data.datoCmsPost.date}</h6>
+          <h5 className="intro__summary">{data.datoCmsPost.seo.description}</h5>
+          <h6 className="intro__summary">{data.datoCmsPost.date}</h6>
         </header>
         <section className="post">
           {data.datoCmsPost.body.map((block) => (

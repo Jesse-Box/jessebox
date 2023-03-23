@@ -3,8 +3,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import "../styles/global.css"
-import Navigation from "./Navigation"
-import Footer from "./Footer"
+import Navigation from "./navigation"
+import Footer from "./footer"
 
 interface Data {
   site: {

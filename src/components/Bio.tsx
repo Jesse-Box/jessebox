@@ -27,12 +27,12 @@ export default function Bio() {
     <section className="container intro">
       <h2 className="intro__title">{data.datoCmsAbout.header}</h2>
       <div
-        className="intro__description"
+        className="intro__summary"
         dangerouslySetInnerHTML={{
           __html: data.datoCmsAbout.subheader,
         }}
       />
-      <div className="intro__description">
+      <div className="intro__summary">
         <Link to={data.datoCmsAbout.linkTo}>{data.datoCmsAbout.linkLabel}</Link>
       </div>
     </section>

@@ -3,9 +3,9 @@ import { PageProps, graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import Layout from "../components/Layout"
-import HeaderPage from "../components/HeaderPage"
-import CardPost from "../components/CardPost"
+import Layout from "../components/layout"
+import HeaderPage from "../components/page-header"
+import CardPost from "../components/post-card"
 
 interface Data {
   datoCmsHome: {
@@ -37,17 +37,17 @@ export default function BlogIndex(props: PageProps<Data>) {
 
   return (
     <Layout>
-      <HelmetDatoCms seo={data.datoCmsHome.seoMetaTags} />
+      <HelmetDatoCms seo={data.home.seo} favicon={data.site.favicon} />
       <HeaderPage
-        header={data.datoCmsHome.header}
-        subheader={data.datoCmsHome.subheader}
-        linkTo={data.datoCmsHome.linkTo}
-        linkLabel={data.datoCmsHome.linkLabel}
+        title={data.home.title}
+        summary={data.home.summary}
+        linkTo={data.home.linkTo}
+        linkLabel={data.home.linkLabel}
       />
       <section>
         <h6>Recent Posts</h6>
         <ul className="list">
-          {data.allDatoCmsPost.edges.map(({ node }) => {
+          {data.posts.edges.map(({ node }) => {
             return (
               <CardPost
                 key={node.slug}
@@ -68,16 +68,21 @@ export default function BlogIndex(props: PageProps<Data>) {
 
 export const pageQuery = graphql`
   query {
-    datoCmsHome {
-      seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
+    site: datoCmsSite {
+      favicon: faviconMetaTags {
+        ...GatsbyDatoCmsFaviconMetaTags
       }
-      header
-      subheader
+    }
+    home: datoCmsHomeNext {
+      title
+      summary
       linkTo
       linkLabel
+      seo: seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
+      }
     }
-    allDatoCmsPost(sort: { date: DESC }) {
+    posts: allDatoCmsPost(sort: { date: DESC }) {
       edges {
         node {
           slug

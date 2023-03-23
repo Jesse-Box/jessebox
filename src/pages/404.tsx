@@ -3,9 +3,9 @@ import { PageProps, graphql } from "gatsby"
 import { FluidObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import Layout from "../components/Layout"
-import HeaderPage from "../components/HeaderPage"
-import CardPost from "../components/CardPost"
+import Layout from "../components/layout"
+import HeaderPage from "../components/page-header"
+import CardPost from "../components/post-card"
 
 interface Data {
   datoCmsNotFound: {

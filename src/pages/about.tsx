@@ -2,9 +2,9 @@ import React from "react"
 import { PageProps, graphql } from "gatsby"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
-import Layout from "../components/Layout"
-import HeaderPage from "../components/HeaderPage"
-import BodyPost from "../components/BodyPost"
+import Layout from "../components/layout"
+import PageHeader from "../components/page-header"
+import PostBody from "../components/post-body"
 
 interface Data {
   about: {
@@ -43,14 +43,14 @@ export default function About(props: PageProps<Data>) {
     <Layout>
       <HelmetDatoCms seo={data.about.seo} favicon={data.site.favicon} />
       <article>
-        <HeaderPage
-          hero={data.about.coverImage.gatsbyImageData}
-          alt={data.about.coverImage.alt}
-          caption={data.about.coverImage.title}
-          header={data.about.title}
-          subheader={data.about.excerpt}
+        <PageHeader
+          coverImageSrc={data.about.coverImage.gatsbyImageData}
+          coverImageAlt={data.about.coverImage.alt}
+          coverImageCaption={data.about.coverImage.title}
+          title={data.about.title}
+          summary={data.about.summary}
         />
-        <BodyPost content={data.about.content} />
+        <PostBody content={data.about.content} />
       </article>
     </Layout>
   )
@@ -64,9 +64,13 @@ export const pageQuery = graphql`
       }
     }
     about: datoCmsAboutNext {
-      seo: seoMetaTags {
-        ...GatsbyDatoCmsSeoMetaTags
+      coverImage {
+        alt
+        title
+        gatsbyImageData(width: 1500)
       }
+      title
+      summary
       content {
         value
         blocks {
@@ -77,12 +81,8 @@ export const pageQuery = graphql`
           }
         }
       }
-      title
-      excerpt
-      coverImage {
-        alt
-        title
-        gatsbyImageData(width: 1500)
+      seo: seoMetaTags {
+        ...GatsbyDatoCmsSeoMetaTags
       }
     }
   }
