@@ -26,7 +26,7 @@ export default function Layout(props: Props) {
   const { children } = props
 
   const data: Data = useStaticQuery(graphql`
-    query seoQuery {
+    query {
       site: datoCmsSite {
         locales
         favicon: faviconMetaTags {
