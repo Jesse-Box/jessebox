@@ -275,7 +275,7 @@ img {
   padding-bottom: var(--space-2);
 }
 
-.post-item__description {
+.post-item__summary {
   margin-bottom: var(--space-2);
 }
 

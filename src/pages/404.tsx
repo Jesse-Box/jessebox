@@ -5,7 +5,8 @@ import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/layout"
 import HeaderPage from "../components/page-header"
-import CardPost from "../components/post-card"
+import CardPost from "../components/post-list-item"
+import PostList from "../components/post-list"
 
 interface Data {
   datoCmsNotFound: {
@@ -44,24 +45,7 @@ export default function NotFoundPage(props: PageProps<Data>) {
         linkTo={data.datoCmsNotFound.linkTo}
         linkLabel={data.datoCmsNotFound.linkLabel}
       />
-      <section>
-        <h6>Recent Posts</h6>
-        <ul className="list">
-          {data.allDatoCmsPost.edges.map(({ node }) => {
-            return (
-              <CardPost
-                key={node.slug}
-                date={node.date}
-                title={node.title}
-                to={node.slug}
-                description={node.seo.description}
-                alt={node.alt}
-                fluid={node.hero.fluid}
-              />
-            )
-          })}
-        </ul>
-      </section>
+      <PostList />
     </Layout>
   )
 }

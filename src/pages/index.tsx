@@ -1,11 +1,10 @@
 import React from "react"
 import { PageProps, graphql } from "gatsby"
-import { FluidObject } from "gatsby-image"
 import { HelmetDatoCms } from "gatsby-source-datocms"
 
 import Layout from "../components/layout"
 import HeaderPage from "../components/page-header"
-import CardPost from "../components/post-card"
+import PostList from "../components/post-list"
 
 interface Data {
   datoCmsHome: {
@@ -20,6 +19,7 @@ interface Data {
   allDatoCmsPost: {
     edges: {
       node: {
+        id: string
         slug: string
         title: string
         date: string
@@ -44,24 +44,7 @@ export default function BlogIndex(props: PageProps<Data>) {
         linkTo={data.home.linkTo}
         linkLabel={data.home.linkLabel}
       />
-      <section>
-        <h6>Recent Posts</h6>
-        <ul className="list">
-          {data.posts.edges.map(({ node }) => {
-            return (
-              <CardPost
-                key={node.slug}
-                date={node.date}
-                title={node.title}
-                to={node.slug}
-                description={node.seo.description}
-                alt={node.alt}
-                fluid={node.hero.fluid}
-              />
-            )
-          })}
-        </ul>
-      </section>
+      <PostList />
     </Layout>
   )
 }
@@ -80,24 +63,6 @@ export const pageQuery = graphql`
       linkLabel
       seo: seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
-      }
-    }
-    posts: allDatoCmsPost(sort: { date: DESC }) {
-      edges {
-        node {
-          slug
-          title
-          date(formatString: "MMMM DD, YYYY")
-          seo {
-            description
-          }
-          hero {
-            alt
-            fluid(maxWidth: 800) {
-              ...GatsbyDatoCmsFluid
-            }
-          }
-        }
       }
     }
   }
