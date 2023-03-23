@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import Image, { FluidObject } from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 interface Props {
   hero?: FluidObject
@@ -18,7 +18,7 @@ export default function HeaderPage(props: Props) {
     <header className="container intro">
       {hero ? (
         <figure className="intro__hero">
-          <Image alt={alt} fluid={hero} />
+          <GatsbyImage alt={alt} image={hero} />
           <figcaption>{caption}</figcaption>
         </figure>
       ) : null}

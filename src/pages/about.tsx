@@ -44,7 +44,7 @@ export default function About(props: PageProps<Data>) {
       <HelmetDatoCms seo={data.about.seo} favicon={data.site.favicon} />
       <article>
         <HeaderPage
-          hero={data.about.coverImage.fluid}
+          hero={data.about.coverImage.gatsbyImageData}
           alt={data.about.coverImage.alt}
           caption={data.about.coverImage.title}
           header={data.about.title}
@@ -73,13 +73,15 @@ export const pageQuery = graphql`
           __typename
           id: originalId
           image {
-            gatsbyImageData(width: 700)
+            gatsbyImageData(width: 1500)
           }
         }
       }
       title
       excerpt
       coverImage {
+        alt
+        title
         gatsbyImageData(width: 1500)
       }
     }
