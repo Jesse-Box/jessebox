@@ -3,13 +3,14 @@ import { Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 interface Props {
-  coverImageSrc?: unknown
+  coverImageSrc?: []
   coverImageAlt?: string
   coverImageCaption?: string
   title: string
   summary: string
   linkTo?: string
   linkLabel?: string
+  date?: string
 }
 
 export default function PageHeader(props: Props) {
@@ -21,6 +22,7 @@ export default function PageHeader(props: Props) {
     summary,
     linkTo,
     linkLabel,
+    date,
   } = props
   return (
     <header className="container intro">
@@ -37,6 +39,7 @@ export default function PageHeader(props: Props) {
           <Link to={linkTo}>{linkLabel} </Link>
         </div>
       ) : null}
+      {date ? <h6 className="intro__summary">{date}</h6> : null}
     </header>
   )
 }
