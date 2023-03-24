@@ -7,32 +7,26 @@ import PageHeader from "../components/page-header"
 import PostBody from "../components/post-body"
 
 interface Data {
+  site: {
+    favicon: []
+  }
   about: {
-    seoMetaTags: {
-      tags: []
-    }
-    hero: {
+    seo: []
+    coverImage: {
       alt: string
       title: string
-      fluid: FluidObject
+      gatsbyImageData: []
     }
-    header: string
-    subheader: string
-    body: {
-      id: string
-      model: {
-        apiKey: string
+    title: string
+    summary: string
+    content: {
+      value: string
+      blocks: {
+        __typename: string
+        id: string
+        image: []
       }
-      text: string
-      image: {
-        alt: string
-        fluid: FluidObject
-        model: {
-          apiKey: string
-        }
-        title: string
-      }
-    }[]
+    }
   }
 }
 
